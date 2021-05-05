@@ -4,7 +4,7 @@
 ​
 To connect restaurants and costumers for purchasing left-over food. 
 
-​
+
 ## User stories (MVP)
 ​
 **404** - As a user I want to see a nice 404 page when I go to a page that doesn’t exist so that I know it was my fault.
@@ -70,8 +70,8 @@ To connect restaurants and costumers for purchasing left-over food.
 | Edit customer    | GET    | /signup/business                       | Edit customer |  |  
 | Edit customer    | POST    | /signup/business                       | Edit customer |  | /main/customer 
 | Select offer    | POST    | /offer/:id                       | Select offer |   |  /main/customer   
-| Add food    | GET    |                      | Add food |   |   
-| Add food    | POST    | /main/business/addFood                       | Add food |   | /main/business    
+| Add offer    | GET    |                      | Add offer |   |   
+| Add offer    | POST    | /main/business/Offer                       | Add offer |   | /main/business    
 | Log out    | ?    | ?                       | ? |   | / |. 
 
 
@@ -90,11 +90,10 @@ Customer model
     email: String,
     hashedPassword: String,
     location: Array,
-    age: Number,
-    orders: [ObjectId]
+    age: Number
 }
 ```
-Owner model
+Business model
 ​
 ```js
 {
@@ -103,15 +102,14 @@ Owner model
     image: String,
     email: String,
     hashedPassword: String,
-    location: Array,
-    offers: [ObjectIds]
+    location: Array
 }
 ```
-Food model
+Offer model
 ​
 ```js
 {
-    businessName: ObjectID,
+    businessName: ObjectId,
     image: String,
     price: Number,
     description: String
@@ -121,10 +119,21 @@ Order model
 ​
 ```js
 {
-    food: [ObjectId],
-    costumer: [ObjectIds]
+    offer: [ObjectId],
+    costumer: [ObjectId]
 }
 ```
+
+
+
+## Data models (MVP)
+
+​**Order - customer:** Reference 
+
+**Order - business:** Reference 
+
+**Offer - business:** Reference
+
 ## Links
 ​
 ### Github kanban
