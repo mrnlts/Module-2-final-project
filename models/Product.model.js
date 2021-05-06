@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const {Schema, model} = mongoose;
 
-const offerSchema = new Schema({
+const productSchema = new Schema({
     businessName: {
         type: Schema.Types.ObjectId, ref: 'Business'
     },
@@ -10,6 +10,6 @@ const offerSchema = new Schema({
     description: String
 });
 
-const Offer = model('Offer', offerSchema);
+const Product = model('Product', productSchema);
 
-module.exports = Offer;
+module.exports = Product;

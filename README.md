@@ -38,7 +38,7 @@ To connect restaurants and costumers for purchasing left-over food.
 **Riders** - As a rider I want to be able to see current orders of the busines where I work.
 
 
-**Mailing** - As a business I want to be able to send mails with current offers to the users of the app.
+**Mailing** - As a business I want to be able to send mails with current products to the users of the app.
 
 
 **Geo-location of business** - As a business I want to be able to locate my place on a map, as a costumer I want to see business near me. 
@@ -59,19 +59,19 @@ To connect restaurants and costumers for purchasing left-over food.
 | Home            | GET    | /                             | See the main page                                |                                       |                 |
 | Log in form     | GET    | /login                        | See the form to log in                           |                                       |                 |
 | Log in          | POST   | /login                        | Log in the user                                  | {user data}                      | /main/user or /main/business  |
-| Offer list | GET  |  /offers | See the offers without an account
+| Product list | GET  |  /products | See the products without an account
 | Sign Up crossroad    | GET    | /signup                       | See the crossroad to choose
 | Sign Up business    | GET    | /signup/business                       | See the form to sign up   
 | Sign Up customer    | GET    | /signup/customer                       | See the form to sign up
-| Sign Up business    | POST    | /signup/business                       | Sign up business | {businessName, businessType, image, email, password, location, offers} | /main/business 
+| Sign Up business    | POST    | /signup/business                       | Sign up business | {businessName, businessType, image, email, password, location, products} | /main/business 
 | Sign Up customer    | POST    | /signup/customer                       | Sign up customer | {firstName, lastName, email, password, location, age}  | /main/customer 
 | Edit business    | GET    | /signup/business                       | Edit business |  |  
 | Edit business    | POST    | /signup/business                       | Edit business |  | /main/business  
 | Edit customer    | GET    | /signup/business                       | Edit customer |  |  
 | Edit customer    | POST    | /signup/business                       | Edit customer |  | /main/customer 
-| Select offer    | POST    | /offer/:id                       | Select offer |   |  /main/customer   
-| Add offer    | GET    |                      | Add offer |   |   
-| Add offer    | POST    | /main/business/Offer                       | Add offer |   | /main/business    
+| Select product    | POST    | /product/:id                       | Select product |   |  /main/customer   
+| Add product    | GET    |                      | Add product |   |   
+| Add product    | POST    | /main/business/Product                       | Add product |   | /main/business    
 | Log out    | ?    | ?                       | ? |   | / |. 
 
 
@@ -105,7 +105,7 @@ Business model
     location: Array
 }
 ```
-Offer model
+Product model
 ​
 ```js
 {
@@ -119,7 +119,7 @@ Order model
 ​
 ```js
 {
-    offer: [ObjectId],
+    product: [ObjectId],
     costumer: [ObjectId]
 }
 ```
@@ -132,7 +132,7 @@ Order model
 
 **Order - business:** Reference 
 
-**Offer - business:** Reference
+**Product - business:** Reference
 
 ## Links
 ​
