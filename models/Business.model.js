@@ -5,8 +5,17 @@ const businessSchema = new Schema({
     businessName: String,
     businessType: String,
     image: String,
-    email: String,
-    hashedPassword: String,
+    email: {
+        type: String,
+        required: [true, 'Email is required.'],
+        unique: true,
+        lowercase: true,
+        trim: true
+      },
+      passwordHash: {
+        type: String,
+        required: [true, 'Password is required.']
+    },
     location: Array
 },
 {
