@@ -25,9 +25,11 @@ To connect restaurants and costumers for purchasing left-over food.
 **Log out** - As a user I want to be able to log out from the webpage so that I can make sure no one will access my account.
 
 ​
-**Profile** - As a user I want to be able to see my profile and edit it and view my orders.
+**Profile** - As a user I want to be able to see my profile and edit it. 
 
+**Order** - As a costumer I want to be able to make an order, as a business I want to be able to see what orders have been made.
 
+**Add products** - As a business I want to be able to add products to my profile.
 ​
 ​
 ## Backlog / Nice to have
@@ -37,6 +39,7 @@ To connect restaurants and costumers for purchasing left-over food.
 ​
 **Riders** - As a rider I want to be able to see current orders of the busines where I work.
 
+**UX/UI** - Posar un scroll a la home page. 
 
 **Mailing** - As a business I want to be able to send mails with current products to the users of the app.
 
@@ -65,13 +68,13 @@ To connect restaurants and costumers for purchasing left-over food.
 | Sign Up customer    | GET    | /signup/customer                       | See the form to sign up
 | Sign Up business    | POST    | /signup/business                       | Sign up business | {businessName, businessType, image, email, password, location, products} | /main/business 
 | Sign Up customer    | POST    | /signup/customer                       | Sign up customer | {firstName, lastName, email, password, location, age}  | /main/customer 
-| Edit business    | GET    | /signup/business                       | Edit business |  |  
-| Edit business    | POST    | /signup/business                       | Edit business |  | /main/business  
-| Edit customer    | GET    | /signup/business                       | Edit customer |  |  
-| Edit customer    | POST    | /signup/business                       | Edit customer |  | /main/customer 
+| Edit business    | GET    | /edit/business                       | Edit business |  |  
+| Edit business    | POST    | /edit/business                       | Edit business |  | /main/business  
+| Edit customer    | GET    | /edit/costumer                       | Edit customer |  |  
+| Edit customer    | POST    | /edit/costumer                       | Edit customer |  | /main/customer 
 | Select product    | POST    | /product/:id                       | Select product |   |  /main/customer   
-| Add product    | GET    |                      | Add product |   |   
-| Add product    | POST    | /main/business/Product                       | Add product |   | /main/business    
+| Add product    | GET    |     /main/business/product                 | Add product |   |   
+| Add product    | POST    | /main/business/product                       | Add product |   | /main/business    
 | Log out    | ?    | ?                       | ? |   | / |. 
 
 
@@ -119,8 +122,11 @@ Order model
 ​
 ```js
 {
-    product: [ObjectId],
-    costumer: [ObjectId]
+    food: [{productId: ObjectId, amount: Number}], 
+    costumer: ObjectId
+},
+{
+
 }
 ```
 
