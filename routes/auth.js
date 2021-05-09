@@ -4,34 +4,39 @@ const router = express.Router();
 const bcryptjs = require('bcryptjs');
 const Customer = require('../models/Customer.model');
 
-// router.get('/login', (req, res, next) => {
-//   res.render('auth/login');
-// });
+//const checkIfUserIsLoggedIn = require('../middleware/login'); MIDLEWARE A AFEGIR QUAN FEM RUTES PROTEGIDES
 
-// router.post('/login', (req, res, next) => {
-//   console.log('SESSION =====> ', req.session);
-//   const { firstName, lastName, email, passwordHash, city, age  } = req.body;
+router.get('/login', (req, res) => res.render('auth/login'));
 
-//   if (email === '' || passwordHash === '') {
-//     res.render('auth/login', {
-//       errorMessage: 'Please enter both, email and password to login.',
-//     });
-//     return;
-//   }
+router.post('/login', (req, res, next) => {
+  console.log('SESSION =====> ', req.session);
+  const { email, passwordHash } = req.body;
 
-//   Customer.findOne({ email })
-//     .then(dbCustomer => {
-//       if (!dbCustomer) {
-//         res.render('auth/login', { error: 'user not found' });
-//       } else if (bcryptjs.compareSync(password, dbCustomer.passwordHash)) {
-//         req.session.currentUser = dbCustomer;
-//         res.redirect('/customer');
-//       } else {
-//         res.render('auth/login', { errorMessage: 'Incorrect password.' });
-//       }
-//     })      
-//     .catch(error => {
-//       next(error);
-//     });
-// });
+  // if (email === '' || passwordHash === '') {
+  //   res.render('auth/login', {
+  //     errorMessage: 'Please enter both, email and password to login.',
+  //   });
+  //   return;
+  // }
+
+  Customer.findOne({ email })
+    .then(dbCustomer => {
+      if (!dbCustomer) {
+       return res.render('auth/login', { error: 'user not found' });
+      } 
+      const { _id, email: eMail, hashedPassword } = dbCustomer;
+      if (bcryptjs.compareSync(password, hashedPassword)) {
+        req.session.currentUser = {
+          _id,
+          email: eMail,
+        };
+        return res.render('customer/mainPage');
+      }
+      return res.render('auth/login', { error: 'password incorrect' });
+      })      
+    .catch(error => {
+      next(error);
+    });
+});
 module.exports = router;
+
