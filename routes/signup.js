@@ -28,15 +28,7 @@ router.post('/customer', (req, res, next) => {
     bcryptjs
       .genSalt(saltRounds)
       .then(salt => bcryptjs.hash(password, salt))
-      .then(hashedPassword => {
-        return Customer.create({ firstName, 
-          lastName, 
-          email, 
-          passwordHash: hashedPassword, 
-          city, 
-          age,
-         });
-        })
+      .then(hashedPassword => Customer.create({ firstName, lastName, email, passwordHash: hashedPassword, city, age  }))
       .then(dbCustomer => {       
         console.log('Newly created customer is: ', dbCustomer); 
         res.render('customer/mainPage');       

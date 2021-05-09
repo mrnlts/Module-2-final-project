@@ -4,8 +4,6 @@ const router = express.Router();
 const bcryptjs = require('bcryptjs');
 const Customer = require('../models/Customer.model');
 
-//const checkIfUserIsLoggedIn = require('../middleware/login'); MIDLEWARE A AFEGIR QUAN FEM RUTES PROTEGIDES
-
 router.get('/login', (req, res) => res.render('auth/login'));
 
 router.post('/login', (req, res, next) => {
