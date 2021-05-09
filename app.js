@@ -13,7 +13,7 @@ const mongoose = require('mongoose');
 // const MongoStore = require('connect-mongo');
 
 const indexRouter = require('./routes/index');
-const customersRouter = require('./routes/customers');
+const customerRouter = require('./routes/customer');
 const businessRouter = require('./routes/business');
 const authRouter = require('./routes/auth');
 const signupRouter = require('./routes/signup');
@@ -32,7 +32,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
 app.use('/signup', signupRouter);
-app.use('/customers', customersRouter);
+app.use('/customer', customerRouter);
 app.use('/business', businessRouter);
 
 
