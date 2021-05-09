@@ -6,6 +6,9 @@ mongoose
     useNewUrlParser: true,
     useUnifiedTopology: true
   })
-  .then(x => console.log(`Connected to Mongo! Database name: "${x.connections[0].name}"`))
+  .then(() => {
+    console.log('Connected to DB 🚀', process.env.DB_NAME);
+    console.log('Listening on port 3000');
+  })
   .catch(err => console.error('Error connecting to mongo', err));
  

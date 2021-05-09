@@ -2,17 +2,18 @@ const mongoose = require('mongoose');
 const Business = require('../models/Business.model');
 const Customer = require('../models/Customer.model');
 
-mongoose.connect(`mongodb://localhost:27017/Zero-food-waste-app`, {
+const firstCustomers = [
+  { firstName: 'Speedy', lastName: "Gonzalez",  email: 'speedy@testing.com', passwordHash: " ", city: 'Barcelona', age: 22 },
+  { firstName: 'Andreu', lastName: "Buenafuente",  email: 'buenafuente@testing.com', passwordHash: " ", city: 'Barcelona', age: 62 },
+  { firstName: 'Danny', lastName: "DeVito",  email: 'devitto@testing.com', passwordHash: " ", city: 'Barcelona', age: 46 },
+];
+
+mongoose.connect(`mongodb://localhost/${process.env.DB_NAME}`, {
   useCreateIndex: true,
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
 
-const firstCustomers = [
-  { firstName: 'Speedy', lastName: "Gonzalez",  email: 'speedy@test.com', passwordHash: " ", city: 'Barcelona', age: 22 },
-  { firstName: 'Andreu', lastName: "Buenafuente",  email: 'buenafuente@test.com', passwordHash: " ", city: 'Barcelona', age: 62 },
-  { firstName: 'Danny', lastName: "DeVito",  email: 'devitto@test.com', passwordHash: " ", city: 'Barcelona', age: 46 },
-];
 
 Customer.create(firstCustomers)
   .then(dbCustomers => {

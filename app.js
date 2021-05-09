@@ -5,26 +5,17 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-
+const session = require('express-session');
+const MongoStore = require('connect-mongo');
 const router = express.Router();
 const hbs = require('hbs');
-const mongoose = require('mongoose');
+const app = express();
 
-mongoose
-  .connect(`mongodb://localhost/${process.env.DB_NAME}`, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => {
-    console.log('Connected to DB 🚀', process.env.DB_NAME);
-    console.log('Listening on port 3000');
-  })
-  .catch(error => {
-    console.log('error ', error);
-  });
 
 const app_name = require('./package.json').name;
 const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.')[0]}`);
-const session = require('express-session');
-const MongoStore = require('connect-mongo');
-const app = express();
+
+
 
 // Routes Setup //
 const indexRouter = require('./routes/index');
@@ -32,6 +23,10 @@ const customerRouter = require('./routes/customer');
 const businessRouter = require('./routes/business');
 const authRouter = require('./routes/auth'); 
 const signupRouter = require('./routes/signup'); 
+
+// require database configuration
+require('./configs/db.config');
+//require('./configs/session')(app); // PASSAR LA SESSION AIXI ?¿
 
 // Middleware setup
 app.use(logger('dev'));
