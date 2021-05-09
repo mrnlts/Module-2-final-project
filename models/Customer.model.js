@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+
 const {Schema, model} = mongoose;
 
 const customerSchema = new Schema({
@@ -11,7 +12,7 @@ const customerSchema = new Schema({
         lowercase: true,
         trim: true
       },
-      password: {
+    password: {
         type: String,
         required: [true, 'Password is required.']
     },

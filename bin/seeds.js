@@ -3,9 +3,9 @@ const Business = require('../models/Business.model');
 const Customer = require('../models/Customer.model');
 
 const firstCustomers = [
-  { firstName: 'Speedy', lastName: "Gonzalez",  email: 'speedy@testing.com', passwordHash: " ", city: 'Barcelona', age: 22 },
-  { firstName: 'Andreu', lastName: "Buenafuente",  email: 'buenafuente@testing.com', passwordHash: " ", city: 'Barcelona', age: 62 },
-  { firstName: 'Danny', lastName: "DeVito",  email: 'devitto@testing.com', passwordHash: " ", city: 'Barcelona', age: 46 },
+  { firstName: 'Speedy', lastName: "Gonzalez",  email: 'speedy@testing.com', password: " ", city: 'Barcelona', age: 22 },
+  { firstName: 'Andreu', lastName: "Buenafuente",  email: 'buenafuente@testing.com', password: " ", city: 'Barcelona', age: 62 },
+  { firstName: 'Danny', lastName: "DeVito",  email: 'devitto@testing.com', password: " ", city: 'Barcelona', age: 46 },
 ];
 
 mongoose.connect(`mongodb://localhost/${process.env.DB_NAME}`, {

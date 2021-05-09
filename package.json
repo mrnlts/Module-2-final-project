@@ -16,7 +16,7 @@
     "epress": "*",
     "express": "^4.17.1",
     "express-session": "^1.17.1",
-    "express-validator": "^6.10.1",
+    "express-validator": "^6.11.1",
     "hbs": "~4.0.4",
     "http-errors": "~1.6.3",
     "mongoose": "^5.12.7",
