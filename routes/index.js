@@ -13,7 +13,7 @@ router.get('/signup', (req, res, next) => {
 
 /* GET login. */
 router.get('/login', (req, res, next) => {
-  res.render('login');
+  res.render('/auth/login');
 });
 
 
