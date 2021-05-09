@@ -48,8 +48,13 @@ app.use((err, req, res, next) => {
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
   // render the error page
-  res.status(err.status || 500);
-  res.render('error');
+  if (err.status === 404) {
+      res.status(404);
+      res.render('error404');
+  } else if (err.status === 500) {
+      res.status(500);
+      res.render('error500');
+  }
 });
 
 module.exports = app;
