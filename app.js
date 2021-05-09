@@ -15,8 +15,9 @@ const mongoose = require('mongoose');
 const indexRouter = require('./routes/index');
 const customerRouter = require('./routes/customer');
 const businessRouter = require('./routes/business');
-const authRouter = require('./routes/auth');
-const signupRouter = require('./routes/signup');
+const authRouter = require('./routes/auth'); 
+const signupRouter = require('./routes/signup'); 
+
 const app = express();
 
 // view engine setup
