@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 const Customer = require('../models/Customer.model');
 
-const checkIfUserIsLoggedIn = require('../middleware/login');
+// const checkIfUserIsLoggedIn = require('../middleware/login');
 
 
 router.get('/', (req, res, next) => {
@@ -15,9 +15,11 @@ router.get('/', (req, res, next) => {
 // FIND CUSTOMER BY ID AND RENDER UPDATE FORM // NO FUNCIONA EL GET ¿?¿?¿?¿?¿?
 
 router.get('/:id/edit', (req, res, next) => {
-    const { id } = req.params;
+  console.log(req)  ;
+  const { id } = req.params;
     Customer.findById(id)
       .then(dbCustomer => {
+        console.log(dbCustomer);
        res.render('customer/edit-form', { dbCustomer });
       })
       .catch(error => next(error));
