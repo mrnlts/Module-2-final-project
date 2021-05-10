@@ -1,11 +1,19 @@
-<h1>Sign up customer</h1>
-<div id="signup">
+<div id="signup-customer">
+    <h1>Sign up customer</h1>
     <h2>Create user</h2>
     <form action="/signup/customer" method="post">
-        <label for="username">Username</label>
-        <input type="text" id="username" name="username" placeholder="Your username">
+        <label for="firstName">First name</label>
+        <input type="text" id="firstName" placeholder="Your first name">
+        <label for="lastName">Last name</label>
+        <input type="text" id="lastName" name="lastName" placeholder="Your last name">
+        <label for="email">E-mail</label>
+        <input type="text" id="email" name="email" placeholder="Your e-mail">
         <label for="password">Password</label>
         <input type="password" id="password" name="password" placeholder="**********">
+        <label for="location">Location</label>
+        <input type="text" id="location" name="location" placeholder="Your location">
+        <label for="age">Age</label>
+        <input type="text" id="age" name="age" placeholder="Your age">
         <button type="submit">Sign up</button>
     </form>
 
