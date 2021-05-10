@@ -5,29 +5,60 @@ const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-
+const session = require('express-session');
+const MongoStore = require('connect-mongo');
 const router = express.Router();
 const hbs = require('hbs');
-const mongoose = require('mongoose');
-// const session = require('express-session');
-// const MongoStore = require('connect-mongo');
+const app = express();
 
+
+// const app_name = require('./package.json').name;
+// const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.')[0]}`);
+
+
+
+// Routes Setup //
 const indexRouter = require('./routes/index');
 const customerRouter = require('./routes/customer');
 const businessRouter = require('./routes/business');
-const authRouter = require('./routes/auth');
-const signupRouter = require('./routes/signup');
-const app = express();
+const authRouter = require('./routes/auth'); 
+const signupRouter = require('./routes/signup'); 
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'hbs');
+// require database configuration
+require('./configs/db.config');
 
+
+// Middleware setup
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+
+
+// Express view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'hbs');
+
+// Session
 app.use(express.static(path.join(__dirname, 'public')));
+  app.use(
+    session({
+      store: MongoStore.create({
+        mongoUrl: `mongodb://localhost/${process.env.DB_NAME}`, 
+        ttl: 24 * 60 * 60,
+      }),
+      secret: process.env.SESS_SECRET,
+      resave: true,
+      saveUninitialized: false,
+      cookie: {
+        sameSite: 'none',
+        httpOnly: true,
+        maxAge: 60000,
+      },
+    }),
+  );
+
+
 
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
@@ -47,7 +78,7 @@ app.use((err, req, res, next) => {
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
+ // render the error page
   if (err.status === 404) {
       res.status(404);
       res.render('error404');
