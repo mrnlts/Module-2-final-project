@@ -12,9 +12,9 @@ router.get('/', (req, res, next) => {
 
 
 
-// FIND CUSTOMER BY ID AND RENDER UPDATE FORM //
+// FIND CUSTOMER BY ID AND RENDER UPDATE FORM // NO FUNCIONA EL GET ¿?¿?¿?¿?¿?
 
-router.get('/customer/:id', checkIfUserIsLoggedIn, (req, res, next) => {
+router.get('/:id/edit', (req, res, next) => {
     const { id } = req.params;
     Customer.findById(id)
       .then(dbCustomer => {
@@ -25,7 +25,7 @@ router.get('/customer/:id', checkIfUserIsLoggedIn, (req, res, next) => {
   
   // UPDATE CUSTOMER DATA //
 
-  router.post('/customer/:id', checkIfUserIsLoggedIn, (req, res, next) => {
+  router.post('/:id/edit', (req, res, next) => {
     const { id } = req.params;
     const { firstName, lastName, email, password, city, age  } = req.body;
     Customer.findByIdAndUpdate(id, { firstName, lastName, email, password, city, age  }, { new: true })
