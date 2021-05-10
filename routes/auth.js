@@ -8,8 +8,17 @@ const Business = require('../models/Business.model');
 
 router.get('/login', (req, res) => res.render('auth/login'));
 
-router.get('/logout', (req, res) => {
-  req.session.destroy(() => res.redirect('/'));
+router.post('/logout', (req, res, next) => {
+  // req.session.destroy(error => {
+  //   if (error) {
+  //     return next(error);
+  //   }
+  //   return res.render('index');
+  // });
+  req.session.destroy(() => {
+    console.log('destroyed succesfully');
+    return res.render('index');
+    });
 });
 
 router.post('/login', (req, res, next) => {
@@ -22,10 +31,11 @@ router.post('/login', (req, res, next) => {
     .then(dbCustomer => {
       if (dbCustomer) {
         if (bcryptjs.compareSync(password, dbCustomer.passwordHash)) {
-          req.session.dbCustomer = dbCustomer;
-          console.log(req.session)
-        res.redirect('/customer/mainPage');
-          //res.render('customer/mainPage', { dbCustomer });
+          // req.session.dbCustomer = dbCustomer;
+          //console.log(req.session)
+        // res.redirect('/customer/mainPage');
+          const custInSession = req.session.dbCustomer;
+          res.render('customer/mainPage', { dbCustomer, custInSession });
         } else {
           res.render('auth/login', { errorMessage: 'Incorrect password.' });
         }
@@ -34,9 +44,10 @@ router.post('/login', (req, res, next) => {
           if (!dbBusiness) {
           res.render('auth/login', { error: 'Email is not registered. Try with other email.' });
           } else if (bcryptjs.compareSync(password, dbBusiness.passwordHash)) {
-            req.session.currentUser = dbCustomer;
-            res.redirect('/business/mainPage');
-           // res.render('business/mainPage', { dbBusiness });
+            // req.session.dbBusiness = dbBusiness;
+            // res.redirect('/business/mainPage');
+            const bussInSession = req.session.dbBusiness;
+            res.render('business/mainPage', { dbBusiness, bussInSession });
           } else {
             res.render('auth/login', { errorMessage: 'Incorrect password.' });
           }
