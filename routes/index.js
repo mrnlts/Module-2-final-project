@@ -8,12 +8,12 @@ router.get('/', (req, res, next) => {
 
 /* GET signup crossroad. */
 router.get('/signup', (req, res, next) => {
-  res.render('crossroad');
+  res.render('auth/crossroad');
 });
 
 /* GET login. */
 router.get('/login', (req, res, next) => {
-  res.render('/auth/login');
+  res.render('auth/login');
 });
 
 
