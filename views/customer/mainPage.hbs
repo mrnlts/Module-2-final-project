@@ -5,13 +5,12 @@
 <a href="/customer/{{dbCustomer.id}}/edit"> Update customer data </a>
 
 
-{{!-- {{#if dbCustomer}}
-<h2>Welcome, {{ dbCustomer.name }}!</h2>
+{{#if custInSession}}
+<h2>Welcome, {{ custInSession.name }}!</h2>
 <p>This is your profile page my friend!</p>
 <button>
   <a href="/mainPage">Reload the page</a>
 </button>
 {{else}}
 <p>Still no logged in user, sorry!</p>
-{{/if}} --}}
-
+{{/if}}

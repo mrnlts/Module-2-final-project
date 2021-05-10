@@ -3,3 +3,14 @@
     <a href="/">Back</a>
     <a href="/business/{{dbBusiness.id}}/edit"> Update business data </a>
 </div>
+
+
+{{#if bussInSession}}
+<h2>Welcome, {{ bussInSession.name }}!</h2>
+<p>This is your profile page my friend!</p>
+<button>
+    <a href="/mainPage">Reload the page</a>
+</button>
+{{else}}
+<p>Still no logged in user, sorry!</p>
+{{/if}}
