@@ -40,20 +40,20 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
 
-  // app.use(
-  //   session({
-  //     store: MongoStore.create({
-  //       mongoUrl: `mongodb://localhost/${process.env.DB_NAME}`,
-  //       ttl: 24 * 60 * 60,
-  //     }),
-  //     secret: process.env.SESS_SECRET,
-  //     resave: true,
-  //     saveUninitialized: true,
-  //     cookie: {
-  //       maxAge: 24 * 60 * 60 * 1000,
-  //     },
-  //   }),
-  // );
+  app.use(
+    session({
+      store: MongoStore.create({
+        mongoUrl: `mongodb://localhost/${process.env.DB_NAME}`,
+        ttl: 24 * 60 * 60,
+      }),
+      secret: process.env.SESS_SECRET,
+      resave: true,
+      saveUninitialized: true,
+      cookie: {
+        maxAge: 24 * 60 * 60 * 1000,
+      },
+    }),
+  );
 
 
 

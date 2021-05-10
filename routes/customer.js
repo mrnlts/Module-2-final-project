@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 const Customer = require('../models/Customer.model');
 
-// const checkIfUserIsLoggedIn = require('../middleware/login');
+const isUserLoggedIn = require('../middleware/login');
 
 
 router.get('/', (req, res, next) => {
