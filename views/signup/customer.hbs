@@ -1,5 +1,5 @@
-<h1>Sign up customer</h1>
-<div id="signup">
+<div id="signup-customer">
+    <h1>Sign up customer</h1>
     <h2>Create user</h2>
     <form action="/signup/customer" method="POST">
         <label for="firstName">First Name: </label>
@@ -14,6 +14,10 @@
         <input type="email" id="input-email" name="email" placeholder="Your email" />
         <label for="password">Password</label>
         <input type="password" id="password" name="password" placeholder="**********">
+        <label for="location">Location</label>
+        <input type="text" id="location" name="location" placeholder="Your location">
+        <label for="age">Age</label>
+        <input type="text" id="age" name="age" placeholder="Your age">
         <button type="submit">Sign up</button>
     </form>
 
