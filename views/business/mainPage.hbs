@@ -1,13 +1,18 @@
-<form action="/auth/logout" method="post">
-    <label for="">Log out</label>
-    <button type="submit">Log out</button>
-</form>
-
 <div id="business">
+
     <h1>Business home page </h1>
-    <a href="/">Back</a>
-    <a href="/business/{{dbBusiness.id}}/edit"> Update business data </a>
+    {{!-- <a href="/">Back</a> --}}
+    <ul>
+        <li>
+            <h2><a href="/business/{{dbBusiness.id}}/edit"> Update business data </a> <span> | </span>
+            <a href="/business/{{dbBusiness.id}}/product"> Add new product </a></h2>
+        </li>
+    </ul>
+    <form action="/auth/logout" method="post">
+        <button type="submit" class="logOut">Log out</button>
+    </form>
 </div>
+
 
 
 {{#if bussInSession}}

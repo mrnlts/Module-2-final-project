@@ -1,12 +1,14 @@
 const express = require('express');
 const router = express.Router();
 const Business = require('../models/Business.model');
+const Product = require('../models/Product.model');
 
+// RENDER BUSINESS HOME PAGE //
 router.get('/', (req, res, next) => {
     res.render('business/mainPage');
 })
 
-// FIND BUSINESS BY ID AND RENDER UPDATE FORM // 
+// RENDER BUSINESS EDIT PAGE // 
 
 router.get('/:id/edit', (req, res, next) => {
   console.log("Enter edit business");
@@ -20,7 +22,7 @@ router.get('/:id/edit', (req, res, next) => {
       .catch(error => next(error));
   });
   
-  // UPDATE BUSINESS DATA //
+  // UPDATE DB BUSINESS DATA //
 
   router.post('/:id/edit', (req, res, next) => {
     const { id } = req.params;
@@ -35,6 +37,22 @@ router.get('/:id/edit', (req, res, next) => {
       });
   });  
 
+// RENDER ADD PRODUCT FORM //
+router.get('/:id/product', (req, res, next) => {
+  const {id} = req.params;
+  res.render('business/add-product', {id});
+});
+
+router.post('/:id/product', (req, res, next) => {
+  const {id} = req.params;
+  const {price, description} = req.body;
+  Product.create({businessName: id, price, description})
+    .then((productFromDB)=> {
+      console.log("new product added!: ", productFromDB);
+      res.redirect('/business');
+    })
+    .catch(err => next(err));
+});
 
 // DELETE BUSINESS ///
 // router.post('/:id', (req, res, next) => {

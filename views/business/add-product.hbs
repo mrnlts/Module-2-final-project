@@ -1,0 +1,10 @@
+<div id="add-product">
+    <h1>Add a new product</h1>
+    <form action="/business/{{id}}/product" method="post">
+        <label for="price">Price</label>
+        <input type="number" name="price" id="price" placeholder="Your product's price">
+        <label for="description">Description</label>
+        <input type="text" name="description" id="description" placeholder="Your product's description">
+        <button type="submit">Add product</button>
+    </form>
+</div>
