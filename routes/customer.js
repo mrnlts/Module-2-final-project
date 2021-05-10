@@ -3,7 +3,7 @@ const express = require('express');
 const router = express.Router();
 const Customer = require('../models/Customer.model');
 
-const checkIfUserIsLoggedIn = require('../middleware/login');
+// const checkIfUserIsLoggedIn = require('../middleware/login');
 
 
 router.get('/', (req, res, next) => {
@@ -14,10 +14,12 @@ router.get('/', (req, res, next) => {
 
 // FIND CUSTOMER BY ID AND RENDER UPDATE FORM //
 
-router.get('/customer/:id', checkIfUserIsLoggedIn, (req, res, next) => {
-    const { id } = req.params;
+router.get('/:id/edit', (req, res, next) => {
+  console.log(req)  ;
+  const { id } = req.params;
     Customer.findById(id)
       .then(dbCustomer => {
+        console.log(dbCustomer);
        res.render('customer/edit-form', { dbCustomer });
       })
       .catch(error => next(error));
@@ -25,7 +27,7 @@ router.get('/customer/:id', checkIfUserIsLoggedIn, (req, res, next) => {
   
   // UPDATE CUSTOMER DATA //
 
-  router.post('/customer/:id', checkIfUserIsLoggedIn, (req, res, next) => {
+  router.post('/customer/:id', (req, res, next) => {
     const { id } = req.params;
     const { firstName, lastName, email, password, city, age  } = req.body;
     Customer.findByIdAndUpdate(id, { firstName, lastName, email, password, city, age  }, { new: true })
