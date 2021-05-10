@@ -12,8 +12,8 @@ const hbs = require('hbs');
 const app = express();
 
 
-const app_name = require('./package.json').name;
-const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.')[0]}`);
+// const app_name = require('./package.json').name;
+// const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.')[0]}`);
 
 
 
@@ -26,7 +26,7 @@ const signupRouter = require('./routes/signup');
 
 // require database configuration
 require('./configs/db.config');
-//require('./configs/session')(app); // PASSAR LA SESSION AIXI ?¿
+
 
 // Middleware setup
 app.use(logger('dev'));
@@ -38,6 +38,8 @@ app.use(cookieParser());
 // Express view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
+
+// Session
 app.use(express.static(path.join(__dirname, 'public')));
   app.use(
     session({
@@ -76,7 +78,7 @@ app.use((err, req, res, next) => {
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
+ // render the error page
   if (err.status === 404) {
       res.status(404);
       res.render('error404');

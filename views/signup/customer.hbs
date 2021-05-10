@@ -5,7 +5,7 @@
         <label for="firstName">First Name: </label>
         <input type="text" id="firstName" name="firstName" placeholder="Your first name">
         <label for="lastName">Last Name: </label>
-        <input type="text" id="last" name="last" placeholder="Your last name">
+        <input type="text" id="lastName" name="lastName" placeholder="Your last name">
         <label for="city">City: </label>
         <input type="text" id="city" name="city" placeholder="Your city">
         <label for="age">Age: </label>
@@ -20,9 +20,5 @@
         <input type="text" id="age" name="age" placeholder="Your age">
         <button type="submit">Sign up</button>
     </form>
-
-    {{#if errorMessage}}
-    <p class="error">{{errorMessage}}</p>
-    {{/if}}
 
 </div>
