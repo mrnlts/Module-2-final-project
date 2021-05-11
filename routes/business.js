@@ -2,16 +2,33 @@ const express = require('express');
 const router = express.Router();
 const Business = require('../models/Business.model');
 const Product = require('../models/Product.model');
+const Order = require('../models/Order.model');
 
 // RENDER BUSINESS HOME PAGE //
 router.get('/:id', (req, res, next) => {
   const {id} = req.params;
   Business.findById({"_id": id})
     .then(businessFromDB => {
-      console.log("BUSINESS FROM DB: ", businessFromDB);
-      res.render('business/mainPage', {businessFromDB})
-    });
+      Product.find({businessName: id})
+        .then((selected) => {
+          let currentOrders = [];
+          selected.forEach(prod => {
+            console.log("PROD id: ", prod.id);
+            Order.find({"product": prod.id})
+            .populate('customer product')
+            .then((ordersFromDB) => {
+              ordersFromDB.forEach((order)=> {
+                currentOrders.push(order)
+              });
+            })
+          })
+          console.log("current orders: ", currentOrders);
+          res.render('business/mainPage', {businessFromDB, currentOrders});
+        })    
+    })
+    .catch(err => next(err));
 });
+
 
 // RENDER BUSINESS EDIT PAGE // 
 

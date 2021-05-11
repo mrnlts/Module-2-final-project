@@ -13,8 +13,8 @@ router.post('/',  (req,res, next) => {
     Order.create({ product: req.body.order, customer: customerID })
         .then((orderFromDB) => {
             console.log(orderFromDB);
-            res.redirect(`/customer/${customerID}`);
             alert("Your order has been processed! Customer ID:", customerID, "Product ID:",  req.body.order);
+            res.redirect(`/customer/${customerID}`);
         })
         .catch(err => next(err));
 });

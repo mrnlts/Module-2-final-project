@@ -1,3 +1,4 @@
+{{#if customerFromDB}}
 <div style="display: flex; align-items: baseline">
   <a href="/">Back</a> <span> | </span>
   <a href="/customer/{{customerFromDB.id}}/edit"> Update customer data </a>  <span> | </span>
@@ -8,13 +9,9 @@
   <a href="/customer/{{customerFromDB.id}}">Reload the page</a>
 </button>
 </div>
-{{#if customerFromDB}}
+
 <h1>Welcome, {{ customerFromDB.firstName }}!</h1>
 <h2>This is your profile page my friend!</h2>
-
-{{else}}
-<p>Still no logged in user, sorry!</p>
-{{/if}}
 
 <h2 style="text-align: center;">Businesses near you</h2>
 <div id="list">
@@ -41,3 +38,7 @@
     </div>    
       {{/each}}
 </div>
+
+{{else}}
+<p>Still no logged in user, sorry!</p>
+{{/if}}
