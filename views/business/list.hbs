@@ -1,0 +1,11 @@
+<a href="/" class="back">Go back</a>
+
+<div id="list">
+    {{#each businessesFromDB}}
+    <div id="business">
+        <h1>{{this.businessName}}</h1>
+        <h2>Type: {{this.businessType}}</h2>
+        <h2>City: {{this.city}}</h2>
+    </div>
+    {{/each}}
+</div>

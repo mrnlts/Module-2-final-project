@@ -1,11 +1,8 @@
-const session = require('express-session');
+require('dotenv').config();
+
 const MongoStore = require('connect-mongo');
 
-const mongoose = require('mongoose');
-
-
-app.use(
-  session({
+const appSession = {
     store: MongoStore.create({
       mongoUrl: `mongodb://localhost/${process.env.DB_NAME}`,
       ttl: 24 * 60 * 60,
@@ -16,5 +13,6 @@ app.use(
     cookie: {
       maxAge: 24 * 60 * 60 * 1000,
     },
-  }),
-);
+  };
+
+module.exports = appSession;

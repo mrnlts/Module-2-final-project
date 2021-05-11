@@ -6,9 +6,11 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const session = require('express-session');
-const MongoStore = require('connect-mongo');
+
 const router = express.Router();
+
 const hbs = require('hbs');
+
 const app = express();
 
 
@@ -33,29 +35,15 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Express view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
+const appSession = require('./configs/session');
 
-  // app.use(
-  //   session({
-  //     store: MongoStore.create({
-  //       mongoUrl: `mongodb://localhost/${process.env.DB_NAME}`,
-  //       ttl: 24 * 60 * 60,
-  //     }),
-  //     secret: process.env.SESS_SECRET,
-  //     resave: true,
-  //     saveUninitialized: true,
-  //     cookie: {
-  //       maxAge: 24 * 60 * 60 * 1000,
-  //     },
-  //   }),
-  // );
-
-
+app.use(session(appSession));
 
 app.use('/', indexRouter);
 app.use('/auth', authRouter);

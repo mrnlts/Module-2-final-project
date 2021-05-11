@@ -16,7 +16,7 @@ const businessSchema = new Schema({
         type: String,
         required: [true, 'Password is required.']
     },
-    location: Array
+    city: String
 },
 {
     timestamps: true
