@@ -33,7 +33,7 @@
 
 <h2>Offers</h2>
 <div id="list">
-    {{#each productsFromDB}}
+    {{#each productsFromDB}}   
     <div id="business">
         <h1> Product description{{this.description}}</h1>
         <h2>Price: {{this.price}}</h2>
@@ -42,6 +42,6 @@
           <input value="{{customerFromDB.id}}" id="customer" name="customer" >
           <button type= "submit">Order Product</button>
         </form>
-    </div>
-    {{/each}}
+    </div>    
+      {{/each}}
 </div>

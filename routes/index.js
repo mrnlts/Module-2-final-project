@@ -5,6 +5,7 @@ const Business = require('../models/Business.model');
 /* GET home page. */
 router.get('/', (req, res, next) => {
   res.render('index');
+  console.log("tituli2", req.params)
 });
 
 /* GET signup crossroad. */
