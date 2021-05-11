@@ -20,13 +20,28 @@
     <button type="submit">Log out</button>
 </form>
 
-
+<h2>business</h2>
 <div id="list">
     {{#each businessesFromDB}}
     <div id="business">
         <h1>{{this.businessName}}</h1>
         <h2>Type: {{this.businessType}}</h2>
         <h2>City: {{this.city}}</h2>
+    </div>
+    {{/each}}
+</div>
+
+<h2>Offers</h2>
+<div id="list">
+    {{#each productsFromDB}}
+    <div id="business">
+        <h1> Product description{{this.description}}</h1>
+        <h2>Price: {{this.price}}</h2>
+        <form action="/order" method= "POST" > 
+          <input value="{{this._id}}" id="order" name="order">
+          <input value="{{customerFromDB.id}}" id="customer" name="customer" >
+          <button type= "submit">Order Product</button>
+        </form>
     </div>
     {{/each}}
 </div>

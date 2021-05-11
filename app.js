@@ -25,6 +25,7 @@ const customerRouter = require('./routes/customer');
 const businessRouter = require('./routes/business');
 const authRouter = require('./routes/auth'); 
 const signupRouter = require('./routes/signup'); 
+const orderRouter = require('./routes/order'); 
 
 // require database configuration
 require('./configs/db.config');
@@ -50,6 +51,7 @@ app.use('/auth', authRouter);
 app.use('/signup', signupRouter);
 app.use('/customer', customerRouter);
 app.use('/business', businessRouter);
+app.use("/order", orderRouter);
 
 
 // catch 404 and forward to error handler

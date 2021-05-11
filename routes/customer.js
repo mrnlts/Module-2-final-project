@@ -3,6 +3,7 @@ const express = require('express');
 const router = express.Router();
 const Customer = require('../models/Customer.model');
 const Business = require('../models/Business.model');
+const Product = require("../models/Product.model")
 const isUserLoggedIn = require('../middleware/login');
 
 router.get('/:id', (req, res, next) => {
@@ -13,11 +14,13 @@ router.get('/:id', (req, res, next) => {
     // en algun moment haurem de ficar un find  by alguna cosa, per city, o per tipus de menjar etc
     Business.find()
     .then(businessesFromDB => {
-      res.render('customer/mainPage', { customerFromDB, businessesFromDB });
+      Product.find()
+      .then(productsFromDB  => {
+        res.render('customer/mainPage', { customerFromDB, businessesFromDB, productsFromDB });
+      })      
     })    
   
   });
-
   
 });
 
