@@ -16,8 +16,7 @@ router.post('/login', (req, res, next) => {
   console.log('SESSION =====> ', req.session);
   const { email, password } = req.body;
   if (email === '' || password === '') {
-    // hacer errores con flash info
-    return res.render('auth/login', { errorMessage: 'Please enter both, email and password to login.' });
+    return res.render('auth/login'); // Flash error
   }
  
   User.findOne({ email })

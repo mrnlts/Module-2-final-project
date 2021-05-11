@@ -11,15 +11,6 @@ router.get('/', (req, res) => {
   res.render('index');
 });
 
-/* GET signup  */
-router.get('/signup', (req, res) => {
-  res.render('signup/user');
-});
-
-router.post("/signup", (req, res) => {
-  res.redirect("/index")
-})
-
 /* GET login. */
 router.get('/login', (req, res) => {
   res.render('auth/login');

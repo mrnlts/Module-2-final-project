@@ -6,9 +6,8 @@ const Business = require('../models/Business.model');
 const Product = require("../models/Product.model")
 const isUserLoggedIn = require('../middleware/login');
 
-router.get('/:id', (req, res, next) => {
+router.get('/:id', isUserLoggedIn, (req, res, next) => {
   const { id } = req.params;
-  console.log("session", req.session.currentUser)
   User.findById({ _id: id })
   .then(userFromDB => {
     // en algun moment haurem de ficar un find  by alguna cosa, per city, o per tipus de menjar etc
@@ -19,14 +18,12 @@ router.get('/:id', (req, res, next) => {
         res.render('user/mainPage', { userFromDB, businessesFromDB, productsFromDB });
       })      
     })    
-  
-  });
-  
+  })
+  .catch(err => next(err));
 });
 
-// FIND CUSTOMER BY ID AND RENDER UPDATE FORM // NO FUNCIONA EL GET ¿?¿?¿?¿?¿?
-
-router.get('/:id/edit', (req, res, next) => {
+// FIND CUSTOMER BY ID AND RENDER UPDATE FORM // 
+router.get('/:id/edit', isUserLoggedIn, (req, res, next) => {
   const { id } = req.params;
   User.findById(id)
     .then(dbUser => {
@@ -37,32 +34,14 @@ router.get('/:id/edit', (req, res, next) => {
 });
 
 // UPDATE CUSTOMER DATA //
-
 router.post('/:id/edit', (req, res, next) => {
   const { id } = req.params;
-  const { firstName, lastName, email, password, city, age } = req.body;
-  User.findByIdAndUpdate(id, { firstName, lastName, email, password, city, age }, { new: true })
-    .then(dbUser => {
-      res.redirect('/user');
-      console.log('update', dbUser);
-    })
+  const { firstName, lastName, email, city, age } = req.body;
+  User.findByIdAndUpdate(id, { firstName, lastName, email, city, age }, { new: true })
+    .then(() => res.redirect(`/user/${id}`))
     .catch(error => {
       next(error);
     });
 });
-
-// DELETE USER ///
-// router.post('/:id', (req, res, next) => {
-//     const { id } = req.params;
-//     User.findByIdAndDelete(id)
-//       .then(dbUser => {
-//         console.log('delete', dbUser);
-//         res.status(301);
-//         res.redirect('/users');
-//       })
-//       .catch(error => {
-//         next(error);
-//       });
-//   });
 
 module.exports = router;
