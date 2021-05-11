@@ -15,7 +15,7 @@ router.get('/:id', (req, res, next) => {
           selected.forEach(prod => {
             console.log("PROD id: ", prod.id);
             Order.find({"product": prod.id})
-            .populate('customer product')
+            .populate('user product')
             .then((ordersFromDB) => {
               ordersFromDB.forEach((order)=> {
                 currentOrders.push(order)

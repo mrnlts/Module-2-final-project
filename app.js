@@ -7,9 +7,6 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const session = require('express-session');
 
-const router = express.Router();
-
-const hbs = require('hbs');
 
 const app = express();
 
@@ -21,7 +18,7 @@ const app = express();
 
 // Routes Setup //
 const indexRouter = require('./routes/index');
-const customerRouter = require('./routes/customer');
+const user = require('./routes/user');
 const businessRouter = require('./routes/business');
 const authRouter = require('./routes/auth'); 
 const signupRouter = require('./routes/signup'); 
@@ -49,7 +46,7 @@ app.use(session(appSession));
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
 app.use('/signup', signupRouter);
-app.use('/customer', customerRouter);
+app.use('/user', user);
 app.use('/business', businessRouter);
 app.use("/order", orderRouter);
 
