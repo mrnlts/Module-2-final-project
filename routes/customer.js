@@ -6,8 +6,13 @@ const Customer = require('../models/Customer.model');
 const isUserLoggedIn = require('../middleware/login');
 
 
-router.get('/', (req, res, next) => {
-    res.render('customer/mainPage');
+router.get('/:id', (req, res, next) => {
+  const {id} = req.params;  
+  Customer.findById({"_id": id})
+  .then(customerFromDB => {
+    console.log("BUSINESS FROM DB: ", customerFromDB);
+    res.render('customer/mainPage', {customerFromDB})
+  });
 })
 
 

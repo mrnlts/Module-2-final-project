@@ -4,9 +4,14 @@ const Business = require('../models/Business.model');
 const Product = require('../models/Product.model');
 
 // RENDER BUSINESS HOME PAGE //
-router.get('/', (req, res, next) => {
-    res.render('business/mainPage');
-})
+router.get('/:id', (req, res, next) => {
+  const {id} = req.params;
+  Business.findById({"_id": id})
+    .then(businessFromDB => {
+      console.log("BUSINESS FROM DB: ", businessFromDB);
+      res.render('business/mainPage', {businessFromDB})
+    });
+});
 
 // RENDER BUSINESS EDIT PAGE // 
 

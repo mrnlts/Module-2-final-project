@@ -1,21 +1,21 @@
-<form action="/auth/logout" method="post">
-    <label for="">Log out</label>
-    <button type="submit">Log out</button>
-</form>
 
 <h1>Customer home page</h1>
 
 <a href="/">Back</a>
 
-<a href="/customer/{{dbCustomer.id}}/edit"> Update customer data </a>
+<a href="/customer/{{customerFromDB.id}}/edit"> Update customer data </a>
 
 
-{{#if custInSession}}
-<h2>Welcome, {{ custInSession.name }}!</h2>
+{{#if customerFromDB}}
+<h2>Welcome, {{ customerFromDB.firstName }}!</h2>
 <p>This is your profile page my friend!</p>
 <button>
-  <a href="/mainPage">Reload the page</a>
+  <a href="/customer/{{customerFromDB.id}}">Reload the page</a>
 </button>
 {{else}}
 <p>Still no logged in user, sorry!</p>
 {{/if}}
+
+<form action="/auth/logout" method="post">
+    <button type="submit">Log out</button>
+</form>
