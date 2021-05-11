@@ -1,26 +1,22 @@
-
-<h1>Customer home page</h1>
-
-<a href="/">Back</a>
-
-<a href="/customer/{{customerFromDB.id}}/edit"> Update customer data </a>
-
-
-{{#if customerFromDB}}
-<h2>Welcome, {{ customerFromDB.firstName }}!</h2>
-<p>This is your profile page my friend!</p>
-<button>
+<div style="display: flex; align-items: baseline">
+  <a href="/">Back</a> <span> | </span>
+  <a href="/customer/{{customerFromDB.id}}/edit"> Update customer data </a>  <span> | </span>
+  <form action="/auth/logout" method="post">
+      <input type="submit" value="Log out" style="width: 100%; background-color: transparent; border: none; color: #00B7FF; font-size: 1rem"></input>
+  </form>
+  <button>
   <a href="/customer/{{customerFromDB.id}}">Reload the page</a>
 </button>
+</div>
+{{#if customerFromDB}}
+<h1>Welcome, {{ customerFromDB.firstName }}!</h1>
+<h2>This is your profile page my friend!</h2>
+
 {{else}}
 <p>Still no logged in user, sorry!</p>
 {{/if}}
 
-<form action="/auth/logout" method="post">
-    <button type="submit">Log out</button>
-</form>
-
-<h2>business</h2>
+<h2 style="text-align: center;">Businesses near you</h2>
 <div id="list">
     {{#each businessesFromDB}}
     <div id="business">
@@ -31,16 +27,16 @@
     {{/each}}
 </div>
 
-<h2>Offers</h2>
+<h2 style="text-align: center;">Offers</h2>
 <div id="list">
     {{#each productsFromDB}}   
     <div id="business">
-        <h1> Product description{{this.description}}</h1>
+        <h1> {{this.description}}</h1>
         <h2>Price: {{this.price}}</h2>
         <form action="/order" method= "POST" > 
-          <input value="{{this._id}}" id="order" name="order">
-          <input value="{{customerFromDB.id}}" id="customer" name="customer" >
-          <button type= "submit">Order Product</button>
+          <input style="display: none" value="{{this._id}}" id="order" name="order">
+          <input style="display: none" value="{{customerFromDB.id}}" id="customer" name="customer" >
+          <button type= "submit" style="width: 100%">Order Product</button>
         </form>
     </div>    
       {{/each}}

@@ -12,6 +12,7 @@ body {
 a {
   color: #00B7FF;
   text-decoration: none;
+  font-size: 1rem;
 }
 
 h1 {
@@ -67,7 +68,8 @@ form button {
 #business,
 #customer,
 #login,
-#add-product {
+#add-product,
+#edit {
   margin: 0 auto;
   display: flex;
   flex-direction: column;

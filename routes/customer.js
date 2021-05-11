@@ -10,7 +10,6 @@ router.get('/:id', (req, res, next) => {
   const { id } = req.params;
   Customer.findById({ _id: id })
   .then(customerFromDB => {
-    console.log('BUSINESS FROM DB: ', customerFromDB);
     // en algun moment haurem de ficar un find  by alguna cosa, per city, o per tipus de menjar etc
     Business.find()
     .then(businessesFromDB => {
