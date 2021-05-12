@@ -7,7 +7,13 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const session = require('express-session');
 const flash = require("connect-flash")
+const bcrypt = require('bcrypt');
+const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
 const appSession = require('./configs/session');
+
+const User = require('./models/User.model'); 
+
 
 const app = express();
 
@@ -59,6 +65,44 @@ app.use((req, res, next) => {
 
 // flash messages
 
+
+// passport config
+ 
+passport.serializeUser((dbUser, cb) => cb(null, dbUser.id));
+ 
+passport.deserializeUser((id, cb) => {
+  User.findById(id)
+    .then(dbUser => cb(null, dbUser))
+    .catch(err => cb(err));
+});
+ 
+passport.use(
+  new LocalStrategy(
+    { passReqToCallback: true },
+    {
+      usernameField: 'email', 
+      passwordField: 'password' 
+    },
+    (email, password, done) => {
+      User.findOne({ email })
+        .then(dbUser => {
+          if (!dbUser) {
+            return done(null, false, { message: 'Incorrect username' });
+          }
+ 
+          if (!bcrypt.compareSync(password, user.password)) {
+            return done(null, false, { message: 'Incorrect password' });
+          }
+ 
+          done(null, user);
+        })
+        .catch(err => done(err));
+    }
+  )
+);
+
+app.use(passport.initialize());
+app.use(passport.session());
 
 // error handler
 app.use((err, req, res) => {
