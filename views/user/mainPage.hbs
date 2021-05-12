@@ -1,18 +1,18 @@
 {{#if userFromDB}}
-<div style="display: flex; align-items: baseline">
-  <a href="/">Back</a> <span> | </span>
-  <a href="/user/{{userFromDB.id}}/edit"> Update user data </a>  <span> | </span>
-  <form action="/auth/logout" method="post">
-      <input type="submit" value="Log out" style="width: 100%; background-color: transparent; border: none; color: #00B7FF; font-size: 1rem"></input>
-  </form>
-  <button>
-  <a href="/user/{{userFromDB.id}}">Reload the page</a>
-</button>
+<div style="height: 100vh; display: flex; flex-direction: column; justify-content:space-evenly">
+  <div style="display: flex; align-items: baseline; justify-content:space-between">
+    <a href="/">Back</a> <span> | </span>
+    <a href="/user/{{userFromDB.id}}/edit"> Update user data </a>  <span> | </span>
+    <form action="/auth/logout" method="post">
+        <input type="submit" value="Log out" style="width: 100%; background-color: transparent; border: none; color: #00B7FF; font-size: 1rem"></input>
+    </form>
+    
+  </div>
+
+  <h1>Welcome, {{ userFromDB.firstName }}!</h1>
+  <h2>This is your profile page my friend!</h2>
 </div>
-
-<h1>Welcome, {{ userFromDB.firstName }}!</h1>
-<h2>This is your profile page my friend!</h2>
-
+{{#if businessesFromDB}}
 <h2 style="text-align: center;">Businesses near you</h2>
 <div id="list">
     {{#each businessesFromDB}}
@@ -38,7 +38,7 @@
     </div>    
       {{/each}}
 </div>
-
+{{/if}}
 {{else}}
 <p>Still no logged in user, sorry!</p>
 {{/if}}
