@@ -1,10 +1,8 @@
 const express = require('express');
-const bcryptjs = require('bcryptjs');
-
-const User = require('../models/User.model');
-const Business = require('../models/Business.model');
 
 const router = express.Router();
+const bcryptjs = require('bcryptjs');
+const User = require('../models/User.model');
 
 router.get('/login', (req, res) => res.render('auth/login', {message: req.flash('success')}));
 
@@ -29,19 +27,6 @@ router.post('/login', (req, res, next) => {
         } else {
           res.render('auth/login', { errorMessage: 'Incorrect password.' });
         }
-      } else {
-        Business.findOne({ email })
-        .then(dbBusiness => {
-          if (!dbBusiness) {
-          res.render('auth/login', { error: 'Email is not registered. Try with other email.' });
-          } else if (bcryptjs.compareSync(password, dbBusiness.passwordHash)) {
-            req.session.currentUser = dbBusiness
-            const link = `/business/${dbBusiness.id}`;
-            res.redirect(link);
-          } else {
-            res.render('auth/login', { errorMessage: 'Incorrect password.' });
-          }
-        });
       }
     })
     .catch(error => {

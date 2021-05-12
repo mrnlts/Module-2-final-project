@@ -1,6 +1,6 @@
-const { Router } = require('express');
+const express = require('express');
 
-const router = new Router();
+const router = express.Router();
 const bcryptjs = require('bcryptjs');
 //const flash = require('connect-flash');
 const User = require('../models/User.model');

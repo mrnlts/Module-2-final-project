@@ -9,7 +9,7 @@ const Order = require('../models/Order.model');
 router.get('/:id', (req, res, next) => {
   const {id} = req.params;
   Business.findById({"_id": id})
-    .then(businessFromDB => {
+    .then(dbBusiness => {
       Product.find({businessName: id})
         .then((selected) => {
           let currentOrders = [];
@@ -17,13 +17,13 @@ router.get('/:id', (req, res, next) => {
             console.log("PROD id: ", prod.id);
             Order.find({"product": prod.id})
             .populate('user product')
-            .then((ordersFromDB) => {
-              ordersFromDB.forEach((order)=> {
+            .then((dbOrders) => {
+              dbOrders.forEach((order)=> {
                 currentOrders.push(order)
               });
             })
           })
-          res.render('business/mainPage', {businessFromDB, currentOrders});
+          res.render('business/mainPage', {dbBusiness, currentOrders});
         })    
     })
     .catch(err => next(err));

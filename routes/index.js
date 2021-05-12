@@ -1,10 +1,7 @@
 const express = require('express');
 
-const Business = require('../models/Business.model');
-
-
 const router = express.Router();
-
+const Business = require('../models/Business.model');
 
 /* GET home page. */
 router.get('/', (req, res) => {
@@ -19,7 +16,7 @@ router.get('/login', (req, res) => {
 /* GET business-list */
 router.get('/list', (req, res, next) => { // cambiar nombre list por business.
   Business.find()
-    .then((businessesFromDB) =>  res.render('business/list', {businessesFromDB})) // cambiar por dbBusiness
+    .then((dbBusiness) =>  res.render('business/list', {dbBusiness})) // cambiar por dbBusiness
     .catch(err => next(err));
 });
 

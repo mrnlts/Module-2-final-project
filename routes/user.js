@@ -9,13 +9,13 @@ const isUserLoggedIn = require('../middleware/login');
 router.get('/:id', isUserLoggedIn, (req, res, next) => {
   const { id } = req.params;
   User.findById({ _id: id })
-  .then(userFromDB => {
+  .then(dbUser => {
     // en algun moment haurem de ficar un find  by alguna cosa, per city, o per tipus de menjar etc
     Business.find()
-    .then(businessesFromDB => {
+    .then(dbBusiness => {
       Product.find()
-      .then(productsFromDB  => {
-        res.render('user/mainPage', { userFromDB, businessesFromDB, productsFromDB});
+      .then(dbProducts  => {
+        res.render('user/mainPage', { dbUser, dbBusiness, dbProducts});
       })      
     })    
   })
