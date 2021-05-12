@@ -6,7 +6,7 @@ const Business = require('../models/Business.model');
 
 const router = express.Router();
 
-router.get('/login', (req, res) => res.render('auth/login'));
+router.get('/login', (req, res) => res.render('auth/login', {message: req.flash('success')}));
 
 router.post('/logout', (req, res, next) => {
   req.session.destroy(() => res.render('index'))

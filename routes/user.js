@@ -15,7 +15,7 @@ router.get('/:id', isUserLoggedIn, (req, res, next) => {
     .then(businessesFromDB => {
       Product.find()
       .then(productsFromDB  => {
-        res.render('user/mainPage', { userFromDB, businessesFromDB, productsFromDB });
+        res.render('user/mainPage', { userFromDB, businessesFromDB, productsFromDB});
       })      
     })    
   })
