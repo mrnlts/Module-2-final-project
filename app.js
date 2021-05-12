@@ -87,14 +87,14 @@ passport.use(
       User.findOne({ email })
         .then(dbUser => {
           if (!dbUser) {
-            return done(null, false, { message: 'Incorrect username' });
+            return done(null, false, { message: 'Incorrect password' });
           }
  
           if (!bcrypt.compareSync(password, user.password)) {
             return done(null, false, { message: 'Incorrect password' });
           }
  
-          done(null, user);
+          done(null, dbUser);
         })
         .catch(err => done(err));
     }
