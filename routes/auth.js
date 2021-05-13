@@ -4,10 +4,10 @@ const router = express.Router();
 const bcryptjs = require('bcryptjs');
 const User = require('../models/User.model');
 
-router.get('/login', (req, res) => res.render('auth/login', {message: req.flash('success')}));
+router.get('/login', (req, res) => res.render('auth/login', { message: req.flash('success') }));
 
 router.post('/logout', (req, res, next) => {
-  req.session.destroy(() => res.render('index'))
+  req.session.destroy(() => res.render('index'));
 });
 
 router.post('/login', (req, res, next) => {
@@ -16,14 +16,13 @@ router.post('/login', (req, res, next) => {
   if (email === '' || password === '') {
     return res.render('auth/login'); // Flash error
   }
- 
+
   User.findOne({ email })
     .then(dbUser => {
       if (dbUser) {
         if (bcryptjs.compareSync(password, dbUser.passwordHash)) {
-          req.session.currentUser = dbUser
-          const link = `/user/${dbUser.id}`;
-          res.redirect(link);
+          req.session.currentUser = dbUser;
+          res.redirect(`/user/${dbUser.id}`);
         } else {
           res.render('auth/login', { errorMessage: 'Incorrect password.' });
         }
