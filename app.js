@@ -6,26 +6,15 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const session = require('express-session');
-const flash = require("connect-flash")
-const bcrypt = require('bcrypt');
 const passport = require('passport');
-const LocalStrategy = require('passport-local').Strategy;
+const flash = require("connect-flash")
 const appSession = require('./configs/session');
-
-const User = require('./models/User.model'); 
-
 
 const app = express();
 
-
-// const app_name = require('./package.json').name;
-// const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.')[0]}`);
-
-
-
 // Routes Setup //
 const indexRouter = require('./routes/index');
-const user = require('./routes/user');
+const userRouter = require('./routes/user');
 const businessRouter = require('./routes/business');
 const authRouter = require('./routes/auth'); 
 const signupRouter = require('./routes/signup'); 
@@ -33,12 +22,14 @@ const orderRouter = require('./routes/order');
 
 // require database configuration
 require('./configs/db.config');
-
+require('./configs/passport.config')(app);
 
 // Middleware setup
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(passport.initialize());
+app.use(passport.session());
 app.use(cookieParser());
 app.use(session(appSession));
 app.use(flash());
@@ -53,7 +44,7 @@ app.set('view engine', 'hbs');
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
 app.use('/signup', signupRouter);
-app.use('/user', user);
+app.use('/user', userRouter);
 app.use('/business', businessRouter);
 app.use("/order", orderRouter);
 
@@ -62,47 +53,6 @@ app.use("/order", orderRouter);
 app.use((req, res, next) => {
   next(createError(404));
 });
-
-// flash messages
-
-
-// passport config
- 
-passport.serializeUser((dbUser, cb) => cb(null, dbUser.id));
- 
-passport.deserializeUser((id, cb) => {
-  User.findById(id)
-    .then(dbUser => cb(null, dbUser))
-    .catch(err => cb(err));
-});
- 
-passport.use(
-  new LocalStrategy(
-    { passReqToCallback: true },
-    {
-      usernameField: 'email', 
-      passwordField: 'password' 
-    },
-    (email, password, done) => {
-      User.findOne({ email })
-        .then(dbUser => {
-          if (!dbUser) {
-            return done(null, false, { message: 'Incorrect password' });
-          }
- 
-          if (!bcrypt.compareSync(password, user.password)) {
-            return done(null, false, { message: 'Incorrect password' });
-          }
- 
-          done(null, dbUser);
-        })
-        .catch(err => done(err));
-    }
-  )
-);
-
-app.use(passport.initialize());
-app.use(passport.session());
 
 // error handler
 app.use((err, req, res) => {

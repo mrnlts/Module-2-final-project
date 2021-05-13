@@ -2,7 +2,7 @@ const express = require('express');
 
 const router = express.Router();
 const bcryptjs = require('bcryptjs');
-//const flash = require('connect-flash');
+// const flash = require('connect-flash');
 const User = require('../models/User.model');
 
 const saltRounds = 10;
@@ -13,7 +13,6 @@ router.get('/', (req, res) => res.render('signup/user'));
 /* POST signup  */
 router.post('/', (req, res, next) => {
   const { firstName, lastName, email, password, city, age } = req.body;
-
  
   bcryptjs
     .genSalt(saltRounds)
