@@ -12,44 +12,34 @@ router.post('/logout', (req, res) => {
   req.session.destroy(() => res.render('index'));
 });
 
-
-// router.post('/login', (req, res) => {
-//   console.log('SESSION =====> ', req.session);
-//   passport.authenticate('local', {
-//     successRedirect: '/',
-//     failureRedirect: '/auth/login',
-//     passReqToCallback: true,
-//   })
-// }
-// );
-
-
 router.post('/login', (req, res, next) => {
   
   console.log('SESSION =====> ', req.session);
-  console.log("req.user = ", req.user)
-  const { email, password } = req.body;
-  passport.authenticate('local', (dbUser) => {
-    console.log("dbUser = ", dbUser)
-    if (email === '' || password === '') {
-       res.render('auth/login' , {errorMessage: "You have to fill all the fields"}); 
-    } else if (!dbUser) {
-       return res.render('auth/login', { errorMessage: 'Wrong password or username' });
-    } else {
-       //  req.session.currentUser = dbUser
-    // const link = `/user/${dbUser.id}`;
+  console.log("req.user = ", req.session.passport.user)
 
-    req.login(dbUser, err => {
-      if (err) { 
-        res.render('auth/login', { errorMessage: 'Incorrect password.' });
-        return next(err);
-      }
+  const { email, password } = req.body;
+  User.find({email})
+    .then((dbUser)=> {
+      passport.authenticate('local', () => {
+        console.log("dbUser = ", dbUser)
+        if (email === '' || password === '') {
+           res.render('auth/login' , {errorMessage: "You have to fill all the fields"}); 
+        } else if (!dbUser) {
+           return res.render('auth/login', { errorMessage: 'Wrong password or username' });
+        } else {
+        req.login(dbUser, err => {
+          if (err) { 
+            res.render('auth/login', { errorMessage: 'Incorrect password.' });
+            return next(err);
+          }
+      
+          res.redirect("/");
+        });
+        }
+       
+      })(req, res, next);
+    })
   
-      res.redirect("/");
-    });
-    }
-   
-  })(req, res, next);
 });
 
 module.exports = router;
