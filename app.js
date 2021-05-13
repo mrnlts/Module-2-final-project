@@ -11,15 +11,11 @@ const appSession = require('./configs/session');
 
 const app = express();
 
-// const app_name = require('./package.json').name;
-// const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.')[0]}`);
-
 // Routes Setup //
 const indexRouter = require('./routes/index');
 const user = require('./routes/user');
 const businessRouter = require('./routes/business');
 const authRouter = require('./routes/auth');
-const signupRouter = require('./routes/signup');
 const orderRouter = require('./routes/order');
 
 // require database configuration
@@ -39,8 +35,7 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
 app.use('/', indexRouter);
-app.use('/auth', authRouter); // juntar las dos rutas
-app.use('/signup', signupRouter);
+app.use('/auth', authRouter);
 app.use('/user', user);
 app.use('/business', businessRouter);
 app.use('/order', orderRouter);
