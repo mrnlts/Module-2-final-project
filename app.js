@@ -32,7 +32,11 @@ require('./configs/passport.config');
 
 
 // passport config
-passport.serializeUser((user, done) => done(null, user.id));
+passport.serializeUser((user, done) => {
+  console.log('OK')
+  done(null, user);
+});
+
 
 passport.deserializeUser((user, done) => {
   done(null, user);
@@ -53,14 +57,14 @@ passport.use
     passwordField: 'password',
   },
 
-  ( req, username, password, done) => {
-    User.findOne({  email: username })
+  (  email, password, done) => {
+    User.findOne({  email })
       .then(user => {
         if (!user) {
-         return done (null, false, { message: 'Incorrect user or password' });
+         return done (null, false);
         } 
-        if (!bcrypt.compareSync(password, user.password)) {
-          return done (null, false, {message: 'Incorrect password'})
+        if (!bcrypt.compareSync(password, user.passwordHash)) {
+          return done (null, false )
         } 
  
         return done(null, user)

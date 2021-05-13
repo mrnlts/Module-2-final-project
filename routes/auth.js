@@ -25,18 +25,18 @@ router.post('/logout', (req, res) => {
 
 
 router.post('/login', (req, res, next) => {
+  
   console.log('SESSION =====> ', req.session);
+  console.log("req.user = ", req.user)
   const { email, password } = req.body;
   passport.authenticate('local', (dbUser) => {
+    console.log("dbUser = ", dbUser)
     if (email === '' || password === '') {
-      return res.render('auth/login' , {errorMessage: "You have to fill all the fields"}); 
-    }
-
-    if (!dbUser) {
+       res.render('auth/login' , {errorMessage: "You have to fill all the fields"}); 
+    } else if (!dbUser) {
        return res.render('auth/login', { errorMessage: 'Wrong password or username' });
-    }
-
-    //  req.session.currentUser = dbUser
+    } else {
+       //  req.session.currentUser = dbUser
     // const link = `/user/${dbUser.id}`;
 
     req.login(dbUser, err => {
@@ -46,8 +46,9 @@ router.post('/login', (req, res, next) => {
       }
   
       res.redirect("/");
-
     });
+    }
+   
   })(req, res, next);
 });
 
