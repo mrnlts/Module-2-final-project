@@ -5,17 +5,16 @@ const User = require('../models/User.model');
 const isUserLoggedIn = require('../middleware/login');
 
 router.get('/profile', isUserLoggedIn, (req, res, next) => {
-  const { id } = req.session.currentUser;
+  //const { id } = req.session.currentUser.id;
   console.log("CURRENT SESSION: ", req.session)
-  User.findOne( {id} )
+  User.findById( req.session.currentUser._id )
     .then(dbUser => res.render('user/mainPage', { dbUser }))
     .catch(err => next(err));
 });
 
 // FIND CUSTOMER BY ID AND RENDER UPDATE FORM //
 router.get('/profile/edit', isUserLoggedIn, (req, res, next) => {
-  const { id } = req.session.currentUser;
-  User.findOne( {id} )
+  User.findById( req.session.currentUser._id )
     .then(dbUser => res.render('user/edit-form', { dbUser }))
     .catch(error => next(error));
 });
