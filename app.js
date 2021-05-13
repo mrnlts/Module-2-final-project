@@ -6,9 +6,15 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const session = require('express-session');
+
+const bcrypt = require('bcrypt');
 const passport = require('passport');
+const LocalStrategy = require('passport-local').Strategy;
 const flash = require("connect-flash")
 const appSession = require('./configs/session');
+
+const User = require('./models/User.model');
+
 
 const app = express();
 
@@ -22,18 +28,59 @@ const orderRouter = require('./routes/order');
 
 // require database configuration
 require('./configs/db.config');
-require('./configs/passport.config')(app);
+require('./configs/passport.config');
+
+
+// passport config
+passport.serializeUser((user, done) => done(null, user.id));
+
+passport.deserializeUser((user, done) => {
+  done(null, user);
+});
+
+// passport.deserializeUser((id, done) => {
+//   User.findById(id)
+//     .then(user => done(null, user))
+//     .catch(err => done(err));
+// });
+ 
+
+passport.use
+(new LocalStrategy(
+  { passReqToCallback: true },
+  {
+    usernameField: 'email',
+    passwordField: 'password',
+  },
+
+  ( req, username, password, done) => {
+    User.findOne({  email: username })
+      .then(user => {
+        if (!user) {
+         return done (null, false, { message: 'Incorrect user or password' });
+        } 
+        if (!bcrypt.compareSync(password, user.password)) {
+          return done (null, false, {message: 'Incorrect password'})
+        } 
+ 
+        return done(null, user)
+        
+      })
+      .catch(err => done(err));
+  },
+),
+);
 
 // Middleware setup
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(passport.initialize());
-app.use(passport.session());
 app.use(cookieParser());
 app.use(session(appSession));
 app.use(flash());
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(passport.initialize());
+app.use(passport.session());
 
 // Express view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -50,8 +97,8 @@ app.use("/order", orderRouter);
 
 
 // catch 404 and forward to error handler
-app.use((req, res, next) => {
-  next(createError(404));
+app.use((req, res, done) => {
+  done(createError(404));
 });
 
 // error handler
@@ -69,5 +116,6 @@ app.use((err, req, res) => {
       res.render('error500');
   }
 });
+
 
 module.exports = app;
