@@ -6,18 +6,8 @@ const businessSchema = new Schema({
     businessName: String,
     businessType: String,
     image: String,
-    email: {
-        type: String,
-        required: [true, 'Email is required.'],
-        unique: true,
-        lowercase: true,
-        trim: true
-      },
-      passwordHash: {
-        type: String,
-        required: [true, 'Password is required.']
-    },
-    city: String
+    city: String,
+    owner: {type: Schema.Types.ObjectId, ref: 'User'}
 },
 {
     timestamps: true

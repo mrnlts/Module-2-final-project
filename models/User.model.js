@@ -18,8 +18,12 @@ const userSchema = new Schema(
       required: [true, 'Password is required.'],
     },
     city: String,
-    age: Number
-    // role: 'admin', // enum
+    age: Number,
+    role: {
+      type: String,
+      enum: ['business', 'customer'],
+      default: 'customer'
+    }
   },
   {
     timestamps: true,
