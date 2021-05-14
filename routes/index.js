@@ -12,7 +12,7 @@ router.get('/', (req, res) => {
 router.get('/list', (req, res, next) => {
   // cambiar nombre list por business.
   Business.find()
-    .then(dbBusiness => res.render('business/list', { dbBusiness })) // cambiar por dbBusiness
+    .then(dbBusiness => res.render('business/list', { dbBusiness }))
     .catch(err => next(err));
 });
 

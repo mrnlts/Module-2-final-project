@@ -22,8 +22,8 @@ router.post('/add', (req, res, next) => {
 });
 
 // RENDER BUSINESS HOME PAGE //
-router.get('/profile', isBusiness, (req, res, next) => {
-  Business.findById(req.session.currentUser._id)
+router.get('/profile', (req, res, next) => { // he tret el middleware de business, si no no hi arriba a bus profile
+  User.findById(req.session.currentUser._id)
     .then(dbBusiness => res.render('business/mainPage', {dbBusiness}))   
     .catch(err => next(err));
 });
@@ -41,12 +41,12 @@ router.get('/profile/edit', isBusiness, (req, res, next) => {
 
 router.post('/profile/edit', isBusiness, (req, res, next) => {
   const { businessName, businessType, city, email, password  } = req.body;
-  Business.findByIdAndUpdate(id, { businessName, businessType, city, email, password  }, { new: true })
+  Business.findByIdAndUpdate(req.session.currentUser._id, { businessName, businessType, city, email, password  }, { new: true })
     .then(() => res.redirect('/business'))
     .catch(error => next(error));
 });  
 
-// // RENDER ADD PRODUCT FORM //
+// RENDER ADD PRODUCT FORM //
 // router.get('/profile/product', isBusiness, (req, res) => {
 //   res.render('business/add-product', {id});
 // });

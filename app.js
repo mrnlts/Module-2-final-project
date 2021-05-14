@@ -45,7 +45,14 @@ app.use((req, res, next) => {
   next(createError(404));
 });
 
-// flash messages
+// REGISTER HELPERS
+
+// hbs.registerHelper('customerBusiness', function(roleBusiness, options){
+//   if(roleBusiness){
+
+//   }
+// })
+
 
 // error handler
 app.use((err, req, res) => {

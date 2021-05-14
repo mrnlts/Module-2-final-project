@@ -9,13 +9,21 @@
     
   </div>
 
-<h3 style="text-align: center;">Do you own a business?</h3>
-<button><a href="/business/add">Add my business to the app</a></button>
+{{#if (dbUser.role.business) }}
+<div style="display: flex">
+<button><a href="/business/profile"> Manage my business </a></button>
+</div>
+{{else}}
+<div style="display: flex">
+<button><a href="/business/profile">Do you own a business? </a></button>
+<button><a href="/business/add">Do you own a business? Add your business to the app</a></button>
+</div>
+{{/if}}
 
   <h1>Welcome, {{ dbUser.firstName }}!</h1>
   <h2>This is your profile page my friend!</h2>
 </div>
-{{#if dbBusiness}}
+
 <h2 style="text-align: center;">Businesses near you</h2>
 <div id="list">
     {{#each dbBusiness}}
@@ -26,6 +34,7 @@
     </div>
     {{/each}}
 </div>
+
 
 <h2 style="text-align: center;">Offers</h2>
 <div id="list">
@@ -41,7 +50,9 @@
     </div>    
       {{/each}}
 </div>
-{{/if}}
+
 {{else}}
 <p>Still no logged in user, sorry!</p>
-{{/if}}
+{{/if}} 
+
+
