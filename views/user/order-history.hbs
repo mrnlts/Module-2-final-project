@@ -1,0 +1,13 @@
+<h1>Order history</h1>
+
+{{#if dbOrders}}
+    {{#each dbOrders}}
+            <div id="business">
+                <h2>New order!</h2>
+                <p>Order ID: {{this._id}}</p>
+                <p>Product: {{this.product.description}}</p>
+                <p>Price: {{this.product.price}}</p>
+                <p>Business: {{this.product.businessName.businessName}}</p>
+            </div>
+    {{/each}}
+{{/if}}
