@@ -1,17 +1,41 @@
 const mongoose = require('mongoose');
 
-const {Schema, model} = mongoose;
+const { Schema, model } = mongoose;
 
-const businessSchema = new Schema({
+const businessSchema = new Schema(
+  {
     businessName: String,
-    businessType: String,
+    businessType: {
+      type: String,
+      enum: [
+        'shop',
+        'Pizza',
+        'Chinese',
+        'Sushi',
+        'Italian',
+        'Japanese',
+        'Thai',
+        'Vietnamese',
+        'Tapas',
+        'Mexican',
+        'Mediterranean',
+        'Gourmet',
+        'French',
+        'Hamburguer',
+        'Kebab',
+        'FastFood',
+        'Vegan',
+        'Vegetarian',
+      ],
+    },
     image: String,
     city: String,
-    owner: {type: Schema.Types.ObjectId, ref: 'User'}
-},
-{
-    timestamps: true
-});
+    owner: { type: Schema.Types.ObjectId, ref: 'User' },
+  },
+  {
+    timestamps: true,
+  },
+);
 
 const Business = model('Business', businessSchema);
 
