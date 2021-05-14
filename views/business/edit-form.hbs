@@ -1,7 +1,7 @@
 <h1>Edit Business</h1>
 <div id="edit">
   <h2>Edit Business</h2>
-  <form action="/business/{{dbBusiness.id}}/edit" method="POST">
+  <form action="/business/profile/edit" method="POST">
 
     <label for="businessName">Business Name: </label>
     <input type="text" id="businessName" name="businessName" value="{{dbBusiness.businessName}}">
@@ -9,10 +9,6 @@
     <input type="text" id="businessType" name="businessType" value="{{dbBusiness.businessType}}">
     <label for="city">City: </label>
     <input type="text" id="city" name="city" value="{{dbBusiness.city}}">
-    <label for="email">Email</label>
-    <input type="email" id="email" name="email" value="{{dbBusiness.email}}" />
-    <label for="password">Password</label>
-    <input type="password" id="password" name="password" placeholder="**********">
     <button type="submit">Save changes</button>
   </form>
 

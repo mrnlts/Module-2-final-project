@@ -4,7 +4,7 @@ const MongoStore = require('connect-mongo');
 
 const appSession = {
     store: MongoStore.create({
-      mongoUrl: `mongodb://localhost/${process.env.DB_NAME}`,
+      mongoUrl: `${process.env.MONGODB_URI}${process.env.DB_NAME}`,
       ttl: 24 * 60 * 60,
     }),
     secret: process.env.SESS_SECRET,

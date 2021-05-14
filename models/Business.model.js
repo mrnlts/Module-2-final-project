@@ -1,26 +1,41 @@
 const mongoose = require('mongoose');
-const {Schema, model} = mongoose;
 
-const businessSchema = new Schema({
+const { Schema, model } = mongoose;
+
+const businessSchema = new Schema(
+  {
     businessName: String,
-    businessType: String,
-    image: String,
-    email: {
-        type: String,
-        required: [true, 'Email is required.'],
-        unique: true,
-        lowercase: true,
-        trim: true
-      },
-      passwordHash: {
-        type: String,
-        required: [true, 'Password is required.']
+    businessType: {
+      type: String,
+      enum: [
+        'shop',
+        'Pizza',
+        'Chinese',
+        'Sushi',
+        'Italian',
+        'Japanese',
+        'Thai',
+        'Vietnamese',
+        'Tapas',
+        'Mexican',
+        'Mediterranean',
+        'Gourmet',
+        'French',
+        'Hamburguer',
+        'Kebab',
+        'FastFood',
+        'Vegan',
+        'Vegetarian',
+      ],
     },
-    city: String
-},
-{
-    timestamps: true
-});
+    image: String,
+    city: String,
+    owner: { type: Schema.Types.ObjectId, ref: 'User' },
+  },
+  {
+    timestamps: true,
+  },
+);
 
 const Business = model('Business', businessSchema);
 

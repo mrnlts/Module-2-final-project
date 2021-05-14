@@ -1,0 +1,57 @@
+{{#if dbUser }}
+<div style="height: 100vh; display: flex; flex-direction: column; justify-content:space-evenly">
+  <div style="display: flex; align-items: baseline; justify-content:space-between">
+    <a href="/">Back</a> <span> | </span>
+    <a href="/user/profile/edit"> Update user data </a>  <span> | </span>
+    <form action="/auth/logout" method="post">
+        <input type="submit" value="Log out" style="width: 100%; background-color: transparent; border: none; color: #00B7FF; font-size: 1rem"></input>
+    </form>
+    
+  </div>
+
+{{#if isBusiness }}
+<div style="display: flex">
+<button><a href="/business/profile"> Manage my business </a></button>
+</div>
+{{else}}
+<div style="display: flex">
+<button><a href="/business/add">Do you own a business? Add your business to the app</a></button>
+</div>
+{{/if}}
+
+  <h1>Welcome, {{ dbUser.firstName }}!</h1>
+  <h2>This is your profile page my friend!</h2>
+</div>
+
+<h2 style="text-align: center;">Businesses near you</h2>
+<div id="list">
+    {{#each dbBusiness}}
+    <div id="business">
+        <h1>{{this.businessName}}</h1>
+        <h2>Type: {{this.businessType}}</h2>
+        <h2>City: {{this.city}}</h2>
+    </div>
+    {{/each}}
+</div>
+
+
+<h2 style="text-align: center;">Offers</h2>
+<div id="list">
+    {{#each dbProducts}}   
+    <div id="business">
+        <h1> {{this.description}}</h1>
+        <h2>Price: {{this.price}}</h2>
+        <form action="/order" method= "POST" > 
+          <input style="display: none" value="{{this._id}}" id="order" name="order">
+          <input style="display: none" value="{{dbUser.id}}" id="user" name="user" >
+          <button type= "submit" style="width: 100%">Order Product</button>
+        </form>
+    </div>    
+      {{/each}}
+</div>
+
+{{else}}
+<p>Still no logged in user, sorry!</p>
+{{/if}} 
+
+

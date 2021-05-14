@@ -1,26 +1,18 @@
 const express = require('express');
+
 const router = express.Router();
 const Business = require('../models/Business.model');
 
 /* GET home page. */
-router.get('/', (req, res, next) => {
+router.get('/', (req, res) => {
   res.render('index');
-});
-
-/* GET signup crossroad. */
-router.get('/signup', (req, res, next) => {
-  res.render('auth/crossroad');
-});
-
-/* GET login. */
-router.get('/login', (req, res, next) => {
-  res.render('auth/login');
 });
 
 /* GET business-list */
 router.get('/list', (req, res, next) => {
+  // cambiar nombre list por business.
   Business.find()
-    .then((businessesFromDB) =>  res.render('business/list', {businessesFromDB}))
+    .then(dbBusiness => res.render('business/list', { dbBusiness }))
     .catch(err => next(err));
 });
 
