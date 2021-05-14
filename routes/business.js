@@ -22,7 +22,7 @@ router.post('/add', (req, res, next) => {
 });
 
 // RENDER BUSINESS HOME PAGE // option B per a que surti tot el tema business
-router.get('/profile', (req, res, next) => { // he tret el middleware de business, si no no hi arriba a bus profile
+router.get('/profile',  (req, res, next) => { // he tret el middleware de business, si no no hi arriba a bus profile
   const owner = req.session.currentUser._id; 
   User.findById(owner)
       .then(dbUser => {
@@ -38,7 +38,7 @@ router.get('/profile', (req, res, next) => { // he tret el middleware de busines
 
 // RENDER BUSINESS EDIT PAGE // 
 
-router.get('/profile/edit', (req, res, next) => {
+router.get('/profile/edit', isBusiness, (req, res, next) => {
   Business.findOne({owner: req.session.currentUser._id})
   .then(dbBusiness => res.render('business/edit-form', { dbBusiness }))
   .catch(error => next(error))
@@ -46,7 +46,7 @@ router.get('/profile/edit', (req, res, next) => {
   
   // UPDATE DB BUSINESS DATA //
 
-router.post('/profile/edit', (req, res, next) => {
+router.post('/profile/edit', isBusiness, (req, res, next) => {
   const { businessName, businessType, city, } = req.body;
   Business.findOneAndUpdate({owner: req.session.currentUser._id}, { businessName, businessType, city }, { new: true })
     .then((dbBusiness) => {
@@ -57,9 +57,9 @@ router.post('/profile/edit', (req, res, next) => {
 });  
 
 // RENDER ADD PRODUCT FORM //
-router.get('/product', (req, res) => res.render('business/add-product'));
+router.get('/product', isBusiness, (req, res) => res.render('business/add-product'));
 
-router.post('/product', (req, res, next) => {
+router.post('/product', isBusiness, (req, res, next) => {
   const {price, description} = req.body;
   Business.findOne({owner: req.session.currentUser._id})
     .then((dbBusiness) => {
