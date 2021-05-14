@@ -22,7 +22,7 @@ router.post('/add', (req, res, next) => {
 });
 
 // RENDER BUSINESS HOME PAGE // option B per a que surti tot el tema business
-router.get('/profile',  (req, res, next) => { // he tret el middleware de business, si no no hi arriba a bus profile
+router.get('/profile', isBusiness, (req, res, next) => { // he tret el middleware de business, si no no hi arriba a bus profile
   const owner = req.session.currentUser._id; 
   User.findById(owner)
       .then(dbUser => {
