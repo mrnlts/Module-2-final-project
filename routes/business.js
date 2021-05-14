@@ -22,11 +22,30 @@ router.post('/add', (req, res, next) => {
 });
 
 // RENDER BUSINESS HOME PAGE //
+// router.get('/profile', (req, res, next) => { // he tret el middleware de business, si no no hi arriba a bus profile
+//  const owner = req.session.currentUser._id;
+//  console.log(owner)
+//   User.findById(owner)
+//     .then(dbBusiness => res.render('business/mainPage', {dbBusiness}))   
+//     .catch(err => next(err));
+// });
+
+
+// RENDER BUSINESS HOME PAGE // option B per a que surti tot el tema business
 router.get('/profile', (req, res, next) => { // he tret el middleware de business, si no no hi arriba a bus profile
-  User.findById(req.session.currentUser._id)
-    .then(dbBusiness => res.render('business/mainPage', {dbBusiness}))   
-    .catch(err => next(err));
-});
+  const owner = req.session.currentUser._id; 
+  User.findById(owner)
+      .then(dbUser => {
+        //const ownedBusiness = owner.ownedBusiness ?¿??¿¿? potser hem de ficar  una referencia las business  al  model  de  user ?¿?
+        Business.find() // com passar l'id de business, que es  nomes un referencia de user ?¿?¿¿?        
+        .then(dbBusiness => {
+          console.log(dbBusiness)
+          res.render('business/mainPage', {dbUser, dbBusiness}) 
+        })
+      })   
+      .catch(err => next(err));
+  });
+  
 
 
 // RENDER BUSINESS EDIT PAGE // 
@@ -46,7 +65,7 @@ router.post('/profile/edit', isBusiness, (req, res, next) => {
     .catch(error => next(error));
 });  
 
-// RENDER ADD PRODUCT FORM //
+// // RENDER ADD PRODUCT FORM //
 // router.get('/profile/product', isBusiness, (req, res) => {
 //   res.render('business/add-product', {id});
 // });

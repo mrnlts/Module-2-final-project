@@ -11,7 +11,8 @@ router.get('/profile', isUserLoggedIn, (req, res, next) => {
   User.findById( req.session.currentUser._id )
     .then(dbUser => {
       Business.find()
-      .then(dbBusiness => {
+       .then(dbBusiness => {
+        // console.log(dbBusiness)
         res.render("user/mainPage", {dbUser, dbBusiness})
       })
     })
@@ -36,3 +37,7 @@ router.post('/profile/edit', (req, res, next) => {
 });
 
 module.exports = router;
+
+
+
+
