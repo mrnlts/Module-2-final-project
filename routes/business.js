@@ -21,23 +21,12 @@ router.post('/add', (req, res, next) => {
     .catch((err)=> next(err));
 });
 
-// RENDER BUSINESS HOME PAGE //
-// router.get('/profile', (req, res, next) => { // he tret el middleware de business, si no no hi arriba a bus profile
-//  const owner = req.session.currentUser._id;
-//  console.log(owner)
-//   User.findById(owner)
-//     .then(dbBusiness => res.render('business/mainPage', {dbBusiness}))   
-//     .catch(err => next(err));
-// });
-
-
 // RENDER BUSINESS HOME PAGE // option B per a que surti tot el tema business
 router.get('/profile', (req, res, next) => { // he tret el middleware de business, si no no hi arriba a bus profile
   const owner = req.session.currentUser._id; 
   User.findById(owner)
       .then(dbUser => {
-        //const ownedBusiness = owner.ownedBusiness ?¿??¿¿? potser hem de ficar  una referencia las business  al  model  de  user ?¿?
-        Business.find() // com passar l'id de business, que es  nomes un referencia de user ?¿?¿¿?        
+        Business.findOne({owner: dbUser.id}) // com passar l'id de business, que es  nomes un referencia de user ?¿?¿¿?        
         .then(dbBusiness => {
           console.log(dbBusiness)
           res.render('business/mainPage', {dbUser, dbBusiness}) 
@@ -47,34 +36,40 @@ router.get('/profile', (req, res, next) => { // he tret el middleware de busines
   });
   
 
-
 // RENDER BUSINESS EDIT PAGE // 
 
-router.get('/profile/edit', isBusiness, (req, res, next) => {
-    Business.findById(id)
-      .then(dbBusiness => res.render('business/edit-form', { dbBusiness }))
-      .catch(error => next(error))
-});
+router.get('/profile/edit', (req, res, next) => {
+  Business.findOne({owner: req.session.currentUser._id})
+  .then(dbBusiness => res.render('business/edit-form', { dbBusiness }))
+  .catch(error => next(error))
+})
   
   // UPDATE DB BUSINESS DATA //
 
-router.post('/profile/edit', isBusiness, (req, res, next) => {
-  const { businessName, businessType, city, email, password  } = req.body;
-  Business.findByIdAndUpdate(req.session.currentUser._id, { businessName, businessType, city, email, password  }, { new: true })
-    .then(() => res.redirect('/business'))
+router.post('/profile/edit', (req, res, next) => {
+  const { businessName, businessType, city, } = req.body;
+  Business.findOneAndUpdate({owner: req.session.currentUser._id}, { businessName, businessType, city }, { new: true })
+    .then((dbBusiness) => {
+      console.log("BUSINESS: ", dbBusiness)
+      res.redirect('/business/profile')
+    })
     .catch(error => next(error));
 });  
 
-// // RENDER ADD PRODUCT FORM //
-// router.get('/profile/product', isBusiness, (req, res) => {
-//   res.render('business/add-product', {id});
-// });
+// RENDER ADD PRODUCT FORM //
+router.get('/product', (req, res) => res.render('business/add-product'));
 
-// router.post('/profile/product', isBusiness, (req, res, next) => {
-//   const {price, description} = req.body;
-//   Product.create({businessName: id, price, description})
-//     .then(()=> res.redirect('/business'))
-//     .catch(err => next(err));
-// });
+router.post('/product', (req, res, next) => {
+  const {price, description} = req.body;
+  Business.findOne({owner: req.session.currentUser._id})
+    .then((dbBusiness) => {
+      Product.create({businessName: dbBusiness.id, price, description})
+        .then((dbProduct)=> {
+          console.log(dbProduct);
+          res.redirect('/business/profile')
+        })
+    })
+    .catch(err => next(err));
+});
 
 module.exports = router;

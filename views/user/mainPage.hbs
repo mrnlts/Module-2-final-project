@@ -9,13 +9,12 @@
     
   </div>
 
-{{#if (dbUser.role.business) }}
+{{#if isBusiness }}
 <div style="display: flex">
 <button><a href="/business/profile"> Manage my business </a></button>
 </div>
 {{else}}
 <div style="display: flex">
-<button><a href="/business/profile">Do you own a business? </a></button>
 <button><a href="/business/add">Do you own a business? Add your business to the app</a></button>
 </div>
 {{/if}}
