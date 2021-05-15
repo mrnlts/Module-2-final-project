@@ -1,0 +1,52 @@
+.business_homepage_container {
+    background-color: rgb(243, 214, 186);
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+  
+.business_homepage_nav {
+    position: fixed;
+    overflow: hidden;
+    top: 0; 
+    width: 100%;
+    height: 7vh;
+    background-color: rgb(12, 58, 19);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: white;
+}
+  
+.business_homepage_nav > a {
+    color: white;
+}
+  
+.green_btn {
+    color: white;
+    border: none;
+    background-color: transparent;
+}
+
+.business_homepage_btn {
+    background-color: transparent;
+    border: 2px solid rgb(12, 58, 19);
+    color: rgb(12, 58, 19);
+    padding: 1rem;
+    border-radius: 3%;
+    cursor: pointer;
+}
+
+.business_homepage_footer {
+    position: fixed;
+    overflow: hidden;
+    bottom: 0; 
+    width: 100%;
+    height: 7vh;
+    background-color: rgb(12, 58, 19);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    color: white;
+}

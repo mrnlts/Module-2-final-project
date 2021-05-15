@@ -1,19 +1,26 @@
 {{#if dbBusiness}}
-<div style="display: flex; align-items: baseline">
-    <a href="/user/profile">Back </a> <span> | </span>
-    <a href="/business/profile/edit"> Update business data </a> <span> | </span>
-    <form action="/auth/logout" method="post">
-        <input type="submit" value="Log out" style="width: 100%; background-color: transparent; border: none; color: #00B7FF; font-size: 1rem"></input>
-    </form>
-</div>
+    <div class="business_homepage_nav">
+        <a href="/user/profile">Back</a><span> | </span>
+        <a href="/business/profile/edit"> Update business data </a> <span> | </span>
+        <form action="/auth/logout" method="post">
+            <input type="submit" value="Log out" class="green_btn"></input>
+        </form>
+    </div>
 
-<div style="display: flex; flex-direction:column; justify-content:space-evenly; align-items: center; text-align: center;">
-    <h1>Welcome, {{ dbBusiness.businessName }}!</h1>
-    <h3>This is your profile page my friend!</h3>
+    <div class="business_homepage_container">
+        <form action="/business/products" method="get">
+            <input class="business_homepage_btn" type="submit" value="My products"></input>
+        </form>
 
-<button><a href="/business/products">My products</a></button>
-<button><a href="/business/orders">My orders</a></button>
+        <form action="/business/orders" method="get">
+            <input class="business_homepage_btn" type="submit" value="My orders"></input>
+        </form>
+    
+    </div>
+
+    <div class="business_homepage_footer">
+        <h4>Welcome, {{ dbBusiness.businessName }}!</h4>
+    </div>
     {{else}}
-    <p>Still no logged in user, sorry!</p>
+     <p>Still no logged in user, sorry!</p>
     {{/if}}
-</div>

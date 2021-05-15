@@ -21,42 +21,38 @@ router.post('/add', (req, res, next) => {
     .catch(err => next(err));
 });
 
-// RENDER BUSINESS HOME PAGE // 
+// RENDER BUSINESS HOME PAGE //
 router.get('/profile', (req, res, next) => {
   const owner = req.session.currentUser._id;
   User.findById(owner)
     .then(dbUser => {
-      Business.findOne({"owner": dbUser.id})
-        .then(dbBusiness => {
-          Order.find({"businessName": dbBusiness.id})
-            .then((dbOrders) => {
-                res.render('business/mainPage', {dbBusiness, dbOrders});
-            })    
-        })
+      Business.findOne({ owner: dbUser.id }).then(dbBusiness => {
+        Order.find({ businessName: dbBusiness.id }).then(dbOrders => {
+          res.render('business/mainPage', { dbBusiness, dbOrders });
+        });
+      });
     })
     .catch(err => next(err));
 });
 
-// RENDER BUSINESS PRODUCTS PAGE // 
+// RENDER BUSINESS PRODUCTS PAGE //
 router.get('/products', (req, res, next) => {
-  Business.findOne({owner: req.session.currentUser._id})
-    .then((dbBusiness) => {
-      Product.find({"businessName": dbBusiness})
-        .then((dbProducts) => res.render('business/products', {dbProducts}))
+  Business.findOne({ owner: req.session.currentUser._id })
+    .then(dbBusiness => {
+      Product.find({ businessName: dbBusiness }).then(dbProducts => res.render('business/products', { dbProducts }));
     })
-    .catch(err => next(err))
+    .catch(err => next(err));
 });
 
 // RENDER BUSINESS ORDERS PAGE //
 router.get('/orders', (req, res) => {
-  Business.findOne({owner: req.session.currentUser._id})
-    .then((dbBusiness) => {
-      Order.find({business: dbBusiness.id})
-        .populate('user product')
-        .then((dbOrders) => {
-          res.render('business/orders', {dbOrders})
-        })
-    })
+  Business.findOne({ owner: req.session.currentUser._id }).then(dbBusiness => {
+    Order.find({ business: dbBusiness.id })
+      .populate('user product')
+      .then(dbOrders => {
+        res.render('business/orders', { dbOrders });
+      });
+  });
 });
 
 // RENDER BUSINESS EDIT PAGE //
@@ -91,6 +87,16 @@ router.post('/add-product', (req, res, next) => {
       });
     })
     .catch(err => next(err));
+});
+
+// DELETE BUSINESS //
+router.post('/delete', (req, res, next) => {
+  User.findByIdAndUpdate(req.session.currentUser._id, { role: 'customer' })
+    .then(dbUser => {
+      Business.findOneAndRemove({ owner: dbUser.id })
+        .then(() => res.redirect('/user/profile'))
+        .catch(err => next(err));
+  });
 });
 
 module.exports = router;

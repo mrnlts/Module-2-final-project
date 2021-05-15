@@ -10,4 +10,24 @@
   width: 100%;
   height: 100vh;
   background-color: rgba(231, 231, 240, 0.434);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.login_signup_nav {
+  position: fixed;
+  overflow: hidden;
+  top: 0; 
+  width: 100%;
+  height: 7vh;
+  background-color: rgb(12, 58, 19);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: white;
+}
+  
+.login_signup_nav > a {
+  color: white;
 }

@@ -40,4 +40,10 @@ router.post('/profile/edit', (req, res, next) => {
     .catch(error => next(error));
 });
 
+// DELETE CUSTOMER //
+router.post('/delete', (req, res) => {
+  User.findByIdAndRemove(req.session.currentUser._id)
+    .then(() => res.redirect('/'))
+});
+
 module.exports = router;

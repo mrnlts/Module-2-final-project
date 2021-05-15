@@ -1,11 +1,15 @@
-<a href="/" class="back">Go back</a>
-
-<div id="list">
-    {{#each dbBusiness}}
-    <div id="business">
-        <h1>{{this.businessName}}</h1>
-        <h2>Type: {{this.businessType}}</h2>
-        <h2>City: {{this.city}}</h2>
+<div class="collaborators_page_container">
+    <nav class="collaborators_page_nav">
+        <a href="/">Go back</a>
+    </nav>
+    
+    <div class="collaborators_page_content">
+        {{#each dbBusiness}}
+        <div class="collaborators_page_item">
+            <h1>{{this.businessName}}</h1>
+            <h2>Type: {{this.businessType}}</h2>
+            <h2>City: {{this.city}}</h2>
+        </div>
+        {{/each}}
     </div>
-    {{/each}}
 </div>
