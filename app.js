@@ -2,12 +2,14 @@ require('dotenv').config();
 
 const createError = require('http-errors');
 const express = require('express');
+// const hbs = require('hbs');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const session = require('express-session');
 const flash = require('connect-flash');
 const appSession = require('./configs/session');
+
 
 const app = express();
 
@@ -32,6 +34,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Express view engine setup
 app.set('views', path.join(__dirname, 'views'));
+// hbs.registerPartials(__dirname, '/views/partials');
 app.set('view engine', 'hbs');
 
 app.use('/', indexRouter);
@@ -45,13 +48,7 @@ app.use((req, res, next) => {
   next(createError(404));
 });
 
-// REGISTER HELPERS
 
-// hbs.registerHelper('customerBusiness', function(roleBusiness, options){
-//   if(roleBusiness){
-
-//   }
-// })
 
 
 // error handler

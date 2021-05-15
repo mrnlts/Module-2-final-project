@@ -1,10 +1,5 @@
-{{!-- <div>
-  <% if (message) { %>
-  <%  <p><%= message %></p> %>
-  <% } %>
-</div> --}}
-
-<div id="login">
+<div class="login_signup_container">
+  <div class= "login_signup_container__form">
   <h1>Log into your account</h1>
   <form action="/auth/login" method="POST">
     <label for="email">Email</label>
@@ -12,10 +7,15 @@
     <label for="password">Password</label>
     <input type="password" id="password" name="password">
     <button type="submit">Login</button>
-{{!-- 
-    {{#if errorMessage}}
-    <p class="error">{{errorMessage}}</p>
-    {{/if}} --}}
+
+             {{!-- <div class="section1_icon_left"></div>
+             <div class="section1_icon_wrapper"><i class="fas fa-chevron-left fa-3x"></i></div>
+        </div>
+
+         <div class="section1_icon_right">
+            <div class="section1_icon_wrapper"><i class="fas fa-chevron-right fa-3x"></i></div>
+         </div> --}}
 
   </form>
+  </div>
 </div>

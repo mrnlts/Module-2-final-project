@@ -1,29 +1,34 @@
+<div class="user_homepage_container">
+
 {{#if dbUser }}
-<div style="height: 100vh; display: flex; flex-direction: column; justify-content:space-evenly">
-  <div style="display: flex; align-items: baseline; justify-content:space-between">
-    <a href="/orders">Order history</a> <span> | </span>
-    <a href="/user/profile/edit"> Update user data </a>  <span> | </span>
+
+<div class="user_homepage_nav">  
+    <a href="/orders">Orders</a> <span> | </span>
+    <a href="/user/profile/edit"> Profile </a>  <span> | </span>
     <form action="/auth/logout" method="post">
-        <input type="submit" value="Log out" style="width: 100%; background-color: transparent; border: none; color: #00B7FF; font-size: 1rem"></input>
+        <input class= "logout_btn" type="submit" value="Log out" ></input>
     </form>
-    
+</div>
+
+<div class="user_homepage_greetings">
+  <div class="user_homepage_greetings_helloUser">
+    <h4>Welcome, <br> {{ dbUser.firstName }}!</h4>
   </div>
 
-{{#if isBusiness }}
-<div style="display: flex">
-<button><a href="/business/profile"> Manage my business </a></button>
+  <div class="user_homepage_isBusiness">
+    {{#if isBusiness }}
+      <div>
+       <button class="user_homepage_isBusiness_button"><a href="/business/profile"> Manage my business </a></button>
+      </div>
+    {{else}}
+      <div>
+        <button  class="user_homepage_isBusiness_button"><a href="/business/add">Do you own a business? <br> Add your business!!</a></button>
+      </div>
+    {{/if}}
+  </div>  
 </div>
-{{else}}
-<div style="display: flex">
-<button><a href="/business/add">Do you own a business? Add your business to the app</a></button>
-</div>
-{{/if}}
 
-  <h1>Welcome, {{ dbUser.firstName }}!</h1>
-  <h2>This is your profile page my friend!</h2>
-</div>
-
-<h2 style="text-align: center;">Businesses near you</h2>
+<h3>Businesses near you</h3>
 <div id="list">
     {{#each dbBusiness}}
     <div id="business">
@@ -54,5 +59,5 @@
 {{else}}
 <p>Still no logged in user, sorry!</p>
 {{/if}} 
-
+</div>
 
