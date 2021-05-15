@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
 });
 
 /* GET business-list */
-router.get('/business-list', (req, res, next) => {
+router.get('/business', (req, res, next) => {
   Business.find()
     .then(dbBusiness => res.render('business/list', { dbBusiness }))
     .catch(err => next(err));

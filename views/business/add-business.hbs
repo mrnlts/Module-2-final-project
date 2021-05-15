@@ -5,7 +5,26 @@
         <label for="businessName">Business name</label>
         <input type="text" id="businessName" name="businessName" placeholder="Your business' name">
         <label for="businessType">Business type</label>
-        <input type="text" id="businessType" name="businessType" placeholder="Your business type">
+            {{!-- <input type="text" id="businessType" name="businessType" placeholder="Your business type"> --}}
+            <select name="businessType" id="businessType">
+                <option value="Pizza">Pizza</option>
+                <option value="Chinese">Chinese</option>
+                <option value="Sushi">Sushi</option>
+                <option value="Italian">Italian</option>
+                <option value="Japanese">Japanese</option>
+                <option value="Thai">Thai</option>
+                <option value="Vietnamese">Vietnamese</option>
+                <option value="Tapas">Tapas</option>
+                <option value="Mexican">Mexican</option>
+                <option value="Mediterranean">Mediterranean</option>
+                <option value="Gourmet">Gourmet</option>
+                <option value="French">French</option>
+                <option value="Hamburger">Hamburger</option>
+                <option value="Kebab">Kebab</option>
+                <option value="FastFood">FastFood</option>
+                <option value="Vegan">Vegan</option>
+                <option value="Vegetarian">Vegetarian</option>
+            </select>
         <label for="city">City</label>
         <input type="text" id="city" name="city" placeholder="Your city">
         <button type="submit">Sign up</button>

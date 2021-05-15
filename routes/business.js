@@ -21,35 +21,44 @@ router.post('/add', (req, res, next) => {
     .catch(err => next(err));
 });
 
-// RENDER BUSINESS HOME PAGE // option B per a que surti tot el tema business
+// RENDER BUSINESS HOME PAGE // 
 router.get('/profile', (req, res, next) => {
   const owner = req.session.currentUser._id;
   User.findById(owner)
     .then(dbUser => {
       Business.findOne({"owner": dbUser.id})
         .then(dbBusiness => {
-          Product.find({businessName: dbBusiness.id})
-            .then((dbProducts) => {
-              let currentOrders = [];
-              dbProducts.forEach(prod => {
-                Order.find({"product": prod.id})
-                .populate('user product')
-                .then((dbOrders) => {
-                  dbOrders.forEach((order)=> {
-                    console.log("order: ", order);
-                    currentOrders.push(order)
-                  });
-                  res.render('business/mainPage', {dbBusiness, currentOrders, dbProducts});
-                })
-              })
+          Order.find({"businessName": dbBusiness.id})
+            .then((dbOrders) => {
+                res.render('business/mainPage', {dbBusiness, dbOrders});
             })    
         })
     })
     .catch(err => next(err));
 });
 
-// RENDER BUSINESS EDIT PAGE //
+// RENDER BUSINESS PRODUCTS PAGE // 
+router.get('/products', (req, res, next) => {
+  Business.findOne({owner: req.session.currentUser._id})
+    .then((dbBusiness) => {
+      Product.find({"businessName": dbBusiness})
+        .then((dbProducts) => res.render('business/products', {dbProducts}))
+    })
+    .catch(err => next(err))
+});
 
+// RENDER BUSINESS ORDERS PAGE //
+router.get('/orders', (req, res) => {
+  Business.findOne({owner: req.session.currentUser._id})
+    .then((dbBusiness) => {
+      Order.find({business: dbBusiness.id})
+        .then((dbOrders) => {
+          res.render('business/orders', {dbOrders})
+        })
+    })
+});
+
+// RENDER BUSINESS EDIT PAGE //
 router.get('/profile/edit', (req, res, next) => {
   Business.findOne({ owner: req.session.currentUser._id })
     .then(dbBusiness => res.render('business/edit-form', { dbBusiness }))
@@ -57,7 +66,6 @@ router.get('/profile/edit', (req, res, next) => {
 });
 
 // UPDATE DB BUSINESS DATA //
-
 router.post('/profile/edit', (req, res, next) => {
   const { businessName, businessType, city } = req.body;
   Business.findOneAndUpdate({ owner: req.session.currentUser._id }, { businessName, businessType, city }, { new: true })
@@ -69,15 +77,16 @@ router.post('/profile/edit', (req, res, next) => {
 });
 
 // RENDER ADD PRODUCT FORM //
-router.get('/product', (req, res) => res.render('business/add-product'));
+router.get('/add-product', (req, res) => res.render('business/add-product'));
 
-router.post('/product', (req, res, next) => {
+// ADD PRODUCT TO DB //
+router.post('/add-product', (req, res, next) => {
   const { price, description } = req.body;
   Business.findOne({ owner: req.session.currentUser._id })
     .then(dbBusiness => {
       Product.create({ businessName: dbBusiness.id, price, description }).then(dbProduct => {
         console.log(dbProduct);
-        res.redirect('/business/profile');
+        res.redirect('/business/products');
       });
     })
     .catch(err => next(err));

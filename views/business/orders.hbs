@@ -1,0 +1,20 @@
+    <a href="/business/profile">Back</a>
+    <form action="/auth/logout" method="post">
+        <input type="submit" value="Log out" style="width: 100%; background-color: transparent; border: none; color: #00B7FF; font-size: 1rem"></input>
+    </form>
+
+    <h2 style="text-align: center;">Current orders: </h2>
+    {{#if dbOrders}}
+        <div id="list">
+            {{#each dbOrders}}
+                <div id="business">
+                    <h2>New order!</h2>
+                    <p>Order ID: {{this._id}}</p>
+                    <p>User: {{this.user.firstName}}</p>
+                    <p>Product: {{this.product.description}}</p>
+                </div>
+            {{/each}}
+        </div>
+        {{else}}
+        <p>There are no orders at the moment!</p>
+    {{/if}}

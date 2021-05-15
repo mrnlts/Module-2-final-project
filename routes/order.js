@@ -19,8 +19,8 @@ router.get('/', isUserLoggedIn, (req, res, next) => {
 })
 
 router.post('/', isUserLoggedIn, (req, res, next) => {
-  Order.create({ product: req.body.order, user: req.session.currentUser._id })
-    .then(() => res.redirect('/order')) // Make flash alert to alert from order confirmed
+  Order.create({ business: req.body.businessName, product: req.body.order, user: req.session.currentUser._id })
+    .then(() => res.redirect('/orders')) // Make flash alert to alert from order confirmed
     .catch(err => next(err));
 });
 

@@ -1,11 +1,29 @@
 <div id="edit">
-  <h1>Edit Business</h1>
   <a href="/business/profile">Back</a>   
+  <h1>Edit Business</h1>
   <form action="/business/profile/edit" method="POST">
     <label for="businessName">Business Name: </label>
     <input type="text" id="businessName" name="businessName" value="{{dbBusiness.businessName}}">
-    <label for="businessType">Business Type: </label>
-    <input type="text" id="businessType" name="businessType" value="{{dbBusiness.businessType}}">
+    <label for="businessType">Business type</label>
+        <select name="businessType" id="businessType">
+            <option value="Pizza">Pizza</option>
+            <option value="Chinese">Chinese</option>
+            <option value="Sushi">Sushi</option>
+            <option value="Italian">Italian</option>
+            <option value="Japanese">Japanese</option>
+            <option value="Thai">Thai</option>
+            <option value="Vietnamese">Vietnamese</option>
+            <option value="Tapas">Tapas</option>
+            <option value="Mexican">Mexican</option>
+            <option value="Mediterranean">Mediterranean</option>
+            <option value="Gourmet">Gourmet</option>
+            <option value="French">French</option>
+            <option value="Hamburger">Hamburger</option>
+            <option value="Kebab">Kebab</option>
+            <option value="FastFood">FastFood</option>
+            <option value="Vegan">Vegan</option>
+            <option value="Vegetarian">Vegetarian</option>
+        </select>
     <label for="city">City: </label>
     <input type="text" id="city" name="city" value="{{dbBusiness.city}}">
     <button type="submit">Save changes</button>
