@@ -9,9 +9,10 @@
         <input class= "logout_btn" type="submit" value="Log out" ></input>
     </form>
 </div>
-<div class="offers_card_container">
 
-<h2 style="text-align: center;">Offers</h2>
+<h2 style="text-align: center; padding-top: 7vh">Offers</h2>
+
+<div class="offers_card_container">
 
     {{#each dbProducts}}   
     <div class="offers_card_item">
@@ -23,7 +24,7 @@
             <input style= "display: none" value="{{this.businessName}}" id="businessName" name="businessName">
             <input style="display: none" value="{{this._id}}" id="order" name="order">
             <input style="display: none" value="{{dbUser.id}}" id="user" name="user" >
-            <button type= "submit" style="width: 100%">Order Product</button>
+            <button type= "submit" class="offers_card_item_btn">Order</button>
           </form>
         
     </div>    
@@ -35,9 +36,10 @@
 <div class="business_card_container">
     {{#each dbBusiness}}
     <div class="business_card_item">
-        <h1>{{this.businessName}}</h1>
-        <h2>Type: {{this.businessType}}</h2>
-        <h2>City: {{this.city}}</h2>
+      <img class="business_card_item_img" src="/images/business/download.jpeg" alt="">
+        <h3>{{this.businessName}}</h3>
+        <h4>Type: {{this.businessType}}</h4>
+        <h4>City: {{this.city}}</h4>
     </div>
     {{/each}}
 </div>

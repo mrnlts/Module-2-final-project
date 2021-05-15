@@ -49,16 +49,6 @@
   font-size: 0.7rem;
 }
 
-.business_card_container {
-  overflow-x: scroll;
-  overflow-y: hidden;
-  white-space: nowrap;
-}
-
-.business_card_item {
-  display: inline-block;
-}
-
 .offers_card_container {
   margin-top: 7vh;
   overflow-x: scroll;
@@ -67,15 +57,41 @@
 }
 
 .offers_card_item {
+  width: 70%;
+  display: inline-block;
+  margin-right: 2rem;
+}
+
+.offers_card_item_btn {
+  width: 27%;
+  background: rgb(12, 58, 19);
+  border: 1px solid rgb(12, 58, 19);
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  padding: 8px 16px;
+  text-decoration: none;
+  text-align: center;
+}
+
+.offers_card_item_img {
+  width: 20vh;
+  height: 20vh;
+  float: left;
+  border-radius: 50%;
+}
+
+.business_card_container {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+
+.business_card_item {
   width: 60%;
   display: inline-block;
 }
 
-.offers_card_item_img {
-  width: 100%;
-  
-}
-
-.text {
-  width: 100%;
+.business_card_item_img {
+  width: 20vh;
 }
