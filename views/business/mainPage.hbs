@@ -14,9 +14,9 @@
 
 
     <h2 style="text-align: center;">Current orders: </h2>
-    {{#if ordersArr}}
+    {{#if currentOrders}}
         <div id="list">
-            {{#each ordersArr}}
+            {{#each currentOrders}}
                 <div id="business">
                     <h2>New order!</h2>
                     <p>Order ID: {{this._id}}</p>

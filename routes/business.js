@@ -26,19 +26,24 @@ router.get('/profile', (req, res, next) => {
   const owner = req.session.currentUser._id;
   User.findById(owner)
     .then(dbUser => {
-      Business.findOne({ owner: dbUser.id }) 
+      Business.findOne({"owner": dbUser.id})
         .then(dbBusiness => {
-          let ordersArr = [];
-          let dbProducts = [];
           Product.find({businessName: dbBusiness.id})
-            .then((products) => {
-              products.forEach(prod => dbProducts.push(prod))
-              dbProducts.forEach(prod => {Order.find({"product": prod.id}).then(order => ordersArr.push(order))})
-            })
-            .then(() => {
-              res.render('business/mainPage', { dbUser, dbBusiness, dbProducts, ordersArr })
-            })
-        });
+            .then((dbProducts) => {
+              let currentOrders = [];
+              dbProducts.forEach(prod => {
+                Order.find({"product": prod.id})
+                .populate('user product')
+                .then((dbOrders) => {
+                  dbOrders.forEach((order)=> {
+                    console.log("order: ", order);
+                    currentOrders.push(order)
+                  });
+                  res.render('business/mainPage', {dbBusiness, currentOrders, dbProducts});
+                })
+              })
+            })    
+        })
     })
     .catch(err => next(err));
 });
