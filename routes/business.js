@@ -52,6 +52,7 @@ router.get('/orders', (req, res) => {
   Business.findOne({owner: req.session.currentUser._id})
     .then((dbBusiness) => {
       Order.find({business: dbBusiness.id})
+        .populate('user product')
         .then((dbOrders) => {
           res.render('business/orders', {dbOrders})
         })
