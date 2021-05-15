@@ -9,7 +9,7 @@ const saltRounds = 10;
 router.get('/login', (req, res) => res.render('auth/login', { message: req.flash('success') }));
 
 router.post('/logout', (req, res, next) => {
-  req.session.destroy(() => res.render('index'));
+  req.session.destroy(() => res.redirect('/'));
 });
 
 router.post('/login', (req, res, next) => {
