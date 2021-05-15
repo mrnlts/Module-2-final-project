@@ -4,6 +4,7 @@
     <form action="/business/add" method="post">
         <label for="businessName">Business name</label>
         <input type="text" id="businessName" name="businessName" placeholder="Your business' name">
+        <br>
         <label for="businessType">Business type</label>
             {{!-- <input type="text" id="businessType" name="businessType" placeholder="Your business type"> --}}
             <select name="businessType" id="businessType">
@@ -25,8 +26,10 @@
                 <option value="Vegan">Vegan</option>
                 <option value="Vegetarian">Vegetarian</option>
             </select>
+            <br>
         <label for="city">City</label>
         <input type="text" id="city" name="city" placeholder="Your city">
+        <br>
         <button type="submit">Sign up</button>
     </form>
 </div>
