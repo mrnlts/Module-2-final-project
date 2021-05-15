@@ -4,6 +4,7 @@ const router = express.Router();
 const User = require('../models/User.model');
 const Business = require('../models/Business.model');
 const Product = require('../models/Product.model');
+const Order = require('../models/Order.model');
 const isBusiness = require('../middleware/business');
 
 // RENDER ADD BUSINESS FORM
@@ -22,14 +23,21 @@ router.post('/add', (req, res, next) => {
 
 // RENDER BUSINESS HOME PAGE // option B per a que surti tot el tema business
 router.get('/profile', (req, res, next) => {
-  // he tret el middleware de business, si no no hi arriba a bus profile
   const owner = req.session.currentUser._id;
   User.findById(owner)
     .then(dbUser => {
-      Business.findOne({ owner: dbUser.id }) // com passar l'id de business, que es  nomes un referencia de user ?¿?¿¿?
+      Business.findOne({ owner: dbUser.id }) 
         .then(dbBusiness => {
-          console.log(dbBusiness);
-          res.render('business/mainPage', { dbUser, dbBusiness });
+          let ordersArr = [];
+          let dbProducts = [];
+          Product.find({businessName: dbBusiness.id})
+            .then((products) => {
+              products.forEach(prod => dbProducts.push(prod))
+              dbProducts.forEach(prod => {Order.find({"product": prod.id}).then(order => ordersArr.push(order))})
+            })
+            .then(() => {
+              res.render('business/mainPage', { dbUser, dbBusiness, dbProducts, ordersArr })
+            })
         });
     })
     .catch(err => next(err));

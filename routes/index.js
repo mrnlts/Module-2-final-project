@@ -9,8 +9,7 @@ router.get('/', (req, res) => {
 });
 
 /* GET business-list */
-router.get('/list', (req, res, next) => {
-  // cambiar nombre list por business.
+router.get('/business-list', (req, res, next) => {
   Business.find()
     .then(dbBusiness => res.render('business/list', { dbBusiness }))
     .catch(err => next(err));
