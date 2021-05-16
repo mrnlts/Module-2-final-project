@@ -1,3 +1,4 @@
+<div class= "business_homepage_container">
 {{#if dbBusiness}}
     <div class="business_homepage_nav">
         <a href="/user/profile">Back</a><span> | </span>
@@ -6,21 +7,21 @@
             <input type="submit" value="Log out" class="green_btn"></input>
         </form>
     </div>
+  
+    <img class= "busines_homepage_image" src="{{dbBusiness.imageUrlBusiness}}" alt="{{title}}">
+  
 
-    <div class= "busines_homepage_image">
-        {{#each dbBusiness}}
-         <img src="{{imageUrlBusiness}}" alt="{{title}}">
-         {{/each}}
-    </div>
-
-    <div class="business_homepage_container">
+    <div class="business_homepage_buttons_container">
+        <div class="business_homepage_buttons">
         <form action="/business/products" method="get">
             <input class="business_homepage_btn_Myproducts" type="submit" value="My products"></input>
         </form>
-
+        </div>
+        <div class="business_homepage_buttons">
         <form action="/business/orders" method="get">
             <input class="business_homepage_btn" type="submit" value="My orders"></input>
         </form>
+        </div>
     
     </div>
 
@@ -30,3 +31,4 @@
     {{else}}
      <p>Still no logged in user, sorry!</p>
     {{/if}}
+</div>

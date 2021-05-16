@@ -1,6 +1,11 @@
+.busines_homepage_container {
+  width: 100vh;
+}
 .busines_homepage_image {
   width: 100%;
-  height: 35%;
+  height: 45vh;
+  -webkit-box-shadow: 6px 7px 15px -2px #727272;
+  box-shadow: 6px 7px 15px -2px #727272;
 }
 
 .business_homepage_nav {
@@ -26,13 +31,16 @@
   background-color: transparent;
 }
 
-.business_homepage_container {
+.business_homepage_buttons_container {
   background-color: rgb(249, 233, 221);
-  margin-top: 7rem;
+  margin-top: 5rem;
   height: 30%;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
+}
+.business_homepage_buttons {
+  margin-top: 1rem;
 }
 
 .business_homepage_btn {
@@ -43,8 +51,9 @@
   width: 50%;
   border-radius: 3%;
   cursor: pointer;
-  margin-top: none;
   padding: 1rem;
+  -webkit-box-shadow: 6px 7px 15px -2px #727272;
+  box-shadow: 6px 7px 15px -2px #727272;
 }
 
 .business_homepage_btn_Myproducts {
@@ -54,8 +63,9 @@
   width: 50%;
   border-radius: 3%;
   cursor: pointer;
-  margin-top: none;
   padding: 1rem;
+  -webkit-box-shadow: 6px 7px 15px -2px #727272;
+  box-shadow: 6px 7px 15px -2px #727272;
 }
 
 .business_homepage_footer {
