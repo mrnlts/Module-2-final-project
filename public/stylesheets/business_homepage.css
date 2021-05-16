@@ -19,6 +19,8 @@
   justify-content: space-around;
   align-items: center;
   color: white;
+  -webkit-box-shadow: 6px 7px 15px -2px #727272;
+  box-shadow: 6px 7px 15px -2px #727272;
 }
 
 .business_homepage_nav > a {
@@ -45,6 +47,7 @@
 
 .business_homepage_btn {
   background-color: white;
+  font-family: 'Roboto Slab';
   font-weight: bolder;
   color: rgb(12, 58, 19);
   border: none;
@@ -58,8 +61,9 @@
 
 .business_homepage_btn_Myproducts {
   background-color: rgb(12, 58, 19);
-  border: 2px solid rgb(12, 58, 19);
+  font-family: 'Roboto Slab';
   color: white;
+  font-weight: bolder;
   width: 50%;
   border-radius: 3%;
   cursor: pointer;

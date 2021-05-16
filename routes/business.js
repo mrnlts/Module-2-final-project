@@ -82,11 +82,13 @@ router.get('/add-product', (req, res) => res.render('business/add-product'));
 
 // ADD PRODUCT TO DB //
 router.post('/add-product', fileUploader.single('image'), (req, res, next) => {
-  const { price, description } = req.body;
+  const { price, description, image } = req.body;
+  console.log("req.body add prod", req.body)
   Business.findOne({ owner: req.session.currentUser._id })
     .then(dbBusiness => {
-      Product.create({ businessName: dbBusiness.id, price, description, imageUrlProduct: req.body.file.path }).then(dbProduct => {
-        console.log(dbProduct);
+      Product.create({ businessName: dbBusiness.id, price, description, imageUrlProduct: req.file.path })
+      .then(dbProduct => {
+        console.log("3", req.file.path)
         res.redirect('/business/products');
       });
     })

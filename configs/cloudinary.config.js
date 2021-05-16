@@ -11,10 +11,10 @@ cloudinary.config({
 const storage = new CloudinaryStorage({
 
   cloudinary,
-  folder: 'Zero-food-waste', // The name of the folder in cloudinary
+  folder: 'Zero-food-waste', 
   allowedFormats: ['jpg', 'png'],
   filename: function (req, file, cb) {
-    cb(null, file.originalname); // The file on cloudinary would have the same name as the original file name
+    cb(null, file.originalname); 
   }
 });
  
