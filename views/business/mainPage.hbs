@@ -7,9 +7,15 @@
         </form>
     </div>
 
+    <div class= "busines_homepage_image">
+        {{#each dbBusiness}}
+         <img src="{{imageUrlBusiness}}" alt="{{title}}">
+         {{/each}}
+    </div>
+
     <div class="business_homepage_container">
         <form action="/business/products" method="get">
-            <input class="business_homepage_btn" type="submit" value="My products"></input>
+            <input class="business_homepage_btn_Myproducts" type="submit" value="My products"></input>
         </form>
 
         <form action="/business/orders" method="get">
