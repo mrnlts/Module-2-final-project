@@ -31,6 +31,8 @@
   color: white;
   border: none;
   background-color: transparent;
+  font-family: 'Roboto Slab';
+  font-size: 14px;
 }
 
 .business_homepage_buttons_container {

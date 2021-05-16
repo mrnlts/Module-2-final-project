@@ -1,6 +1,6 @@
 .collaborators_page_container {
   background-color: rgb(249, 233, 221);
-  height: 100vh;
+  margin-top: 7vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -9,7 +9,7 @@
 .collaborators_page_nav {
   position: fixed;
   overflow: hidden;
-  /* margin-bottom: 7vh; */
+  margin-bottom: 7vh;
   top: 0;
   width: 100%;
   height: 7vh;
@@ -28,19 +28,17 @@
 }
 
 .collaborators_page_content {
-  margin-top: 1.5rem;
+  padding-top: 7vh;
 }
 
 .collaborators_page_item {
   background-color: transparent;
   width: 60%;
   height: 200px;
-  /* border: 2px solid rgb(12, 58, 19); */
   border: 1px solid rgba(128, 128, 128, 0.119);
   -webkit-box-shadow: 6px 7px 15px -2px #727272;
   box-shadow: 6px 7px 15px -2px #727272;
   color: rgb(12, 58, 19);
-  padding: 1rem;
   border-radius: 5%;
   cursor: pointer;
   margin: auto;
@@ -52,6 +50,8 @@
   margin: none;
   width: 100%;
   height: 50%;
+  border-top-left-radius: 5%;
+  border-top-right-radius: 5%;
 }
 
 .business_card_title {
