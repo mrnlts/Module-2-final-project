@@ -6,10 +6,10 @@
     <div class="collaborators_page_content">
         {{#each dbBusiness}}
         <div class="collaborators_page_item">
-            <h1>{{this.businessName}}</h1>
-            <h2>Type: {{this.businessType}}</h2>
-            <h2>City: {{this.city}}</h2>
-            <img src="{{imageUrl}}" class="tbd" alt="{{title}}">
+            <img src="{{imageUrlBusiness}}" class="tbd" alt="{{title}}">
+            <h3 class="business_card_title">{{this.businessName}}</h3>
+            <h4 class="business_card_type">Speciality: {{this.businessType}}</h4>
+            <h4 class="business_card_location">Location: {{this.city}}</h4>        
         </div>
         {{/each}}
     </div>

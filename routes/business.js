@@ -13,6 +13,8 @@ const fileUploader = require('../configs/cloudinary.config');
 router.get('/add', (req, res) => res.render('business/add-business'));
 
 // POST NEW BUSINESS TO DATABASE
+
+
 router.post('/add', fileUploader.single('image'), (req, res, next) => {
   const userId = req.session.currentUser._id;
   const { businessName, businessType, city } = req.body;
@@ -83,7 +85,7 @@ router.post('/add-product', fileUploader.single('image'), (req, res, next) => {
   const { price, description } = req.body;
   Business.findOne({ owner: req.session.currentUser._id })
     .then(dbBusiness => {
-      Product.create({ businessName: dbBusiness.id, price, description, imageUrlProduct: req.file.path }).then(dbProduct => {
+      Product.create({ businessName: dbBusiness.id, price, description, imageUrlProduct: req.body.file.path }).then(dbProduct => {
         console.log(dbProduct);
         res.redirect('/business/products');
       });

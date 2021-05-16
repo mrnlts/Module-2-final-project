@@ -1,6 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Tillana&display=swap');
 
 body {
+  background-color: rgb(249, 233, 221);
   box-sizing: border-box;
   text-align: center;
   width: 100%;
