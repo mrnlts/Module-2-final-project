@@ -6,15 +6,17 @@ const Business = require('../models/Business.model');
 const Product = require('../models/Product.model');
 const Order = require('../models/Order.model');
 const isBusiness = require('../middleware/business');
+const fileUploader = require('../configs/cloudinary.config');
+
 
 // RENDER ADD BUSINESS FORM
 router.get('/add', (req, res) => res.render('business/add-business'));
 
 // POST NEW BUSINESS TO DATABASE
-router.post('/add', (req, res, next) => {
+router.post('/add', fileUploader.single('image'), (req, res, next) => {
   const userId = req.session.currentUser._id;
-  const { businessName, businessType, image, city } = req.body;
-  Business.create({ businessName, businessType, image, city, owner: userId })
+  const { businessName, businessType, city } = req.body;
+  Business.create({ businessName, businessType, city, owner: userId, imageUrlBusiness: req.file.path })
     .then(() => {
       User.findByIdAndUpdate(userId, { role: 'business' }).then(() => res.redirect('/business/profile'));
     })
@@ -77,11 +79,11 @@ router.post('/profile/edit', (req, res, next) => {
 router.get('/add-product', (req, res) => res.render('business/add-product'));
 
 // ADD PRODUCT TO DB //
-router.post('/add-product', (req, res, next) => {
+router.post('/add-product', fileUploader.single('image'), (req, res, next) => {
   const { price, description } = req.body;
   Business.findOne({ owner: req.session.currentUser._id })
     .then(dbBusiness => {
-      Product.create({ businessName: dbBusiness.id, price, description }).then(dbProduct => {
+      Product.create({ businessName: dbBusiness.id, price, description, imageUrlProduct: req.file.path }).then(dbProduct => {
         console.log(dbProduct);
         res.redirect('/business/products');
       });

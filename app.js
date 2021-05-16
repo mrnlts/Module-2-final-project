@@ -2,7 +2,6 @@ require('dotenv').config();
 
 const createError = require('http-errors');
 const express = require('express');
-// const hbs = require('hbs');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
@@ -19,6 +18,8 @@ const user = require('./routes/user');
 const businessRouter = require('./routes/business');
 const authRouter = require('./routes/auth');
 const orderRouter = require('./routes/order');
+const cloudinary = require("./utils/cloudinary");
+const upload = require("./utils/multer")
 
 // require database configuration
 require('./configs/db.config');

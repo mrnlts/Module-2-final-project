@@ -28,7 +28,7 @@ const businessSchema = new Schema(
         'Vegetarian',
       ],
     },
-    image: String,
+    imageUrlBusiness: String,
     city: String,
     owner: { type: Schema.Types.ObjectId, ref: 'User' },
   },

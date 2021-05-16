@@ -1,7 +1,7 @@
 <div id="signup-business">
     <h2>Sign up business</h2>
      <a href="/user/profile">Back</a> 
-    <form action="/business/add" method="post">
+    <form action="/business/add" method="post" enctype="multipart/form-data">
         <label for="businessName">Business name</label>
         <input type="text" id="businessName" name="businessName" placeholder="Your business' name">
         <br>
@@ -29,6 +29,11 @@
             <br>
         <label for="city">City</label>
         <input type="text" id="city" name="city" placeholder="Your city">
+        
+          <div class="image_upload_form">
+            <label for="image-input">Image:</label>
+            <input type="file" name="image" id="image-input" class="form-control-file" />
+         </div>
         <br>
         <button type="submit">Sign up</button>
     </form>
