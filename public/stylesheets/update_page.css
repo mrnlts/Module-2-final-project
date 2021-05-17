@@ -119,4 +119,11 @@
   .form-control-file {
     text-align: right;
   }
+  .login_signup_nav a {
+    font-size: 1.3rem;
+  }
+  .login_signup_form {
+    width: 60%;
+    margin: 0 auto;
+  }
 }

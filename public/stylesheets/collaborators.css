@@ -82,5 +82,20 @@
 
 /* DESKTOP */
 @media only screen and (min-width: 768px) {
-  /* Styles */
+  .collaborators_page_nav a {
+    font-size: 1.3rem;
+  }
+  .collaborators_page_item {
+    height: 50vh;
+    flex-direction: row;
+  }
+  .collaborators_page_item > img {
+    height: 100%;
+    border-bottom-left-radius: 5%;
+    border-top-right-radius: 0%;
+    width: 70%;
+  }
+  .collaborators_page_item > div {
+    margin: auto;
+  }
 }
