@@ -1,5 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Tillana&display=swap');
 
+* {
+  font-family: 'Roboto Slab';
+}
+
 body {
   background-color: rgb(249, 233, 221);
   box-sizing: border-box;

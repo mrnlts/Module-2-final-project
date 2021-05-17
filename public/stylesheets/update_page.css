@@ -48,12 +48,16 @@
   margin: 15px;
 }
 
-.update_page_form > label {
+.update_page_form > label,
+.update_page_form > div label {
   font-weight: bolder;
 }
 
 .update_page_form > select {
   margin: 15px;
+  padding: 0.7rem;
+  font-size: 1.3rem;
+  font-family: 'Roboto Slab';
 }
 
 .update_page_btns_container {
@@ -89,6 +93,30 @@
   box-shadow: 6px 7px 15px -2px #727272;
 }
 
+
+/* TABLET */
 @media only screen and (min-width: 600px) {
- .update
+  /* Styles */
+}
+
+/* DESKTOP */
+@media only screen and (min-width: 768px) {
+  .update_page_nav > a ,
+  .generic_btn,
+  .update_page_save_btn,
+  .update_page_delete_btn,
+  .update_page_form > label,
+  .update_page_form > input,
+  .image_upload_form > label,
+  .form-control-file  {
+    font-size: 1.3rem;
+  }
+  .update_page_form > input,
+  .form-control-file {
+    padding: 0.5rem;
+    font-family: 'Roboto Slab';
+  }
+  .form-control-file {
+    text-align: right;
+  }
 }

@@ -94,7 +94,8 @@
 .business_offers_titles {
   height: 70vh;
   display: flex;
-  flex-direction: column;
+  flex-direction: column; 
+  justify-content: space-between;
 }
 
 .business_offers_item {
@@ -109,5 +110,17 @@
 
 /* DESKTOP */
 @media only screen and (min-width: 768px) {
-  /* Styles */
+  .business_homepage_nav > a,
+  .business_homepage_btn_Myproducts,
+  .business_homepage_btn,
+  .business_homepage_footer > h4,
+  .business_offers_item > h3{
+    font-size: 1.3rem;
+  }
+  .business_offers_item > h3 {
+    padding-top: 2rem;
+  }
+  .business_offers_titles > h2 {
+    margin-bottom: 3rem;
+  }
 }

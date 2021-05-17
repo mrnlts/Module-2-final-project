@@ -65,3 +65,22 @@
   font-weight: bold;
   margin-bottom: 0.5rem;
 }
+
+/* TABLET */
+@media only screen and (min-width: 600px) {
+  /* Styles */
+}
+
+/* DESKTOP */
+@media only screen and (min-width: 768px) {
+  .orders_page_nav a,
+  .orders_page_nav span,
+  .orders_page_item h4,
+  .orders_page_item p {
+    font-size: 1.3rem;
+    padding: 1rem;
+  }
+  .orders_page_item {
+    height: 100%;
+  }
+}

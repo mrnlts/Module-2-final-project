@@ -65,8 +65,12 @@
   border: none;
 }
 
+/* TABLET */
 @media only screen and (min-width: 600px) {
-  .login_signup_form > input {
+  /* Styles */
+}
 
-  }
+/* DESKTOP */
+@media only screen and (min-width: 768px) {
+  /* Styles */
 }
