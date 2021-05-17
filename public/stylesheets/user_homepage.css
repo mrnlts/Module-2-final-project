@@ -80,7 +80,7 @@
   width: 65%;
   height: 90px;
   display: inline-block;
-  margin: 2rem;
+  vertical-align: top;
 }
 
 .offers_card_item_btn {
