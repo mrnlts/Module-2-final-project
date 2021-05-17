@@ -14,10 +14,9 @@
   <h2 class= "user_homepage_title_offers">Offers</h2>
 
   <div class="offers_card_container">   
-
+    <div class="offers_card_container_scroll"> 
       {{#each dbProducts}}   
       <div class="offers_card_item">
-          {{!-- <img src="/images/food/fast-food.jpg" class="offers_card_item_img" alt=""> --}}
           <img src="{{imageUrlProduct}}" class="offers_card_item_img" alt="{{title}}">
             <h3> {{this.description}}</h3>
             <h4>Price: {{this.price}}</h4>
@@ -27,9 +26,10 @@
               <input style="display: none" value="{{dbUser.id}}" id="user" name="user" >
               <button type= "submit" class="offers_card_item_btn">Order</button>
             </form>
-          
-      </div>    
-        {{/each}}
+      </div> 
+      {{/each}}     
+    </div>    
+        
   </div>
   
   <h2 class= "user_homepage_title">Near business</h2>

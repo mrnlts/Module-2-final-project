@@ -26,10 +26,6 @@
   color: white;
 }
 
-.user_homepage_title {
-  margin-bottom: 1rem;
-}
-
 .logout_btn {
   color: white;
   border: none;
@@ -61,24 +57,34 @@
 
 .user_homepage_title_offers {
   margin-top: 14vh;
+  margin-bottom: 3vh;
 }
 
 .offers_card_container {
-  height: 30%;
-  margin-top: 8vh;
+  position: relative;
+  width: 100%;
+}
+
+.offers_card_container_scroll {
+  margin: 0 2vh;
   overflow-x: scroll;
   overflow-y: hidden;
-  white-space: nowrap;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  white-space: wrap;
+  height: 200px;
 }
 
 .offers_card_item {
-  width: 70%;
+  width: 65%;
+  height: 90px;
   display: inline-block;
   margin: 2rem;
 }
 
 .offers_card_item_btn {
-  width: 27%;
+  width: 35%;
   background: rgb(12, 58, 19);
   border: 1px solid rgb(12, 58, 19);
   border-radius: 4px;
@@ -90,14 +96,19 @@
 }
 
 .offers_card_item_img {
-  width: 20vh;
-  height: 20vh;
+  width: 10vh;
+  height: 10vh;
   float: left;
   border-radius: 50%;
 }
 
+.user_homepage_title {
+  margin-bottom: 1vh;
+}
+
 .business_card_container {
   height: 40%;
+  position: relative;
   overflow-x: scroll;
   overflow-y: hidden;
   white-space: nowrap;
