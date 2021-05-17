@@ -37,8 +37,8 @@
 
 .business_homepage_buttons_container {
   background-color: rgb(249, 233, 221);
-  margin-top: 5rem;
-  height: 30%;
+  margin-top: 2rem;
+  height: 40vh;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -87,6 +87,19 @@
   color: white;
 }
 
+.business_offers_titles > img {
+  margin-top: 20vh;
+}
+
+.business_offers_titles {
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.business_offers_item {
+  margin: 0 2rem 2rem 6rem;
+}
 
 /* TABLET */
 @media only screen and (min-width: 600px) {
