@@ -67,15 +67,16 @@ router.get('/profile/edit', (req, res, next) => {
 });
 
 // UPDATE DB BUSINESS DATA //
-router.post('/profile/edit', (req, res, next) => {
-  const { businessName, businessType, city } = req.body;
-  Business.findOneAndUpdate({ owner: req.session.currentUser._id }, { businessName, businessType, city }, { new: true })
+router.post('/profile/edit', fileUploader.single('image'), (req, res, next) => {
+  const { businessName, businessType, city, imageUrlBusiness } = req.body;
+  Business.findOneAndUpdate({ owner: req.session.currentUser._id }, { businessName, businessType, city, imageUrlBusiness: req.file.path}, { new: true })
     .then(dbBusiness => {
       console.log('BUSINESS: ', dbBusiness);
       res.redirect('/business/profile');
     })
     .catch(error => next(error));
 });
+
 
 // RENDER ADD PRODUCT FORM //
 router.get('/add-product', (req, res) => res.render('business/add-product'));

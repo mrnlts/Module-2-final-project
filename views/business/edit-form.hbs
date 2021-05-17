@@ -6,7 +6,7 @@
     </form>
   </nav>
   <h1>Edit Business</h1>
-  <form action="/business/profile/edit" method="POST">
+  <form action="/business/profile/edit" method="POST" enctype="multipart/form-data">
     <label for="businessName">Business Name: </label>
     <input type="text" id="businessName" name="businessName" value="{{dbBusiness.businessName}}">
     <br>
@@ -33,6 +33,10 @@
     <br>
     <label for="city">City: </label>
     <input type="text" id="city" name="city" value="{{dbBusiness.city}}">
+      <div class="image_upload_form">
+            <label for="image-input">Add image:</label>
+            <input type="file" name="image" id="image-input" class="form-control-file" />
+        </div>
     <br>
     <br>
     <button type="submit" class="update_page_save_btn">Save changes</button>
