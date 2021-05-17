@@ -28,14 +28,21 @@
 }
 
 .products_container {
-  height: 45%;
+  position: relative;
+  width: 100%;
+}
+
+.product_container_scroll {
   overflow-x: scroll;
   overflow-y: hidden;
-  white-space: nowrap;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  white-space: wrap;
+  height: 450px;
 }
 
 .product_list_card {
-  background-color: transparent;
   width: 50%;
   height: 150px;
   border: 1px solid rgba(128, 128, 128, 0.119);
@@ -47,7 +54,10 @@
   margin: auto;
   margin-top: 2vh;
   margin-bottom: 20px;
+  margin-left: 20px;
   background-color: white;
+  display: inline-block;
+  vertical-align: top;
 }
 
 .product_list_card > img {

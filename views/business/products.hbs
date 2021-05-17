@@ -8,8 +8,8 @@
     
     <h2>Current products: </h2>
 
-    <div class= "products_container">
-
+    <div class= "product_container">
+        <div class= "product_container_scroll">
         {{#if dbProducts}}        
             {{#each dbProducts}}
                 <div class= "product_list_card">
@@ -21,7 +21,7 @@
         {{else}}
         <p>There are no products at the moment!</p>
         {{/if}}
-    
+     </div>
     </div> 
 
         <form  action="/business/add-product">
