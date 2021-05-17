@@ -32,7 +32,6 @@
 }
 
 .collaborators_page_item {
-  background-color: transparent;
   width: 60%;
   height: 200px;
   border: 1px solid rgba(128, 128, 128, 0.119);
@@ -54,16 +53,15 @@
   border-top-right-radius: 5%;
 }
 
-.business_card_title {
+.content_card_title {
   font-weight: bold;
   margin-top: 1rem;
   margin-bottom: 0.5rem;
 }
 
-.business_card_location {
+.content_card_location {
   font-style: italic;
 }
-
 
 /* TABLET */
 @media only screen and (min-width: 600px) {
@@ -80,8 +78,6 @@
     justify-content: space-around;
   }
 }
-
-
 
 /* DESKTOP */
 @media only screen and (min-width: 768px) {
