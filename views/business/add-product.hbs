@@ -7,16 +7,21 @@
       
     <h1>Add a new product</h1>
 <div class="add_product_form_container">  
-    <form action="/business/add-product" method="post" enctype="multipart/form-data">
+    <form class="add_product_form" action="/business/add-product" method="post" enctype="multipart/form-data">
         <label for="description">Description</label>
-        <input type="text" name="description" id="description" placeholder="Your product's description">
+        <br>
+        <i class="fab fa-product-hunt fa-1x"></i> <input type="text" name="description" id="description" placeholder="Your product's description"> 
+        <br>
         <label for="price">Price</label>
-        <input type="number" name="price" id="price" placeholder="Your product's price"> <i class="fas fa-dollar-sign fa-2x"></i>
-        <div class="image_upload_form">
-            <label for="image-input">Add image:</label>
-            <input type="file" name="image" id="image-input" class="form-control-file" />
+        <br>
+        <i class="fas fa-dollar-sign fa-1x"></i> <input type="number" name="price" id="price" placeholder="Your product's price"> 
+        <br>
+        <div class="add_product_form">
+           <i class="far fa-file-image fa-1x"></i>  <label for="image-input">Add image:</label>
+         <input type="file" name="image" id="image-input" class="form-control-file" /> 
         </div>
-        <button type="submit">Add product</button>
+        <br>
+        <button class="add_product_form_btn" type="submit">Add product</button>
     </form>
 </div> 
 </div>
