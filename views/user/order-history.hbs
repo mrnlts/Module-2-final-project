@@ -2,20 +2,22 @@
     <nav class="orders_page_nav">
         <a href="/user/profile">Back</a> <span> | </span>
         <form action="/auth/logout" method="post">
-            <input type="submit" value="Log out" class="green_btn"></input>
+            <input type="submit" value="Log out" class="generic_btn"></input>
         </form>
     </nav>
 
     <h1>Order history</h1>
     {{#if dbOrders}}
+    <div class="orders_page_scroll">
         {{#each dbOrders}}
                 <div class="orders_page_item">
-                    <h2>{{this.product.description}}</h2>
-                    <p>Price: {{this.product.price}}</p>
-                    <p>Business: {{this.product.businessName.businessName}}</p>
-                    <p>Order ID: {{this._id}}</p>
+                    <h4 class="content_card_title">{{this.product.description}}</h4>
+                    <p class="content_card_id">Price: {{this.product.price}}</p>
+                    <p class="content_card_user">Business: {{this.product.businessName.businessName}}</p>
+                    <p class="content_card_product">Order ID: {{this._id}}</p>
                 </div>
         {{/each}}
+    </div>    
     {{else}}
         <h2>There's no orders in your history!</h2>
     {{/if}}

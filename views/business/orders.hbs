@@ -2,19 +2,19 @@
     <nav class="orders_page_nav">
         <a href="/business/profile">Back</a>
         <form action="/auth/logout" method="post">
-            <input type="submit" value="Log out" class="green_btn"></input>
+            <input type="submit" value="Log out" class="generic_btn"></input>
         </form>
     </nav>
 
     <h2 style="text-align: center;">Current orders: </h2>
     {{#if dbOrders}}
-        <div class="orders_page_item">
+        <div class="orders_page_scroll">
             {{#each dbOrders}}
-                <div id="business">
-                    <h2>New order!</h2>
-                    <p>Order ID: {{this._id}}</p>
-                    <p>User: {{this.user.firstName}}</p>
-                    <p>Product: {{this.product.description}}</p>
+                <div class="orders_page_item">
+                    <h4 class="content_card_title">New order!</h4>
+                    <p class="content_card_id">Order ID: {{this._id}}</p>
+                    <p class="content_card_user">User: {{this.user.firstName}}</p>
+                    <p class="content_card_product">Product: {{this.product.description}}</p>
                 </div>
             {{/each}}
         </div>

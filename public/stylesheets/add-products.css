@@ -29,8 +29,11 @@
 
 .add_product_form_btn {
   background-color: brown;
-  border: 1px solid brown;
+  border: none;
+  font-weight: bolder;
   color: white;
   padding: 1rem;
   border-radius: 5%;
+  font: 14px;
+  font-family: 'Roboto Slab';
 }
