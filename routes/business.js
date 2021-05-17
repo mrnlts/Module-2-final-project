@@ -100,8 +100,19 @@ router.post('/add-product', fileUploader.single('image'), (req, res, next) => {
 router.post('/delete', (req, res, next) => {
   User.findByIdAndUpdate(req.session.currentUser._id, { role: 'customer' })
     .then(dbUser => {
-      Business.findOneAndRemove({ owner: dbUser.id })
-        .then(() => res.redirect('/user/profile'))
+      Business.findOne({ owner: dbUser.id })
+        .then((dbBusiness) => {
+            Product.deleteMany({businessName: dbBusiness.id})
+                .then(() => {
+                    Order.deleteMany({business: dbBusiness.id})
+                        .then(() => {
+                            Business.findOneAndRemove({owner: dbUser.id})
+                                .then(() => {
+                                    res.redirect('/user/profile');
+                                })
+                        })
+                })
+        })
         .catch(err => next(err));
   });
 });
