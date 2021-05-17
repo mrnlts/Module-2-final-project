@@ -13,8 +13,6 @@ const fileUploader = require('../configs/cloudinary.config');
 router.get('/add', (req, res) => res.render('business/add-business'));
 
 // POST NEW BUSINESS TO DATABASE
-
-
 router.post('/add', fileUploader.single('image'), (req, res, next) => {
   const userId = req.session.currentUser._id;
   const { businessName, businessType, city } = req.body;
@@ -96,12 +94,34 @@ router.post('/add-product', fileUploader.single('image'), (req, res, next) => {
     .catch(err => next(err));
 });
 
+// RENDER BUSINESS DETAILS // 
+router.get('/:id/detail', (req, res, next) => {
+    const { id } = req.params;
+    Business.findById(id)
+        .then((dbBusiness) => {
+            Product.find({ businessName: dbBusiness.id })
+                .then(dbProducts => res.render('business/detail', {dbBusiness, dbProducts}))
+        })
+        .catch(err => next(err))
+})
+
 // DELETE BUSINESS //
 router.post('/delete', (req, res, next) => {
   User.findByIdAndUpdate(req.session.currentUser._id, { role: 'customer' })
     .then(dbUser => {
-      Business.findOneAndRemove({ owner: dbUser.id })
-        .then(() => res.redirect('/user/profile'))
+      Business.findOne({ owner: dbUser.id })
+        .then((dbBusiness) => {
+            Product.deleteMany({businessName: dbBusiness.id})
+                .then(() => {
+                    Order.deleteMany({business: dbBusiness.id})
+                        .then(() => {
+                            Business.findOneAndRemove({owner: dbUser.id})
+                                .then(() => {
+                                    res.redirect('/user/profile');
+                                })
+                        })
+                })
+        })
         .catch(err => next(err));
   });
 });
