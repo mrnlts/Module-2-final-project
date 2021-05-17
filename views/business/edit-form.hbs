@@ -6,11 +6,13 @@
     </form>
   </nav>
   <h1>Edit Business</h1>
-  <form action="/business/profile/edit" method="POST" enctype="multipart/form-data">
-    <label for="businessName">Business Name: </label>
+  <div class="update_page_form_container">
+
+  <form class="update_page_form"action="/business/profile/edit" method="POST" enctype="multipart/form-data">
+   <i class="far fa-registered fa-1x"></i> <label for="businessName">Business Name: </label>
     <input type="text" id="businessName" name="businessName" value="{{dbBusiness.businessName}}">
     <br>
-    <label for="businessType">Business type</label>
+  <i class="far fa-store-alt"></i> <label for="businessType">Business type</label>
         <select name="businessType" id="businessType">
             <option value="Pizza">Pizza</option>
             <option value="Chinese">Chinese</option>
@@ -31,19 +33,21 @@
             <option value="Vegetarian">Vegetarian</option>
         </select>
     <br>
-    <label for="city">City: </label>
+    <i class="fas fa-street-view fa-1x"></i> <label for="city">City: </label>
     <input type="text" id="city" name="city" value="{{dbBusiness.city}}">
       <div class="image_upload_form">
-            <label for="image-input">Add image:</label>
+          <i class="far fa-file-image fa-1x"></i>  <label for="image-input">Add image:</label>
             <input type="file" name="image" id="image-input" class="form-control-file" />
         </div>
-    <br>
-    <br>
-    <button type="submit" class="update_page_save_btn">Save changes</button>
-  </form>
+  </div>      
+      <br>
+      <br>
+  <div class="update_page_btns_container">
+      <button type="submit" class="update_page_save_btn">Save changes</button>
+    </form>
 
-<form action="/business/delete" method="POST">
-  <input type="submit" value="Delete my business" class="update_page_delete_btn">
-</form>
-
+    <form action="/business/delete" method="POST">
+      <input type="submit" value="Delete my business" class="update_page_delete_btn">
+    </form>
+  </div>
 </div>
