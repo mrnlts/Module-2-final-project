@@ -1,58 +1,67 @@
-{{#if dbUser }}
-<div style="height: 100vh; display: flex; flex-direction: column; justify-content:space-evenly">
-  <div style="display: flex; align-items: baseline; justify-content:space-between">
-    <a href="/orders">Order history</a> <span> | </span>
-    <a href="/user/profile/edit"> Update user data </a>  <span> | </span>
-    <form action="/auth/logout" method="post">
-        <input type="submit" value="Log out" style="width: 100%; background-color: transparent; border: none; color: #00B7FF; font-size: 1rem"></input>
-    </form>
-    
+<div class="user_homepage_container">
+
+  {{#if dbUser }}
+
+  <div class="user_homepage_nav">  
+      <a href="/orders">Orders</a> <span> | </span>
+      <a href="/user/profile/edit"> Profile </a>  <span> | </span>
+      <form action="/auth/logout" method="post">
+          <input class= "logout_btn" type="submit" value="Log out" ></input>
+      </form>
   </div>
 
-{{#if isBusiness }}
-<div style="display: flex">
-<button><a href="/business/profile"> Manage my business </a></button>
-</div>
-{{else}}
-<div style="display: flex">
-<button><a href="/business/add">Do you own a business? Add your business to the app</a></button>
-</div>
-{{/if}}
 
-  <h1>Welcome, {{ dbUser.firstName }}!</h1>
-  <h2>This is your profile page my friend!</h2>
-</div>
+  <h2 class= "user_homepage_title_offers">Offers</h2>
 
-<h2 style="text-align: center;">Businesses near you</h2>
-<div id="list">
-    {{#each dbBusiness}}
-    <div id="business">
-        <h1>{{this.businessName}}</h1>
-        <h2>Type: {{this.businessType}}</h2>
-        <h2>City: {{this.city}}</h2>
-    </div>
-    {{/each}}
-</div>
+  <div class="offers_card_container">   
 
+      {{#each dbProducts}}   
+      <div class="offers_card_item">
+          {{!-- <img src="/images/food/fast-food.jpg" class="offers_card_item_img" alt=""> --}}
+          <img src="{{imageUrlProduct}}" class="offers_card_item_img" alt="{{title}}">
+            <h3> {{this.description}}</h3>
+            <h4>Price: {{this.price}}</h4>
+            <form action="/orders" method= "POST" > 
+              <input style= "display: none" value="{{this.businessName}}" id="businessName" name="businessName">
+              <input style="display: none" value="{{this._id}}" id="order" name="order">
+              <input style="display: none" value="{{dbUser.id}}" id="user" name="user" >
+              <button type= "submit" class="offers_card_item_btn">Order</button>
+            </form>
+          
+      </div>    
+        {{/each}}
+  </div>
+  
+  <h2 class= "user_homepage_title">Near business</h2>
 
-<h2 style="text-align: center;">Offers</h2>
-<div id="list">
-    {{#each dbProducts}}   
-    <div id="business">
-        <h1> {{this.description}}</h1>
-        <h2>Price: {{this.price}}</h2>
-        <form action="/orders" method= "POST" > 
-          <input style= "display: none" value="{{this.businessName}}" id="businessName" name="businessName">
-          <input style="display: none" value="{{this._id}}" id="order" name="order">
-          <input style="display: none" value="{{dbUser.id}}" id="user" name="user" >
-          <button type= "submit" style="width: 100%">Order Product</button>
-        </form>
-    </div>    
+  <div class="business_card_container">
+      {{#each dbBusiness}}
+      <div class="business_card_item">
+        {{!-- <img class="business_card_item_img" src="/images/business/download.jpeg" alt=""> --}}
+         <img src="{{imageUrlBusiness}}" class="business_card_item_img" alt="{{title}}">
+          <h3>{{this.businessName}}</h3>
+          <h4>Type: {{this.businessType}}</h4>
+          <h4>City: {{this.city}}</h4>
+      </div>
       {{/each}}
+  </div>
+
+
+  <div class="user_homepage_footer">
+      <h4>Welcome, {{ dbUser.firstName }}!</h4> <span> | </span>
+      {{#if isBusiness }}
+        <form action="/business/profile" method="get">     
+        <input type="submit" value="Manage my business" class="green_btn"></input>
+        </form>
+      {{else}}
+        <form action="/business/add" method="get">    
+          <input type="submit" value="Are you an owner? Add your business!!" class="green_btn"></input>
+        </form>
+      {{/if}} 
+  </div>
+
+
+  {{else}}
+    <p>Still no logged in user, sorry!</p>
+  {{/if}} 
 </div>
-
-{{else}}
-<p>Still no logged in user, sorry!</p>
-{{/if}} 
-
-

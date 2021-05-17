@@ -1,21 +1,22 @@
-<div style="display: flex; align-items: baseline; justify-content:space-between">
-    <a href="/user/profile">Back</a> <span> | </span>
-    <form action="/auth/logout" method="post">
-        <input type="submit" value="Log out" style="width: 100%; background-color: transparent; border: none; color: #00B7FF; font-size: 1rem"></input>
-    </form>
-</div>
-<h1>Order history</h1>
+<div class="orders_page_container">
+    <nav class="orders_page_nav">
+        <a href="/user/profile">Back</a> <span> | </span>
+        <form action="/auth/logout" method="post">
+            <input type="submit" value="Log out" class="green_btn"></input>
+        </form>
+    </nav>
 
-{{#if dbOrders}}
-    {{#each dbOrders}}
-            <div id="business">
-                <h2>New order!</h2>
-                <p>Order ID: {{this._id}}</p>
-                <p>Product: {{this.product.description}}</p>
-                <p>Price: {{this.product.price}}</p>
-                <p>Business: {{this.product.businessName.businessName}}</p>
-            </div>
-    {{/each}}
-{{else}}
-    <h2>There's no orders in your history!</h2>
-{{/if}}
+    <h1>Order history</h1>
+    {{#if dbOrders}}
+        {{#each dbOrders}}
+                <div class="orders_page_item">
+                    <h2>{{this.product.description}}</h2>
+                    <p>Price: {{this.product.price}}</p>
+                    <p>Business: {{this.product.businessName.businessName}}</p>
+                    <p>Order ID: {{this._id}}</p>
+                </div>
+        {{/each}}
+    {{else}}
+        <h2>There's no orders in your history!</h2>
+    {{/if}}
+</div>

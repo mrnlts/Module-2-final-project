@@ -1,0 +1,64 @@
+.login_signup_container {
+  background-image: url(../images/background-images/pizza-3007395_1280.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+}
+
+.login_signup_container__form {
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(231, 231, 240, 0.434);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.login_signup_container__form > h2 {
+  color: white;
+  font-weight: bolder;
+  margin-top: 90px;
+}
+
+.login_signup_nav {
+  position: fixed;
+  overflow: hidden;
+  top: 0;
+  width: 100%;
+  height: 7vh;
+  background-color: rgb(12, 58, 19);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: white;
+}
+
+.login_signup_nav > a {
+  color: white;
+}
+
+.login_signup_form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin: 1rem 4rem;
+}
+
+.login_signup_form > label {
+  font-weight: 800;
+}
+.login_signup_form > input {
+  height: 15px;
+  border: none;
+}
+
+.login_signup_form > button {
+  font-weight: bolder;
+  color: white;
+  padding: 10px;
+  background-color: rgb(12, 58, 19);
+  margin-top: 20px;
+  border-radius: 3%;
+  border: none;
+}

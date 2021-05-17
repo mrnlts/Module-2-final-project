@@ -6,7 +6,7 @@ const productSchema = new Schema({
     businessName: {
         type: Schema.Types.ObjectId, ref: 'Business'
     },
-    image: String,
+    imageUrlProduct: String,
     price: Number,
     description: String
 });

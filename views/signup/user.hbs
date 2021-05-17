@@ -1,20 +1,31 @@
-<div id="signup-user">
-    <h2>Sign up user</h2>
-    <a href="/">Back</a> 
-    <form action="/auth/signup" method="POST">
-        <label for="firstName">First Name: </label>
+<div class="login_signup_container">
+
+<div class= "login_signup_container__form"> 
+    <nav class="login_signup_nav">
+        <a href="/">Back</a> 
+    </nav>
+
+ <h2>Sign Up</h2>  
+  
+    <form class="login_signup_form"action="/auth/signup" method="POST">
+        <label for="firstName">First Name </label>
         <input type="text" id="firstName" name="firstName" placeholder="Your first name">
-        <label for="lastName">Last Name: </label>
+        <br>
+        <label for="lastName">Last Name </label>
         <input type="text" id="lastName" name="lastName" placeholder="Your last name">
-        <label for="city">City: </label>
+        <br>
+        <label for="city">City </label>
         <input type="text" id="city" name="city" placeholder="Your city">
-        <label for="age">Age: </label>
+        <br>
+        <label for="age">Age </label>
         <input type="number" id="age" name="age" placeholder="Your age">
+        <br>
         <label for="email">Email</label>
         <input type="email" id="email" name="email" placeholder="Your email" />
+        <br>
         <label for="password">Password</label>
         <input type="password" id="password" name="password" placeholder="**********">
         <button type="submit">Sign up</button>
     </form>
-
+</div>
 </div>

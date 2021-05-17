@@ -1,21 +1,18 @@
-{{!-- <div>
-  <% if (message) { %>
-  <%  <p><%= message %></p> %>
-  <% } %>
-</div> --}}
-
-<div id="login">
-  <h1>Log into your account</h1>
-  <form action="/auth/login" method="POST">
-    <label for="email">Email</label>
-    <input type="email" id="email" name="email">
-    <label for="password">Password</label>
-    <input type="password" id="password" name="password">
-    <button type="submit">Login</button>
-{{!-- 
-    {{#if errorMessage}}
-    <p class="error">{{errorMessage}}</p>
-    {{/if}} --}}
-
-  </form>
+<div class="login_signup_container">
+  
+  <div class= "login_signup_container__form">
+  <nav class="login_signup_nav">
+    <a href="/">Back</a> 
+  </nav>
+    <h2>Log into your account</h2>
+    <form class="login_signup_form" action="/auth/login" method="POST">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email">
+      <br>
+      <label for="password">Password</label>
+      <input type="password" id="password" name="password">
+      <br>
+      <button type="submit">Login</button>
+    </form>
+  </div>
 </div>
