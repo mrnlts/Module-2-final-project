@@ -18,7 +18,8 @@
 .login_signup_container__form > h2 {
   color: white;
   font-weight: bolder;
-  margin-top: 90px;
+  font-size: 4rem;
+  margin: 90px 50px 0;
 }
 
 .login_signup_nav {
@@ -49,7 +50,8 @@
   font-weight: 800;
 }
 .login_signup_form > input {
-  height: 15px;
+  height: 35px;
+  padding-left: 1rem;
   border: none;
 }
 
@@ -61,4 +63,10 @@
   margin-top: 20px;
   border-radius: 3%;
   border: none;
+}
+
+@media only screen and (min-width: 600px) {
+  .login_signup_form > input {
+
+  }
 }
