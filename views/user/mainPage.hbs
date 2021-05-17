@@ -38,9 +38,11 @@
       {{#each dbBusiness}}
       <div class="business_card_item" onclick="location.href='http://localhost:3000/business/{{this.id}}/detail'">
          <img src="{{imageUrlBusiness}}" class="business_card_item_img" alt="{{title}}">
-          <h3>{{this.businessName}}</h3>
-          <h4>Type: {{this.businessType}}</h4>
-          <h4>City: {{this.city}}</h4>
+          <div>
+            <h3>{{this.businessName}}</h3>
+            <h4>Type: {{this.businessType}}</h4>
+            <h4>City: {{this.city}}</h4>
+          </div>
       </div>
       {{/each}}
   </div>
