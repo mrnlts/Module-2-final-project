@@ -39,7 +39,7 @@
   flex-direction: column;
   flex-wrap: wrap;
   white-space: wrap;
-  height: 450px;
+  height: 420px;
 }
 
 .product_list_card {
@@ -81,7 +81,6 @@
   border: 1px solid brown;
   color: white;
   font-weight: bolder;
-  margin-top: 4vh;
   padding: 1rem;
   border-radius: 5%;
   cursor: pointer;
