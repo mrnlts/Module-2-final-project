@@ -60,9 +60,30 @@
   margin-bottom: 0.5rem;
 }
 
-.business_card_type {
-}
-
 .business_card_location {
   font-style: italic;
+}
+
+
+/* TABLET */
+@media only screen and (min-width: 600px) {
+  .collaborators_page_item {
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .collaborators_page_item > div {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+}
+
+
+
+/* DESKTOP */
+@media only screen and (min-width: 768px) {
+  /* Styles */
 }

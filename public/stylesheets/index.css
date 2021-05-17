@@ -17,14 +17,16 @@
   padding: 1rem;
   background-color: rgba(18, 18, 19, 0.503);
   display: flex;
+  justify-content: center;
   align-items: center;
   height: 50%;
   margin-top: 25%;
 }
 
 .homepage_container_nav {
-  padding-top: 1rem;
+  padding-top: 5vh;
 }
+
 
 .homepage_footer {
   position: fixed;
@@ -40,4 +42,17 @@
 .homepage_footer a,
 .homepage_footer span {
   color: white;
+}
+
+/* TABLET */
+@media only screen and (min-width: 600px) {
+  .homepage_container_nav > h2 {
+    padding-top: 2vh;
+  }
+}
+
+
+/* DESKTOP */
+@media only screen and (min-width: 768px) {
+  /* Styles */
 }

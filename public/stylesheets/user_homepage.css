@@ -9,6 +9,7 @@
 .user_homepage_nav {
   display: flex;
   justify-content: space-around;
+  align-items: center;
   position: fixed;
   overflow: hidden;
   padding-top: 0.7rem;
@@ -20,7 +21,8 @@
   box-shadow: 6px 7px 15px -2px #727272;
 }
 
-.user_homepage_nav > a {
+.user_homepage_nav > a,
+.user_homepage_nav > span {
   color: white;
 }
 
@@ -78,7 +80,7 @@
   width: 65%;
   height: 90px;
   display: inline-block;
-  vertical-align: top;
+  margin: 2rem;
 }
 
 .offers_card_item_btn {
@@ -147,4 +149,39 @@
   justify-content: space-around;
   align-items: center;
   color: white;
+}
+
+
+/* TABLET */
+@media only screen and (min-width: 600px) {
+  .logout_btn {
+    font-family: inherit;
+  }
+  .user_homepage_footer > form > input {
+    font-size: 16px;
+  }
+  .offers_card_item {
+    margin: 0 2rem;
+  }
+  .offers_card_item > h3 {
+    padding: 2rem 0;
+  }
+  .offers_card_item > h4 {
+    padding: 0 0 2rem;
+  }
+  .business_card_item {
+    height: 70%;
+  }
+  .business_card_item > div {
+    display: flex;
+    height: 45%;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+}
+
+
+/* DESKTOP */
+@media only screen and (min-width: 768px) {
+  /* Styles */
 }
