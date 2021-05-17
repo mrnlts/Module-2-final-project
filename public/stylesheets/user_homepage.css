@@ -160,15 +160,6 @@
   .user_homepage_footer > form > input {
     font-size: 16px;
   }
-  .offers_card_item {
-    margin: 0 2rem;
-  }
-  .offers_card_item > h3 {
-    padding: 2rem 0;
-  }
-  .offers_card_item > h4 {
-    padding: 0 0 2rem;
-  }
   .business_card_item {
     height: 70%;
   }
