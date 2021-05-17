@@ -18,7 +18,8 @@
   color: white;
 }
 
-.product_page_nav > a {
+.product_page_nav > a,
+.product_page_nav > span {
   color: white;
 }
 
@@ -77,11 +78,26 @@
 }
 
 .product_page_btn {
-  background-color: brown;
-  border: 1px solid brown;
+  background-color: rgb(12, 58, 19);
+  border: 1px solid rgb(12, 58, 19);
   color: white;
   font-weight: bolder;
   padding: 1rem;
   border-radius: 5%;
   cursor: pointer;
+}
+
+@media only screen and (min-width: 600px) {
+  .product_list_card {
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .product_list_card > div {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+  }
 }

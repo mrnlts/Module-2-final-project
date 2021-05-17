@@ -10,9 +10,11 @@
 
   <form class="update_page_form"action="/business/profile/edit" method="POST" enctype="multipart/form-data">
    <i class="far fa-registered fa-1x"></i> <label for="businessName">Business Name: </label>
+   <br>
     <input type="text" id="businessName" name="businessName" value="{{dbBusiness.businessName}}">
     <br>
   <i class="far fa-store-alt"></i> <label for="businessType">Business type</label>
+  <br>
         <select name="businessType" id="businessType">
             <option value="Pizza">Pizza</option>
             <option value="Chinese">Chinese</option>
@@ -34,7 +36,9 @@
         </select>
     <br>
     <i class="fas fa-street-view fa-1x"></i> <label for="city">City: </label>
+    <br>
     <input type="text" id="city" name="city" value="{{dbBusiness.city}}">
+    <br>
       <div class="image_upload_form">
           <i class="far fa-file-image fa-1x"></i>  <label for="image-input">Add image:</label>
             <input type="file" name="image" id="image-input" class="form-control-file" />
