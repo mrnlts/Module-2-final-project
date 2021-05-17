@@ -137,3 +137,15 @@
   align-items: center;
   color: white;
 }
+
+
+/* TABLET */
+@media only screen and (min-width: 600px) {
+  /* Styles */
+}
+
+
+/* DESKTOP */
+@media only screen and (min-width: 768px) {
+  /* Styles */
+}
