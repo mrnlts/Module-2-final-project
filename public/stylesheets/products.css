@@ -40,12 +40,12 @@
   flex-direction: column;
   flex-wrap: wrap;
   white-space: wrap;
-  height: 420px;
+  height: 360px;
 }
 
 .product_list_card {
   width: 50%;
-  height: 150px;
+  height: 140px;
   border: 1px solid rgba(128, 128, 128, 0.119);
   -webkit-box-shadow: 6px 7px 15px -2px #727272;
   box-shadow: 6px 7px 15px -2px #727272;
@@ -67,14 +67,6 @@
   height: 50%;
   border-top-left-radius: 5%;
   border-top-right-radius: 5%;
-}
-
-.green_btn {
-  color: white;
-  border: none;
-  background-color: transparent;
-  font-size: 14px;
-  font-family: 'Roboto Slab';
 }
 
 .product_page_btn {
