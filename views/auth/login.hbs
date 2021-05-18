@@ -12,6 +12,9 @@
       <label for="password">Password</label>
       <input type="password" id="password" name="password" placeholder="Your password">
       <br>
+      {{#if blank}}
+        <p>{{this.error}}</p>
+      {{/if}}
       <button class="generic_btn" type="submit">Login</button>
     </form>
   </div>
