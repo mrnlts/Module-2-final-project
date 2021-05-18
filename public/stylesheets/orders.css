@@ -27,8 +27,14 @@
   color: white;
 }
 
-.orders_page_scroll {
-  margin-top: 16vh;
+.bussines_orders_page_container_title {
+  margin-top: 70rem;
+  margin-bottom: 2vh;
+}
+.orders_page_container_title {
+  margin-top: 40rem;
+  margin-bottom: 2vh;
+  font-size: 1.5rem;
 }
 
 .user_orders_page_item {
@@ -93,6 +99,16 @@
 @media only screen and (min-width: 600px) {
   /* Styles */
 
+  .orders_page_container_title {
+    margin-top: 40rem;
+    margin-bottom: 2vh;
+    font-size: 3rem;
+  }
+  .bussines_orders_page_container_title {
+    margin-top: 40rem;
+    margin-bottom: 2vh;
+  }
+
   .orders_page_scroll {
     margin-top: 50vh;
     display: flex;
@@ -138,6 +154,11 @@
   }
 
   .user_orders_page_item {
+    width: 30%;
+    margin-left: 15vh;
+  }
+
+  .business_orders_page_item {
     width: 30%;
     margin-left: 15vh;
   }

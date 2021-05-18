@@ -214,12 +214,17 @@
     padding-top: 2rem;
   }
   .offers_card_item_btn {
-  font-size: 1.3rem;
+    font-size: 1.3rem;
   }
   .offers_card_container_scroll {
     height: 90%;
+    margin-top: 5vh;
+  }
+  .business_card_container {
+    margin-top: 5vh;
   }
   .business_card_item {
-    width: 25%; 
+    width: 20%;
+    margin-left: 10vh;
   }
 }
