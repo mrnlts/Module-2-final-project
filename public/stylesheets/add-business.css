@@ -13,6 +13,7 @@
 
 .add_business_form_container {
   display: flex;
+  justify-content: center;
   flex-direction: column;
   height: 47vh;
   padding: 1.5rem;

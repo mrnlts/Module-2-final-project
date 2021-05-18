@@ -145,6 +145,7 @@
     width: 15vh;
     height: 15vh;
     float: left;
+    border-radius: 5%;
   }
 
   .orders_page_scroll {
