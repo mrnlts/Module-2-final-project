@@ -32,7 +32,7 @@
   margin-bottom: 2vh;
 }
 .orders_page_container_title {
-  margin-top: 40rem;
+  margin-top: 10rem;
   margin-bottom: 2vh;
   font-size: 1.5rem;
 }
@@ -100,7 +100,7 @@
   /* Styles */
 
   .orders_page_container_title {
-    margin-top: 40rem;
+    margin-top: 15vh;
     margin-bottom: 2vh;
     font-size: 3rem;
   }
@@ -110,7 +110,7 @@
   }
 
   .orders_page_scroll {
-    margin-top: 50vh;
+    margin-top: 10vh;
     display: flex;
     flex-flow: column wrap;
   }
