@@ -1,6 +1,5 @@
-# Too good to go - clone
+# Zero food-waste app
 
-​
 
 ## Description
 
@@ -34,6 +33,13 @@ To connect restaurants and costumers for purchasing left-over food.
 
 **Add products** - As a business I want to be able to add products to my profile.
 ​
+**Order array** - Add product amount in order
+
+**Order status** - See order status 
+
+**Social login** - Log in from social networks
+
+**Languages** - Multiple languages
 ​
 
 ## Backlog / Nice to have
@@ -62,22 +68,28 @@ To connect restaurants and costumers for purchasing left-over food.
 | Name | Method | Endpoint | Description | Body | Redirects |
 | --------------- | ------ | ----------------------------- | ------------------------------------------------ | ------------------------------------- | --------------- |
 | Home | GET | / | See the main page | | |
-| Log in form | GET | /login | See the form to log in | | |
-| Log in | POST | /login | Log in the user | {user data} | /main/user or /main/business |
-| Product list | GET | /products | See the products without an account
-| Sign Up crossroad | GET | /signup | See the crossroad to choose
-| Sign Up business | GET | /signup/business | See the form to sign up  
-| Sign Up user | GET | /signup/user | See the form to sign up
-| Sign Up business | POST | /signup/business | Sign up business | {businessName, businessType, image, email, password, location, products} | /main/business
-| Sign Up user | POST | /signup/user | Sign up user | {firstName, lastName, email, password, location, age} | /main/user
-| Edit business | GET | /edit/business | Edit business | |  
-| Edit business | POST | /edit/business | Edit business | | /main/business  
-| Edit user | GET | /edit/costumer | Edit user | |  
-| Edit user | POST | /edit/costumer | Edit user | | /main/user
-| Select product | POST | /product/:id | Select product | | /main/user  
-| Add product | GET | /main/business/product | Add product | |  
-| Add product | POST | /main/business/product | Add product | | /main/business  
-| Log out | ? | ? | ? | | / |.
+| Log in | GET | /auth/login | See the form to log in | | |
+| Log in | POST | /auth/login | Log in the user | {email, password} | /user/profile |
+| Business list | GET | /business | See the businesses without an account
+| Sign Up user | GET | /auth/signup | See the form to sign up
+| Sign Up user | POST | /auth/signup | Sign up user | {firstName, lastName, email, password, city, age} | /user/profile
+| User main page | GET | /user/profile | User main page
+| Edit user | GET | /user/profile/edit | Edit user |  |  
+| Edit user | POST | /user/profile/edit | Edit user | {firstName, lastName, city, age} | /user/profile 
+| Business detail | GET | /business/:id/detail  | See details of business 
+| Order product | POST | /order | Make order | {businessName, product, user} | /orders
+| Order history | GET | /orders |
+| Add new business | GET | /business/add | {businessName, businessType, city, image } | /business/profile
+| Business main page | GET | /business/profile | Business main page 
+| Edit business | GET | /business/profile/edit | Edit business | |  
+| Edit business | POST | /business/profile/edit | Edit business | {businessName, businessType, city} | /business/profile
+| My products | GET | /business/products | See business products
+| My orders | GET | /business/orders | See current orders
+| Add product | GET | /business/add-product | Add product | {description, price, image} | /business/products 
+| Add product | POST | /business/add-product | Add product | | /business 
+| Delete user account | POST | /user/delete | Delete user | | / 
+| Delete business account | POST | /business/delete | Delete business | | /user/profile
+| Log out | POST | /auth/logout | Log out of the app | | / |.
 
 ## Models
 
@@ -91,8 +103,12 @@ User model
     lastName: String,
     email: String,
     hashedPassword: String,
-    location: Array,
-    age: Number
+    city: String,
+    age: Number,
+    role: enum [String]
+},
+{
+    timestamps
 }
 ```
 
@@ -102,11 +118,13 @@ Business model
 ```js
 {
     businessName: String,
-    businessType: String,
-    image: String,
-    email: String,
-    hashedPassword: String,
-    location: Array
+    businessType: enum [String],
+    imageUrlBusiness: String,
+    city: String,
+    owner: ObjectId(User)
+},
+{
+    timestamps
 }
 ```
 
@@ -115,8 +133,8 @@ Product model
 
 ```js
 {
-    businessName: ObjectId,
-    image: String,
+    businessName: ObjectId(Business),
+    imageUrlProduct: String,
     price: Number,
     description: String
 }
@@ -127,11 +145,12 @@ Order model
 
 ```js
 {
-    food: [{productId: ObjectId, amount: Number}],
-    costumer: ObjectId
+    business: ObjectId(Business),
+    product: ObjectId(Product)
+    user: ObjectId(User)
 },
 {
-
+    timestamps
 }
 ```
 
@@ -142,7 +161,9 @@ Order model
 **Order - business:** Reference
 
 **Product - business:** Reference
-
+ 
+  
+   
 ## Links
 
 ​
@@ -150,7 +171,7 @@ Order model
 ### Github kanban
 
 ​
-[https://github.com/users/mrnlts/projects/3]()
+[https://github.com/mrnlts/Zero-food-waste-app/projects/1]()
 ​
 
 ### Github repository
