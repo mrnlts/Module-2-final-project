@@ -8,8 +8,8 @@ const logger = require('morgan');
 const session = require('express-session');
 
 const bcrypt = require('bcrypt');
-const passport = require('passport');
-const LocalStrategy = require('passport-local').Strategy;
+// const passport = require('passport');
+// const LocalStrategy = require('passport-local').Strategy;
 const flash = require("connect-flash")
 const appSession = require('./configs/session');
 
@@ -28,19 +28,19 @@ const orderRouter = require('./routes/order');
 
 // require database configuration
 require('./configs/db.config');
-require('./configs/passport.config');
+// require('./configs/passport.config');
 
 
 // passport config
-passport.serializeUser((user, done) => {
-  console.log('OK')
-  done(null, user);
-});
+// passport.serializeUser((user, done) => {
+//   console.log('OK')
+//   done(null, user);
+// });
 
 
-passport.deserializeUser((user, done) => {
-  done(null, user);
-});
+// passport.deserializeUser((user, done) => {
+//   done(null, user);
+// });
 
 // passport.deserializeUser((id, done) => {
 //   User.findById(id)
@@ -49,31 +49,31 @@ passport.deserializeUser((user, done) => {
 // });
  
 
-passport.use
-(new LocalStrategy(
-  { passReqToCallback: true },
-  {
-    usernameField: 'email',
-    passwordField: 'password',
-  },
+// passport.use
+// (new LocalStrategy(
+//   { passReqToCallback: true },
+//   {
+//     usernameField: 'email',
+//     passwordField: 'password',
+//   },
 
-  (  email, password, done) => {
-    User.findOne({  email })
-      .then(user => {
-        if (!user) {
-         return done (null, false);
-        } 
-        if (!bcrypt.compareSync(password, user.passwordHash)) {
-          return done (null, false )
-        } 
+//   (  email, password, done) => {
+//     User.findOne({  email })
+//       .then(user => {
+//         if (!user) {
+//          return done (null, false);
+//         } 
+//         if (!bcrypt.compareSync(password, user.passwordHash)) {
+//           return done (null, false )
+//         } 
  
-        return done(null, user)
+//         return done(null, user)
         
-      })
-      .catch(err => done(err));
-  },
-),
-);
+//       })
+//       .catch(err => done(err));
+//   },
+// ),
+// );
 
 // Middleware setup
 app.use(logger('dev'));
@@ -83,8 +83,8 @@ app.use(cookieParser());
 app.use(session(appSession));
 app.use(flash());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(passport.initialize());
-app.use(passport.session());
+// app.use(passport.initialize());
+// app.use(passport.session());
 
 // Express view engine setup
 app.set('views', path.join(__dirname, 'views'));
