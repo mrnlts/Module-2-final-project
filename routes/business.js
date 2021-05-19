@@ -5,7 +5,7 @@ const User = require('../models/User.model');
 const Business = require('../models/Business.model');
 const Product = require('../models/Product.model');
 const Order = require('../models/Order.model');
-const isBusiness = require('../middleware/business');
+const isBusiness = require('../middleware/business 2');
 const fileUploader = require('../configs/cloudinary.config');
 
 
@@ -24,7 +24,7 @@ router.post('/add', fileUploader.single('image'), (req, res, next) => {
 });
 
 // RENDER BUSINESS HOME PAGE //
-router.get('/profile', (req, res, next) => {
+router.get('/profile', isBusiness, (req, res, next) => {
   const owner = req.session.currentUser._id;
   User.findById(owner)
     .then(dbUser => {

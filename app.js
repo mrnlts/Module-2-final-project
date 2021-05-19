@@ -6,14 +6,10 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const session = require('express-session');
-
-const bcrypt = require('bcrypt');
 const passport = require('passport');
-const LocalStrategy = require('passport-local').Strategy;
+
 const flash = require("connect-flash")
 const appSession = require('./configs/session');
-
-const User = require('./models/User.model');
 
 const app = express();
 
@@ -27,53 +23,6 @@ const orderRouter = require('./routes/order');
 // require database configuration
 require('./configs/db.config');
 
-// require('./configs/passport.config');
-
-
-// passport config
-passport.serializeUser((user, done) => {
-  console.log('OK')
-  done(null, user);
-});
-
-
-passport.deserializeUser((user, done) => {
-  done(null, user);
-});
-
-passport.deserializeUser((id, done) => {
-  User.findById(id)
-    .then(user => done(null, user))
-    .catch(err => done(err));
-});
- 
-
-passport.use
-(new LocalStrategy(
-  { passReqToCallback: true },
-  {
-    usernameField: 'email',
-    passwordField: 'password',
-  },
-
-  (  email, password, done) => {
-    User.findOne({  email })
-      .then(user => {
-        if (!user) {
-         return done (null, false);
-        } 
-        if (!bcrypt.compareSync(password, user.passwordHash)) {
-          return done (null, false )
-        } 
- 
-        return done(null, user)
-        
-      })
-      .catch(err => done(err));
-  },
-),
-);
-
 // Middleware setup
 app.use(logger('dev'));
 app.use(express.json());
@@ -82,6 +31,8 @@ app.use(cookieParser());
 app.use(session(appSession));
 app.use(flash());
 app.use(express.static(path.join(__dirname, 'public')));
+
+require('./configs/passport.config');
 
 app.use(passport.initialize());
 app.use(passport.session());
@@ -100,9 +51,6 @@ app.use('/orders', orderRouter);
 app.use((req, res, done) => {
   done(createError(404));
 });
-
-
-
 
 // error handler
 app.use((err, req, res) => {

@@ -15,45 +15,51 @@ router.get('/login', (req, res) => {
   res.render('auth/login');
 });
 
+router.post('/login', (req, res, next) => {
+  passport.authenticate('local', (error, user, info) => {
+    console.log("CURRENT ERROR", error);
+    console.log("CURRENT USER",user);
+    console.log("CURRENT INFO",info);
+    console.log("CURRENT body", req.body);
+    if (error) {
+      res.status(401).send(error);
+    } else if (!user) {
+      res.status(401).send(info);
+    } else {
+      next();
+    }
+    res.status(401).send(info);
+  })(req, res);
+},
+(req, res) => {
+  const {email, password} = req.body;
+  if (email === '' || password === '') {
+    req.flash('blank');
+    console.log("BLANK!");
+    res.redirect('/auth/login'); 
+    return;
+  }
+  User.findOne({ email })
+    .then(dbUser => {
+      if (dbUser) {
+        if (bcryptjs.compareSync(password, dbUser.passwordHash)) {
+          req.session.currentUser = dbUser;
+          res.redirect(`/user/profile`);
+          return;
+        } 
+          req.flash('wrongPassw');
+          res.redirect('/auth/login');
+      } else {
+        req.flash('unknown');
+        res.redirect('/auth/login');
+      }
+    })
+    .catch(error => console.log(error));
+});
+
 router.post('/logout', (req, res) => {
   req.session.destroy(() => res.redirect('/'));
 });
-
-router.post('/login', passport.authenticate('local', {
-    successRedirect: '/',
-    failureRedirect: '/auth/login',
-    passReqToCallback: true,
-  }),
-  (req, res) => {
-    console.log(req.body)
-    res.send("Holi")
-});
-
-// router.post('/login', (req, res, next) => {
-//   const { email, password } = req.body;
-//   if (email === '' || password === '') {
-//     req.flash('blank');
-//     return res.redirect('/auth/login'); 
-//   }
-
-//   User.findOne({ email })
-//     .then(dbUser => {
-//       if (dbUser) {
-//         if (bcryptjs.compareSync(password, dbUser.passwordHash)) {
-//           req.session.currentUser = dbUser;
-//           res.redirect(`/user/profile`);
-//         } else {
-//           req.flash('wrongPassw');
-//           res.redirect('/auth/login');
-//         }
-//       } else {
-//         req.flash('unknown');
-//         res.redirect('/auth/login');
-//       }
-//     })
-//     .catch(error => next(error));
-// });
-
 
 
 /* GET signup  */

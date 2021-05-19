@@ -1,8 +1,9 @@
 const mongoose = require('mongoose');
+require('dotenv').config();
 
 const mongoDbUrl = `${process.env.MONGODB_URI}${process.env.DB_NAME}`;
 
-mongoose
+const connection = mongoose
   .connect( mongoDbUrl, {
     useCreateIndex: true,
     useNewUrlParser: true,
@@ -14,3 +15,4 @@ mongoose
   })
   .catch(err => console.error('Error connecting to mongo', err));
  
+  module.exports = connection;
