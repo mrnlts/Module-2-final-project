@@ -1,19 +1,62 @@
-<h1>Edit Business</h1>
-<div id="edit">
-  <h2>Edit Business</h2>
-  <form action="/business/{{dbBusiness.id}}/edit" method="POST">
+<div class="update_page_container">
+   <nav class="update_page_nav">
+    <a href="/business/profile">Back</a>   <span> | </span>
+        <form action="/auth/logout" method="post">
+        <input type="submit" value="Log out" class="generic_btn"></input>
+    </form>
+  </nav>
+  <h1>Edit Business</h1>
+  <div class="update_page_form_container">
 
-    <label for="businessName">Business Name: </label>
+  <form class="update_page_form"action="/business/profile/edit" method="POST" enctype="multipart/form-data">
+   <i class="far fa-registered fa-1x"></i> <label for="businessName">Business Name: </label>
+   <br>
     <input type="text" id="businessName" name="businessName" value="{{dbBusiness.businessName}}">
-    <label for="businessType">Business Type: </label>
-    <input type="text" id="businessType" name="businessType" value="{{dbBusiness.businessType}}">
-    <label for="city">City: </label>
+    <br>
+  <i class="far fa-store-alt"></i> <label for="businessType">Business type</label>
+  <br>
+        <select name="businessType" id="businessType">
+            <option value="Pizza">Pizza</option>
+            <option value="Chinese">Chinese</option>
+            <option value="Sushi">Sushi</option>
+            <option value="Italian">Italian</option>
+            <option value="Japanese">Japanese</option>
+            <option value="Thai">Thai</option>
+            <option value="Vietnamese">Vietnamese</option>
+            <option value="Tapas">Tapas</option>
+            <option value="Mexican">Mexican</option>
+            <option value="Mediterranean">Mediterranean</option>
+            <option value="Gourmet">Gourmet</option>
+            <option value="French">French</option>
+            <option value="Hamburger">Hamburger</option>
+            <option value="Kebab">Kebab</option>
+            <option value="FastFood">FastFood</option>
+            <option value="Vegan">Vegan</option>
+            <option value="Vegetarian">Vegetarian</option>
+        </select>
+    <br>
+    <i class="fas fa-street-view fa-1x"></i> <label for="city">City: </label>
+    <br>
     <input type="text" id="city" name="city" value="{{dbBusiness.city}}">
-    <label for="email">Email</label>
-    <input type="email" id="email" name="email" value="{{dbBusiness.email}}" />
-    <label for="password">Password</label>
-    <input type="password" id="password" name="password" placeholder="**********">
-    <button type="submit">Save changes</button>
-  </form>
+    <br>
+      <div class="image_upload_form">
+          <i class="far fa-file-image fa-1x"></i>  <label for="image-input">Add image:</label>
+          <br>
+          <input type="file" name="image" id="image-input" class="form-control-file" />
+        </div>
+  </div>      
+      <br>
+      <br>
+  <div class="update_page_btns_container">
+      <button type="submit" class="update_page_save_btn">Save changes</button>
+    </form>
 
+    <form action="/business/delete" method="POST">
+      <input type="submit" value="Delete my business" class="update_page_delete_btn">
+    </form>
+  </div>
+  
+  {{#if errormessage}}
+   <h2> Complete all the fields, please </h2>
+  {{/if}}   
 </div>

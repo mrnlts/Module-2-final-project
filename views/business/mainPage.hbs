@@ -1,33 +1,34 @@
+<div class= "business_homepage_container">
 {{#if dbBusiness}}
-<div style="display: flex; align-items: baseline">
-    <a href="/">Back </a> <span> | </span>
-    <a href="/business/{{dbBusiness.id}}/edit"> Update business data </a> <span> | </span>
-    <a href="/business/{{dbBusiness.id}}/product"> Add new product </a> <span> | </span>
-    <form action="/auth/logout" method="post">
-        <input type="submit" value="Log out" style="width: 100%; background-color: transparent; border: none; color: #00B7FF; font-size: 1rem"></input>
-    </form>
-</div>
-
-<h1>Welcome, {{ dbBusiness.businessName }}!</h1>
-<p>This is your profile page my friend!</p>
-<button>
-    <a href="/business/{{dbBusiness.id}}">Reload the page</a>
-</button>
-
-{{#if currentOrders}}
-    <h2 style="text-align: center;">Current orders: </h2>
-    <div id="list">
-        {{#each currentOrders}}
-            <div id="business">
-                <h2>New order!</h2>
-                <p>Order ID: {{this._id}}</p>
-                <p>User: {{this.user.firstName}}</p>
-                <p>Product: {{this.product.description}}</p>
-            </div>
-        {{/each}}
+    <div class="business_homepage_nav">
+        <a href="/user/profile">Back</a><span> | </span>
+        <a href="/business/profile/edit"> Update business data </a> <span> | </span>
+        <form action="/auth/logout" method="post">
+            <input type="submit" value="Log out" class="generic_btn"></input>
+        </form>
     </div>
-{{/if}}
+  
+    <img class= "busines_homepage_image" src="{{dbBusiness.imageUrlBusiness}}" alt="{{title}}">
+  
 
-{{else}}
-<p>Still no logged in user, sorry!</p>
-{{/if}}
+    <div class="business_homepage_buttons_container">
+        <div class="business_homepage_buttons">
+        <form action="/business/products" method="get">
+            <input class="business_homepage_btn_Myproducts" type="submit" value="My products"></input>
+        </form>
+        </div>
+        <div class="business_homepage_buttons">
+        <form action="/business/orders" method="get">
+            <input class="business_homepage_btn" type="submit" value="My orders"></input>
+        </form>
+        </div>
+    
+    </div>
+
+    <div class="business_homepage_footer">
+        <h4>Welcome, {{ dbBusiness.businessName }}!</h4>
+    </div>
+    {{else}}
+     <p>Still no logged in user, sorry!</p>
+    {{/if}}
+</div>

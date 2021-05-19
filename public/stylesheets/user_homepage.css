@@ -1,0 +1,230 @@
+.user_homepage_container {
+  background-color: rgb(249, 233, 221);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.user_homepage_nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  position: fixed;
+  overflow: hidden;
+  padding-top: 0.7rem;
+  top: 0;
+  width: 100%;
+  height: 7vh;
+  background-color: rgb(12, 58, 19);
+  -webkit-box-shadow: 6px 7px 15px -2px #727272;
+  box-shadow: 6px 7px 15px -2px #727272;
+}
+
+.user_homepage_nav > a,
+.user_homepage_nav > span {
+  color: white;
+}
+
+.generic_btn {
+  color: white;
+  border: none;
+  background-color: transparent;
+}
+
+.user_homepage_greetings {
+  display: flex;
+  justify-content: space-between;
+}
+
+.user_homepage_greetings_helloUser {
+  font-size: 0.7rem;
+}
+
+.user_homepage_isBusiness {
+  color: rgb(12, 58, 19);
+  font-size: 0.4rem;
+}
+
+.user_homepage_isBusiness_button {
+  background-color: transparent;
+  border: none;
+}
+
+.user_homepage_isBusiness_button > a {
+  font-size: 0.7rem;
+}
+
+.user_homepage_title_offers {
+  margin-top: 14vh;
+  margin-bottom: 3vh;
+}
+
+.offers_card_container {
+  position: relative;
+  width: 100%;
+}
+
+.offers_card_container_scroll {
+  margin: 0 2vh;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  white-space: wrap;
+  height: 200px;
+}
+
+.offers_card_item {
+  width: 65%;
+  height: 90px;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.offers_card_item_btn {
+  width: 35%;
+  background: rgb(12, 58, 19);
+  border: 1px solid rgb(12, 58, 19);
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  padding: 8px 16px;
+  text-decoration: none;
+  text-align: center;
+}
+
+.offers_card_item_img {
+  width: 10vh;
+  height: 10vh;
+  float: left;
+  border-radius: 50%;
+}
+
+.user_homepage_title {
+  margin-bottom: 2vh;
+}
+
+.business_card_container {
+  height: 40%;
+  position: relative;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+
+.business_card_item {
+  background-color: transparent;
+  width: 50%;
+  height: 60%;
+  border: 1px solid rgba(128, 128, 128, 0.119);
+  -webkit-box-shadow: 6px 7px 15px -2px #727272;
+  box-shadow: 6px 7px 15px -2px #727272;
+  color: rgb(12, 58, 19);
+  border-radius: 5%;
+  cursor: pointer;
+  margin: auto;
+  margin: 0 20px;
+  background-color: white;
+  display: inline-block;
+}
+
+.business_card_item_img {
+  margin: none;
+  width: 100%;
+  height: 50%;
+  border-top-left-radius: 5%;
+  border-top-right-radius: 5%;
+}
+
+.user_homepage_footer {
+  position: fixed;
+  margin-top: 15px;
+  bottom: 0;
+  width: 100%;
+  height: 7vh;
+  background-color: rgb(12, 58, 19);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: white;
+  font-weight: bolder;
+}
+
+/* TABLET */
+@media only screen and (min-width: 600px) {
+  .generic_btn {
+    font-family: inherit;
+  }
+  .user_homepage_footer > form > input {
+    font-size: 16px;
+  }
+  .business_card_item {
+    height: 70%;
+  }
+  .business_card_item > div {
+    display: flex;
+    height: 45%;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  .user_homepage_title_offers {
+    margin-bottom: 0;
+  }
+  .offers_card_container {
+    padding-top: 0;
+    height: 30%;
+  }
+  .offers_card_item {
+    margin: 0;
+  }
+  .offers_card_container_scroll {
+    overflow-x: scroll;
+  }
+  .business_card_container {
+    overflow-x: scroll;
+  }
+}
+
+/* DESKTOP */
+@media only screen and (min-width: 768px) {
+  .user_homepage_footer > form > input,
+  .business_card_item > div > h3,
+  .business_card_item > div > h4,
+  .offers_card_item > h3,
+  .offers_card_item > h4 {
+    font-size: 1.3rem;
+  }
+  .user_homepage_title_offers {
+    margin-bottom: 0;
+  }
+  .offers_card_container {
+    height: 35vh;
+  }
+  .offers_card_item {
+    margin-bottom: 3rem;
+    width: 33%;
+  }
+  .offers_card_item_img {
+    width: 13vh;
+    height: 13vh;
+  }
+  .offers_card_item > h3 {
+    padding-top: 2rem;
+  }
+  .offers_card_item_btn {
+    font-size: 1.3rem;
+  }
+  .offers_card_container_scroll {
+    height: 90%;
+    margin-top: 5vh;
+  }
+  .business_card_container {
+    margin-top: 5vh;
+  }
+  .business_card_item {
+    width: 20%;
+    margin-left: 10vh;
+  }
+}

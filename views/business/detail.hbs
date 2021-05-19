@@ -1,0 +1,28 @@
+<div class="user_homepage_container">
+    <div class="user_homepage_nav">  
+        <a href="/user/profile"> Back </a>  <span> | </span>
+        <form action="/auth/logout" method="post">
+            <input class= "generic_btn" type="submit" value="Log out" ></input>
+        </form>
+    </div>
+
+    <div class="business_offers_titles">
+        <img src="{{dbBusiness.imageUrlBusiness}}" class="business_card_item_img" alt="{{title}}">
+        <h1>{{dbBusiness.businessName}}</h1>
+        <h2>Type: {{dbBusiness.businessType}} <span> | </span> City: {{dbBusiness.city}}</h2>
+    </div>
+
+    {{#each dbProducts}}   
+        <div class="business_offers_item">
+            <img src="{{this.imageUrlProduct}}" class="offers_card_item_img" alt="{{title}}">
+            <h3> {{this.description}}</h3>
+            <h4>Price: {{this.price}}</h4>
+            <form action="/orders" method= "POST" > 
+                <input style= "display: none" value="{{this.businessName}}" id="businessName" name="businessName">
+                <input style="display: none" value="{{this._id}}" id="order" name="order">
+                <button type= "submit" class="offers_card_item_btn">Order</button>
+            </form>
+        </div>
+    {{/each}}
+    
+</div>

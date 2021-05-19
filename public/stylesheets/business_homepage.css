@@ -1,0 +1,125 @@
+.busines_homepage_container {
+  width: 100vh;
+}
+.busines_homepage_image {
+  width: 100%;
+  height: 45vh;
+  -webkit-box-shadow: 6px 7px 15px -2px #727272;
+  box-shadow: 6px 7px 15px -2px #727272;
+}
+
+.business_homepage_nav {
+  position: fixed;
+  overflow: hidden;
+  top: 0;
+  width: 100%;
+  height: 7vh;
+  background-color: rgb(12, 58, 19);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: white;
+  -webkit-box-shadow: 6px 7px 15px -2px #727272;
+  box-shadow: 6px 7px 15px -2px #727272;
+}
+
+.business_homepage_nav > a {
+  color: white;
+}
+
+.business_homepage_buttons_container {
+  background-color: rgb(249, 233, 221);
+  margin-top: 2rem;
+  height: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+.business_homepage_buttons {
+  margin-top: 1rem;
+}
+
+.business_homepage_btn {
+  background-color: white;
+  font-family: 'Roboto Slab';
+  font-weight: bolder;
+  color: rgb(12, 58, 19);
+  border: none;
+  width: 50%;
+  border-radius: 3%;
+  cursor: pointer;
+  padding: 1rem;
+  -webkit-box-shadow: 6px 7px 15px -2px #727272;
+  box-shadow: 6px 7px 15px -2px #727272;
+}
+
+.business_homepage_btn_Myproducts {
+  background-color: rgb(12, 58, 19);
+  font-family: 'Roboto Slab';
+  color: white;
+  font-weight: bolder;
+  width: 50%;
+  border-radius: 3%;
+  cursor: pointer;
+  padding: 1rem;
+  -webkit-box-shadow: 6px 7px 15px -2px #727272;
+  box-shadow: 6px 7px 15px -2px #727272;
+}
+
+.business_homepage_footer {
+  position: fixed;
+  overflow: hidden;
+  bottom: 0;
+  width: 100%;
+  height: 7vh;
+  background-color: rgb(12, 58, 19);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: white;
+}
+
+.business_offers_titles > img {
+  margin-top: 20vh;
+}
+
+.business_offers_titles {
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.business_offers_item {
+  margin: 0 2rem 2rem 6rem;
+}
+
+/* TABLET */
+@media only screen and (min-width: 600px) {
+  /* Styles */
+}
+
+/* DESKTOP */
+@media only screen and (min-width: 768px) {
+  .business_homepage_nav > a,
+  .business_homepage_btn_Myproducts,
+  .business_homepage_btn,
+  .business_homepage_footer > h4,
+  .business_offers_item > h3 {
+    font-size: 1.3rem;
+  }
+  .business_offers_item > h3 {
+    padding-top: 2rem;
+  }
+  .business_offers_titles > h2 {
+    margin-bottom: 3rem;
+  }
+
+  .business_homepage_btn {
+    width: 25%;
+  }
+
+  .business_homepage_btn_Myproducts {
+    width: 25%;
+  }
+}

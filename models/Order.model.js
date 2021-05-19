@@ -3,6 +3,9 @@ const mongoose = require('mongoose');
 const {Schema, model} = mongoose;
 
 const orderSchema = new Schema({
+    business: {
+        type: Schema.Types.ObjectId, ref: 'Business'
+    },
     product: {
         type: Schema.Types.ObjectId, ref: 'Product'
     },

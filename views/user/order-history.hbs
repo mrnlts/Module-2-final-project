@@ -1,0 +1,25 @@
+<div class="orders_page_container">
+    <nav class="orders_page_nav">
+        <a href="/user/profile">Back</a> <span> | </span>
+        <form action="/auth/logout" method="post">
+            <input type="submit" value="Log out" class="generic_btn"></input>
+        </form>
+    </nav>
+
+    <h1 class="orders_page_container_title">Order history</h1>
+    {{#if dbOrders}}
+    <div class="orders_page_scroll">
+        {{#each dbOrders}}
+                <div class="user_orders_page_item">
+                    <img class="user_content_card_image" src="{{this.product.businessName.imageUrlBusiness}}" class="offers_card_item_img" alt="{{title}}">
+                    <h4 class="content_card_title">{{this.product.description}}</h4>
+                    <p class="content_card_id">Price: {{this.product.price}}</p>
+                    <p class="content_card_user">Business: {{this.product.businessName.businessName}}</p>
+                    {{!-- <p class="content_card_product">Order ID: {{this._id}}</p> --}}
+                </div>
+        {{/each}}
+    </div>    
+    {{else}}
+        <h2>There's no orders in your history!</h2>
+    {{/if}}
+</div>

@@ -1,0 +1,45 @@
+.add_product_container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.add_product_container > h1 {
+  margin-top: 16vh;
+  margin-bottom: 8vh;
+  font-size: 2rem;
+}
+
+.add_product_form_container {
+  display: flex;
+  flex-direction: column;
+  height: 47vh;
+  padding: 1.5rem;
+  background-color: rgba(53, 51, 51, 0.496);
+  margin: 3vh;
+}
+
+.add_product_form > input {
+  margin: 15px;
+}
+
+.add_product_form > label {
+  font-weight: bolder;
+}
+
+.add_product_form_btn {
+  background-color: brown;
+  border: none;
+  font-weight: bolder;
+  color: white;
+  padding: 1rem;
+  border-radius: 5%;
+  font: 14px;
+  font-family: 'Roboto Slab';
+}
+
+/* DESKTOP */
+@media only screen and (min-width: 768px) {
+  /* Styles */
+}
