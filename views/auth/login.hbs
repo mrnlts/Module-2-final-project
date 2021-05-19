@@ -12,9 +12,25 @@
       <label for="password">Password</label>
       <input type="password" id="password" name="password" placeholder="Your password">
       <br>
-      {{#if blank}}
-        <p>{{this.error}}</p>
-      {{/if}}
+{{!-- {{#if sessionFlash.message}}
+  <div id="flash-messages" class="container">
+      {{#contains sessionFlash.type "blank"}}
+      <div class="alert alert-info">
+            {{{sessionFlash.message}}}
+      </div>
+      {{/contains}}
+      {{#contains sessionFlash.type "wrongPassw"}}
+      <div class="alert alert-success">
+              {{{sessionFlash.message}}}
+      </div>
+      {{/contains}}
+      {{#contains sessionFlash.type "unknown"}}
+      <div class="alert alert-warning">
+            {{{sessionFlash.message}}}
+      </div>
+       {{/contains}}
+    </div>
+{{/if}} --}}
       <button class="generic_btn" type="submit">Login</button>
     </form>
   </div>

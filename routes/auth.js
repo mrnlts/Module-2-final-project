@@ -35,9 +35,9 @@ router.post('/login', (req, res, next) => {
           res.redirect('/auth/login');
         }
       } else {
-        req.flash('unknown');
-        res.redirect('/auth/login');
-      }
+      req.flash('unknown');
+      res.redirect('/auth/login');
+    }
     })
     .catch(error => next(error));
 });
