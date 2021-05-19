@@ -28,6 +28,7 @@ const orderRouter = require('./routes/order');
 
 // require database configuration
 require('./configs/db.config');
+
 // require('./configs/passport.config');
 
 
@@ -83,13 +84,13 @@ app.use(cookieParser());
 app.use(session(appSession));
 app.use(flash());
 app.use(express.static(path.join(__dirname, 'public')));
+
 // app.use(passport.initialize());
 // app.use(passport.session());
 
 // Express view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
-
 
 
 app.use('/', indexRouter);

@@ -2,8 +2,8 @@ const express = require('express');
 
 const router = express.Router();
 const bcryptjs = require('bcryptjs');
-const passport = require('passport');
-const LocalStrategy = require('passport-local').Strategy;
+// const passport = require('passport');
+// const LocalStrategy = require('passport-local').Strategy;
 const User = require('../models/User.model');
 
 router.get('/login', (req, res) => res.render('auth/login', { message: req.flash('success') }));
@@ -13,43 +13,43 @@ router.post('/logout', (req, res) => {
 });
 
 
-// router.post('/login', (req, res) => {
-//   console.log('SESSION =====> ', req.session);
-//   passport.authenticate('local', {
-//     successRedirect: '/',
-//     failureRedirect: '/auth/login',
-//     passReqToCallback: true,
-//   })
-// }
-// );
-
-
-router.post('/login', (req, res, next) => {
-  
+router.post('/login', (req, res) => {
   console.log('SESSION =====> ', req.session);
-  console.log("req.user = ", req.user)
-  const { email, password } = req.body;
-  passport.authenticate('local', (dbUser) => {
-    console.log("dbUser = ", dbUser)
-    if (email === '' || password === '') {
-       res.render('auth/login' , {errorMessage: "You have to fill all the fields"}); 
-    } else if (!dbUser) {
-       return res.render('auth/login', { errorMessage: 'Wrong password or username' });
-    } else {
-       //  req.session.currentUser = dbUser
-    // const link = `/user/${dbUser.id}`;
+  passport.authenticate('local', {
+    successRedirect: '/',
+    failureRedirect: '/auth/login',
+    passReqToCallback: true,
+  })
+}
+);
 
-    req.login(dbUser, err => {
-      if (err) { 
-        res.render('auth/login', { errorMessage: 'Incorrect password.' });
-        return next(err);
-      }
+
+// router.post('/login', (req, res, next) => {
   
-      res.redirect("/");
-    });
-    }
+//   console.log('SESSION =====> ', req.session);
+//   console.log("req.user = ", req.user)
+//   const { email, password } = req.body;
+//   passport.authenticate('local', (dbUser) => {
+//     console.log("dbUser = ", dbUser)
+//     if (email === '' || password === '') {
+//        res.render('auth/login' , {errorMessage: "You have to fill all the fields"}); 
+//     } else if (!dbUser) {
+//        return res.render('auth/login', { errorMessage: 'Wrong password or username' });
+//     } else {
+//        //  req.session.currentUser = dbUser
+//     // const link = `/user/${dbUser.id}`;
+
+//     req.login(dbUser, err => {
+//       if (err) { 
+//         res.render('auth/login', { errorMessage: 'Incorrect password.' });
+//         return next(err);
+//       }
+  
+//       res.redirect("/");
+//     });
+//     }
    
-  })(req, res, next);
-});
+//   })(req, res, next);
+// });
 
 module.exports = router;
