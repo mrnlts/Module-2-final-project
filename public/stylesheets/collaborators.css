@@ -66,7 +66,8 @@
 /* TABLET */
 @media only screen and (min-width: 600px) {
   .collaborators_page_item {
-    height: 350px;
+    width: 37vh;
+    height: 25vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -79,21 +80,30 @@
   }
 }
 
-
 /* DESKTOP */
 @media only screen and (min-width: 768px) {
+  .collaborators_page_content {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 0 14vh;
+  }
+
   .collaborators_page_nav a {
     font-size: 1.3rem;
   }
   .collaborators_page_item {
-    height: 50vh;
+    width: 37vh;
+    height: 25vh;
+    margin: 6vh;
     flex-direction: row;
   }
   .collaborators_page_item > img {
     height: 100%;
     border-bottom-left-radius: 5%;
     border-top-right-radius: 0%;
-    width: 70%;
+    width: 60%;
   }
   .collaborators_page_item > div {
     margin: auto;

@@ -209,6 +209,8 @@
   .offers_card_item_img {
     width: 13vh;
     height: 13vh;
+    margin-left: 4vh;
+    margin-right: 0;
   }
   .offers_card_item > h3 {
     padding-top: 2rem;

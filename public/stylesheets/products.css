@@ -80,17 +80,27 @@
 }
 
 @media only screen and (min-width: 600px) {
-  .product_list_card {
-    height: 400px;
+  .product_page_container {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
+    flex-direction: row;
+    flex-wrap: wrap;
   }
-  .product_list_card > div {
-    height: 100%;
+  .product_container_scroll {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: wrap;
     justify-content: space-around;
+    width: 100%;
+    overflow-x: visible;
+    overflow-y: visible;
+    margin-bottom: 20vh;
+  }
+
+  .product_list_card {
+    width: 37vh;
+    height: 25vh;
+    margin: 4vh;
+    flex-direction: row;
   }
 }
 
@@ -100,5 +110,27 @@
   .add_product_form_btn,
   .product_list_card h4 {
     font-size: 1.3rem;
+  }
+  .product_page_container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .product_container_scroll {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 100%;
+    overflow-x: visible;
+    overflow-y: visible;
+    margin-bottom: 20vh;
+  }
+
+  .product_list_card {
+    width: 37vh;
+    height: 25vh;
+    margin: 4vh;
+    flex-direction: row;
   }
 }

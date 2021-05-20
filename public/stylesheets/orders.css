@@ -1,6 +1,5 @@
 .orders_page_container {
   background-color: rgb(249, 233, 221);
-  height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -28,12 +27,12 @@
 }
 
 .bussines_orders_page_container_title {
-  margin-top: 70rem;
+  margin-top: 10vh;
   margin-bottom: 2vh;
 }
 .orders_page_container_title {
-  margin-top: 10rem;
-  margin-bottom: 2vh;
+  margin-top: 13vh;
+  margin-bottom: 5vh;
   font-size: 1.5rem;
 }
 
@@ -97,15 +96,10 @@
 
 /* TABLET */
 @media only screen and (min-width: 600px) {
-  /* Styles */
-
   .orders_page_container_title {
-    margin-top: 15vh;
-    margin-bottom: 2vh;
     font-size: 3rem;
   }
   .bussines_orders_page_container_title {
-    margin-top: 40rem;
     margin-bottom: 2vh;
   }
 
@@ -136,11 +130,6 @@
     font-size: 1.3rem;
     padding: 1rem;
   }
-
-  .orders_page_container > h1 {
-    margin-top: 30vh;
-  }
-
   .user_content_card_image {
     width: 15vh;
     height: 15vh;

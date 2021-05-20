@@ -6,14 +6,15 @@
         </form>
     </div>
 
-    <div class="business_offers_titles">
+    <div>
         <img src="{{dbBusiness.imageUrlBusiness}}" class="business_card_item_img" alt="{{title}}">
         <h1>{{dbBusiness.businessName}}</h1>
-        <h2>Type: {{dbBusiness.businessType}} <span> | </span> City: {{dbBusiness.city}}</h2>
-    </div>
-
+        <h2>Type: {{dbBusiness.businessType}}</h2>
+        <h2>City: {{dbBusiness.city}}</h2>
+    
+    <div class= "business_details_offer_container">
     {{#each dbProducts}}   
-        <div class="business_offers_item">
+        <div class="offers_card_item">
             <img src="{{this.imageUrlProduct}}" class="offers_card_item_img" alt="{{title}}">
             <h3> {{this.description}}</h3>
             <h4>Price: {{this.price}}</h4>
@@ -22,7 +23,7 @@
                 <input style="display: none" value="{{this._id}}" id="order" name="order">
                 <button type= "submit" class="offers_card_item_btn">Order</button>
             </form>
-        </div>
+        </div>    
     {{/each}}
-    
+    </div>
 </div>
