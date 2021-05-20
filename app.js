@@ -7,7 +7,9 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const session = require('express-session');
 const flash = require('connect-flash');
+const hbs = require('hbs');
 const appSession = require('./configs/session');
+
 
 
 const app = express();
@@ -39,6 +41,16 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.set('views', path.join(__dirname, 'views'));
 // hbs.registerPartials(__dirname, '/views/partials');
 app.set('view engine', 'hbs');
+
+
+// Register helper
+hbs.registerHelper('orderDisplay', (status) => {
+  const div = '<div class="business_orders_page_item">  <h4 class="content_card_title">New order!</h4>   <p class="content_card_id">Order ID: {{this._id}}</p>   <p class="content_card_user">User: {{this.user.firstName}}</p>   <p class="content_card_product">Product: {{this.product.description}}</p>   <p class="content_card_product">Status: {{this.status}}</p>   <form action="/orders/{{this._id}}/delivered" method="POST">       <input type="submit" value="Mark as delivered">   </form> </div>';
+  if (status === 'pending') {
+    return div;
+  }
+});
+
 
 app.use('/', indexRouter);
 app.use('/auth', authRouter);

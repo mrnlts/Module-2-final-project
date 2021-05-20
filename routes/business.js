@@ -48,11 +48,13 @@ router.get('/products', (req, res, next) => {
 
 // RENDER BUSINESS ORDERS PAGE //
 router.get('/orders', (req, res) => {
-  Business.findOne({ owner: req.session.currentUser._id }).then(dbBusiness => {
+  Business.findOne({ owner: req.session.currentUser._id })
+  .then(dbBusiness => {
+    console.log(dbBusiness);
     Order.find({ business: dbBusiness.id })
       .populate('user product')
       .then(dbOrders => {
-        res.render('business/orders', { dbOrders });
+        res.render('business/orders', { dbOrders, deliverMessage: req.flash('deliver') });
       });
   });
 });
