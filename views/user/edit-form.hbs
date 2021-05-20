@@ -31,13 +31,15 @@
     <label for="input-email">Email</label>
      <br>
     <input type="email" id="input-email" name="email" value="{{dbUser.email}}" />
+    </div>
     <br>
     <br>
- 
+ <div class="update_page_btns_container">
     <button type="submit" class="update_page_save_btn">Save changes</button>
   </form>
-</div> 
+
   <form action="/user/delete" method="POST">
     <input type="submit" value="Delete my account" class="update_page_delete_btn">
   </form>
 </div>
+</div> 
