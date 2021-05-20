@@ -35,6 +35,10 @@
   margin-bottom: 5vh;
   font-size: 1.5rem;
 }
+.order_success_message {
+  padding: 1rem;
+  background-color: rgba(0, 0, 0, 0.311);
+}
 
 .user_orders_page_item {
   width: 60%;

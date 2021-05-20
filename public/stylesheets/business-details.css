@@ -1,3 +1,5 @@
 .business_details_offer_container {
   margin: 10vh;
+  display: flex;
+  flex-direction: column;
 }
