@@ -114,10 +114,11 @@
   }
 
   .user_content_card_image {
-    width: 10vh;
-    height: 10vh;
+    width: 20vh;
+    height: 100%;
     float: left;
-    margin-right: 2vh;
+    border-radius: 3%;
+    margin: auto;
   }
 }
 
@@ -155,7 +156,7 @@
 
   .user_content_card_image {
     width: 20vh;
-    height: 20vh;
+    height: 100%;
     float: left;
     border-radius: 3%;
     margin: auto;

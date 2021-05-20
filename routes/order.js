@@ -6,21 +6,22 @@ const Order = require('../models/Order.model');
 const router = express.Router();
 
 router.get('/', isUserLoggedIn, (req, res, next) => {
-  Order.find({user: req.session.currentUser._id})
+  Order.find({ user: req.session.currentUser._id })
     .populate('product')
     .populate({
       path: 'product',
-      populate: [
-        { path: 'businessName' }
-      ]
+      populate: [{ path: 'businessName' }],
     })
-    .then((dbOrders) => res.render('user/order-history', {dbOrders}))
+    .then(dbOrders => res.render('user/order-history', { dbOrders, successMessage: req.flash('success') }))
     .catch(err => next(err));
-})
+});
 
 router.post('/', isUserLoggedIn, (req, res, next) => {
   Order.create({ business: req.body.businessName, product: req.body.order, user: req.session.currentUser._id })
-    .then(() => res.redirect('/orders')) // Make flash alert to alert from order confirmed
+    .then(() => {
+      req.flash('success', 'Your order is confirmed');
+      res.redirect('/orders');
+    })
     .catch(err => next(err));
 });
 

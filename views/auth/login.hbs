@@ -14,10 +14,8 @@
       <br>
 {{#if errorMessage}}
   {{#each errorMessage}}
-  <div id="flash-messages" class="container">
-      <div class="alert alert-info">
-            {{this}}
-      </div>
+  <div class="flash-messages">
+      {{this}}
     </div>
   {{/each}}
 {{/if}}
