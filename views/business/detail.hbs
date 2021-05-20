@@ -2,7 +2,7 @@
     <div class="user_homepage_nav">  
         <a href="/user/profile"> Back </a>  <span> | </span>
         <form action="/auth/logout" method="post">
-            <input class= "logout_btn" type="submit" value="Log out" ></input>
+            <input class= "generic_btn" type="submit" value="Log out" ></input>
         </form>
     </div>
 
@@ -12,7 +12,7 @@
         <h2>Type: {{dbBusiness.businessType}}</h2>
         <h2>City: {{dbBusiness.city}}</h2>
     
-
+    <div class= "business_details_offer_container">
     {{#each dbProducts}}   
         <div class="offers_card_item">
             <img src="{{this.imageUrlProduct}}" class="offers_card_item_img" alt="{{title}}">
@@ -25,5 +25,5 @@
             </form>
         </div>    
     {{/each}}
-    
+    </div>
 </div>

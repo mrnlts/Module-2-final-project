@@ -27,18 +27,10 @@
   color: white;
 }
 
-.green_btn {
-  color: white;
-  border: none;
-  background-color: transparent;
-  font-family: 'Roboto Slab';
-  font-size: 14px;
-}
-
 .business_homepage_buttons_container {
   background-color: rgb(249, 233, 221);
-  margin-top: 5rem;
-  height: 30%;
+  margin-top: 2rem;
+  height: 40vh;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
@@ -85,4 +77,49 @@
   justify-content: space-around;
   align-items: center;
   color: white;
+}
+
+.business_offers_titles > img {
+  margin-top: 20vh;
+}
+
+.business_offers_titles {
+  height: 70vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.business_offers_item {
+  margin: 0 2rem 2rem 6rem;
+}
+
+/* TABLET */
+@media only screen and (min-width: 600px) {
+  /* Styles */
+}
+
+/* DESKTOP */
+@media only screen and (min-width: 768px) {
+  .business_homepage_nav > a,
+  .business_homepage_btn_Myproducts,
+  .business_homepage_btn,
+  .business_homepage_footer > h4,
+  .business_offers_item > h3 {
+    font-size: 1.3rem;
+  }
+  .business_offers_item > h3 {
+    padding-top: 2rem;
+  }
+  .business_offers_titles > h2 {
+    margin-bottom: 3rem;
+  }
+
+  .business_homepage_btn {
+    width: 25%;
+  }
+
+  .business_homepage_btn_Myproducts {
+    width: 25%;
+  }
 }

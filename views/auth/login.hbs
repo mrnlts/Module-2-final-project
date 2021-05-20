@@ -7,12 +7,31 @@
     <h2>Log into your account</h2>
     <form class="login_signup_form" action="/auth/login" method="POST">
       <label for="email">Email</label>
-      <input type="email" id="email" name="email">
+      <input type="email" id="email" name="email" placeholder="Your email">
       <br>
       <label for="password">Password</label>
-      <input type="password" id="password" name="password">
+      <input type="password" id="password" name="password" placeholder="Your password">
       <br>
-      <button type="submit">Login</button>
+{{!-- {{#if sessionFlash.message}}
+  <div id="flash-messages" class="container">
+      {{#contains sessionFlash.type "blank"}}
+      <div class="alert alert-info">
+            {{{sessionFlash.message}}}
+      </div>
+      {{/contains}}
+      {{#contains sessionFlash.type "wrongPassw"}}
+      <div class="alert alert-success">
+              {{{sessionFlash.message}}}
+      </div>
+      {{/contains}}
+      {{#contains sessionFlash.type "unknown"}}
+      <div class="alert alert-warning">
+            {{{sessionFlash.message}}}
+      </div>
+       {{/contains}}
+    </div>
+{{/if}} --}}
+      <button class="login_signup_btn" type="submit">Login</button>
     </form>
   </div>
 </div>

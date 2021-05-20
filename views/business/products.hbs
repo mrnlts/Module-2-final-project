@@ -1,8 +1,8 @@
 <div class="product_page_container">
     <nav class="user_homepage_nav">
-        <a href="/business/profile">Back</a>
+        <a href="/business/profile">Back</a> <span> | </span>
         <form action="/auth/logout" method="post">
-            <input type="submit" value="Log out" class="green_btn"></input>
+            <input type="submit" value="Log out" class="generic_btn"></input>
         </form>
     </nav>
     
@@ -14,8 +14,10 @@
             {{#each dbProducts}}
                 <div class= "product_list_card">
                     <img src="{{this.imageUrlProduct}}" class="tbd" alt="{{title}}">
-                    <h4>{{this.description}}</h4>
-                    <h4>Price: {{this.price}}</h4>
+                    <div>
+                        <h4>{{this.description}}</h4>
+                        <h4>Price: {{this.price}}</h4>
+                    </div>
                 </div>
             {{/each}}
         {{else}}
@@ -25,6 +27,6 @@
     </div> 
 
         <form  action="/business/add-product">
-             <input type="submit" value="Add new product" class="product_page_btn">
+             <input class="add_product_form_btn" type="submit" value="Add new product" class="product_page_btn">
         </form>
 </div>

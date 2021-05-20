@@ -18,7 +18,8 @@
   color: white;
 }
 
-.product_page_nav > a {
+.product_page_nav > a,
+.product_page_nav > span {
   color: white;
 }
 
@@ -39,12 +40,12 @@
   flex-direction: column;
   flex-wrap: wrap;
   white-space: wrap;
-  height: 420px;
+  height: 360px;
 }
 
 .product_list_card {
   width: 50%;
-  height: 150px;
+  height: 140px;
   border: 1px solid rgba(128, 128, 128, 0.119);
   -webkit-box-shadow: 6px 7px 15px -2px #727272;
   box-shadow: 6px 7px 15px -2px #727272;
@@ -68,20 +69,68 @@
   border-top-right-radius: 5%;
 }
 
-.green_btn {
-  color: white;
-  border: none;
-  background-color: transparent;
-  font-size: 14px;
-  font-family: 'Roboto Slab';
-}
-
 .product_page_btn {
-  background-color: brown;
-  border: 1px solid brown;
+  background-color: rgb(12, 58, 19);
+  border: 1px solid rgb(12, 58, 19);
   color: white;
   font-weight: bolder;
   padding: 1rem;
   border-radius: 5%;
   cursor: pointer;
+}
+
+@media only screen and (min-width: 600px) {
+  .product_page_container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .product_container_scroll {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 100%;
+    overflow-x: visible;
+    overflow-y: visible;
+    margin-bottom: 20vh;
+  }
+
+  .product_list_card {
+    width: 37vh;
+    height: 25vh;
+    margin: 4vh;
+    flex-direction: row;
+  }
+}
+
+/* DESKTOP */
+@media only screen and (min-width: 768px) {
+  .user_homepage_nav > a,
+  .add_product_form_btn,
+  .product_list_card h4 {
+    font-size: 1.3rem;
+  }
+  .product_page_container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .product_container_scroll {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    width: 100%;
+    overflow-x: visible;
+    overflow-y: visible;
+    margin-bottom: 20vh;
+  }
+
+  .product_list_card {
+    width: 37vh;
+    height: 25vh;
+    margin: 4vh;
+    flex-direction: row;
+  }
 }

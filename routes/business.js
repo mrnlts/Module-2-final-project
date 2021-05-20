@@ -66,13 +66,17 @@ router.get('/profile/edit', (req, res, next) => {
 
 // UPDATE DB BUSINESS DATA //
 router.post('/profile/edit', fileUploader.single('image'), (req, res, next) => {
-  const { businessName, businessType, city, imageUrlBusiness } = req.body;
+  const { businessName, businessType, city } = req.body;
+  if (businessName && businessType && city && req.file) {
   Business.findOneAndUpdate({ owner: req.session.currentUser._id }, { businessName, businessType, city, imageUrlBusiness: req.file.path}, { new: true })
     .then(dbBusiness => {
       console.log('BUSINESS: ', dbBusiness);
       res.redirect('/business/profile');
     })
     .catch(error => next(error));
+  } else {
+    res.render('business/edit-form', {  errormessage: true })
+  }     
 });
 
 

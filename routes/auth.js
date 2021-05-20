@@ -6,7 +6,12 @@ const User = require('../models/User.model');
 
 const saltRounds = 10;
 
-router.get('/login', (req, res) => res.render('auth/login', { message: req.flash('success') }));
+router.get('/login', (req, res) => {
+  req.flash('blank', 'You have to fill all the fields');
+  req.flash('wrongPassw', 'Incorrect password');
+  req.flash('unknown', 'Wrong password or username');
+  res.render('auth/login');
+});
 
 router.post('/logout', (req, res, next) => {
   req.session.destroy(() => res.redirect('/'));
@@ -15,7 +20,8 @@ router.post('/logout', (req, res, next) => {
 router.post('/login', (req, res, next) => {
   const { email, password } = req.body;
   if (email === '' || password === '') {
-    return res.render('auth/login'); // Flash error
+    req.flash('blank');
+    return res.redirect('/auth/login'); 
   }
 
   User.findOne({ email })
@@ -25,9 +31,13 @@ router.post('/login', (req, res, next) => {
           req.session.currentUser = dbUser;
           res.redirect(`/user/profile`);
         } else {
-          res.render('auth/login', { errorMessage: 'Incorrect password.' });
+          req.flash('wrongPassw');
+          res.redirect('/auth/login');
         }
-      }
+      } else {
+      req.flash('unknown');
+      res.redirect('/auth/login');
+    }
     })
     .catch(error => next(error));
 });
