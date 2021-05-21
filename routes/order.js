@@ -16,19 +16,6 @@ router.get('/', isUserLoggedIn, (req, res, next) => {
     .catch(err => next(err));
 });
 
-router.post('/:id/delivered', (req, res, next) => {
-  const {id} = req.params;
-  Order.findOneAndUpdate(id, {status: 'delivered'})
-    .then(() => {
-      req.flash('deliver', 'Your order was delivered');
-      Order.findByIdAndDelete(id)
-      .then(() =>{
-        res.redirect('/business/orders');
-      })      
-    }) 
-    .catch(err => next(err))
-})
-
 router.post('/', isUserLoggedIn, (req, res, next) => {
   Order.create({ business: req.body.businessName, product: req.body.order, user: req.session.currentUser._id, status: 'pending' })
     .then(() => {
@@ -37,5 +24,17 @@ router.post('/', isUserLoggedIn, (req, res, next) => {
     })
     .catch(err => next(err));
 });
+
+
+router.post('/:id/delivered', (req, res, next) => {
+  const {id} = req.params;
+  Order.findByIdAndUpdate(id, {status: 'delivered'})
+    .then(dbOrders => {
+      req.flash('deliver', 'Your order was delivered');
+      res.redirect('/business/orders');
+    }) 
+    .catch(err => next(err))
+})
+
 
 module.exports = router;

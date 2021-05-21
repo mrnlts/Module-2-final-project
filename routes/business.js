@@ -51,9 +51,10 @@ router.get('/orders', (req, res) => {
   Business.findOne({ owner: req.session.currentUser._id })
   .then(dbBusiness => {
     console.log(dbBusiness);
-    Order.find({ business: dbBusiness.id })
+    Order.find({ business: dbBusiness.id, status: "pending" })
       .populate('user product')
       .then(dbOrders => {
+        console.log("DBORDER = ", dbOrders)
         res.render('business/orders', { dbOrders, deliverMessage: req.flash('deliver') });
       });
   });

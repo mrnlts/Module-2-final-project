@@ -1,0 +1,10 @@
+.flash_message_login {
+  margin-top: 3vh;
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+
+.order_success_message {
+  padding: 1rem;
+  background-color: rgba(0, 0, 0, 0.311);
+}
