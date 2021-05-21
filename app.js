@@ -44,12 +44,11 @@ app.set('view engine', 'hbs');
 
 
 // Register helper
-hbs.registerHelper('orderDisplay', (status) => {
-  const div = '<div class="business_orders_page_item">  <h4 class="content_card_title">New order!</h4>   <p class="content_card_id">Order ID: {{this._id}}</p>   <p class="content_card_user">User: {{this.user.firstName}}</p>   <p class="content_card_product">Product: {{this.product.description}}</p>   <p class="content_card_product">Status: {{this.status}}</p>   <form action="/orders/{{this._id}}/delivered" method="POST">       <input type="submit" value="Mark as delivered">   </form> </div>';
-  if (status === 'pending') {
-    return div;
-  }
-});
+// hbs.registerHelper('orderDisplay', (status) => {
+//    if (status === 'pending') {
+//      return true;
+//   }
+// });
 
 
 app.use('/', indexRouter);

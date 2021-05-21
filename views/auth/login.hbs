@@ -14,9 +14,11 @@
       <br>
 {{#if errorMessage}}
   {{#each errorMessage}}
-  <div class="flash-messages">
+  <div class="flash_message_container">
+    <div class="flash_message">
       {{this}}
     </div>
+  </div>
   {{/each}}
 {{/if}}
       <button class="login_signup_btn" type="submit">Login</button>

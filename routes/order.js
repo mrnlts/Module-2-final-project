@@ -21,7 +21,10 @@ router.post('/:id/delivered', (req, res, next) => {
   Order.findOneAndUpdate(id, {status: 'delivered'})
     .then(() => {
       req.flash('deliver', 'Your order was delivered');
-      res.redirect('/business/orders');
+      Order.findByIdAndDelete(id)
+      .then(() =>{
+        res.redirect('/business/orders');
+      })      
     }) 
     .catch(err => next(err))
 })

@@ -16,6 +16,7 @@
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "dotenv": "^8.6.0",
+    "ember-truth-helpers": "^3.0.0",
     "epress": "*",
     "express": "^4.17.1",
     "express-flash-message": "^2.1.0",
