@@ -41,11 +41,11 @@ app.set('view engine', 'hbs');
 
 // Register helper
 hbs.registerPartials(path.join(__dirname, '/views/partials'));
-hbs.registerHelper('orderDisplay', (status) => {
-   if (status === 'pending') {
-    return true;
-  }
-});
+// hbs.registerHelper('orderDisplay', (status) => {
+//    if (status === 'pending') {
+//     return true;
+//   }
+// });
 
 
 app.use('/', indexRouter);

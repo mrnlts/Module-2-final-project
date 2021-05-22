@@ -1,5 +1,11 @@
 .flash_message_login {
   margin-top: 3vh;
+  margin: 2rem 35%;
+  background-color: rgba(165, 42, 42, 0.729);
+  color: white;
+}
+
+.flash_message_login > h2 {
   font-size: 1.5rem;
   font-weight: 800;
 }
