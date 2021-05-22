@@ -17,11 +17,15 @@
     </form>
     
     {{#if errorMessage}} 
-     <div class= "flash_message_login">   
-       {{#each errorMessage}} 
-         <h2> {{this}} </h2>          
-     {{/each}}   
-       </div>   
+       
+        {{#each errorMessage}} 
+          {{#if this}}
+            <div class= "flash_message_login">  
+              <h2>{{this}}</h2>
+            </div>  
+          {{/if}} 
+        {{/each}}   
+      
     {{/if}}    
   </div>
 </div>
