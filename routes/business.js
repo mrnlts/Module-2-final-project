@@ -102,14 +102,19 @@ router.post('/add-product', fileUploader.single('image'), (req, res, next) => {
 });
 
 // RENDER BUSINESS DETAILS // 
-router.get('/:id/detail', (req, res, next) => {
+router.get('/:id/detail', async (req, res, next) => {
     const { id } = req.params;
-    Business.findById(id)
-        .then((dbBusiness) => {
-            Product.find({ businessName: dbBusiness.id })
-                .then(dbProducts => res.render('business/detail', {dbBusiness, dbProducts}))
-        })
-        .catch(err => next(err))
+    try {
+      const dbBusiness = await Business.findById(id);
+      if (dbBusiness) {
+        const dbProducts = await Product.find({ businessName: dbBusiness.id });
+        res.render('business/detail', {dbBusiness, dbProducts})
+      } else {
+        res.render('error404');
+      }
+    } catch  (e){
+      next(e);
+    }
 })
 
 // DELETE BUSINESS //
