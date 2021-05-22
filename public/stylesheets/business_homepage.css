@@ -25,6 +25,7 @@
 
 .business_homepage_nav > a {
   color: white;
+  font-size: 1.3rem;
 }
 
 .business_homepage_buttons_container {
@@ -94,6 +95,14 @@
   margin: 0 2rem 2rem 6rem;
 }
 
+.business_homepage_nav > a,
+  .business_homepage_btn_Myproducts,
+  .business_homepage_btn,
+  .business_homepage_footer > h4,
+  .business_offers_item > h3 {
+    font-size: 1.3rem;
+  }
+
 /* TABLET */
 @media only screen and (min-width: 600px) {
   /* Styles */
@@ -101,20 +110,13 @@
 
 /* DESKTOP */
 @media only screen and (min-width: 768px) {
-  .business_homepage_nav > a,
-  .business_homepage_btn_Myproducts,
-  .business_homepage_btn,
-  .business_homepage_footer > h4,
-  .business_offers_item > h3 {
-    font-size: 1.3rem;
-  }
+  
   .business_offers_item > h3 {
     padding-top: 2rem;
   }
   .business_offers_titles > h2 {
     margin-bottom: 3rem;
   }
-
   .business_homepage_btn {
     width: 25%;
   }

@@ -12,14 +12,21 @@
       <label for="password">Password</label>
       <input type="password" id="password" name="password" placeholder="Your password">
       <br>
-{{#if errorMessage}}
-  {{#each errorMessage}}
-  <div class="flash-messages">
-      {{this}}
-    </div>
-  {{/each}}
-{{/if}}
+
       <button class="login_signup_btn" type="submit">Login</button>
     </form>
+    
+    {{#if errorMessage}} 
+       
+        {{#each errorMessage}} 
+          {{#if this}}
+            <div class= "flash_message_login">  
+              <h2>{{this}}</h2>
+            </div>  
+          {{/if}} 
+        {{/each}}   
+      
+    {{/if}}    
   </div>
 </div>
+

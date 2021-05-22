@@ -24,6 +24,7 @@
 .user_homepage_nav > a,
 .user_homepage_nav > span {
   color: white;
+  font-size: 1.3rem;
 }
 
 .generic_btn {
@@ -93,6 +94,7 @@
   padding: 8px 16px;
   text-decoration: none;
   text-align: center;
+  font-size: 1.3rem;
 }
 
 .offers_card_item_img {
@@ -152,13 +154,14 @@
   font-weight: bolder;
 }
 
+.user_homepage_footer > form > input {
+  font-size: 1.3rem;
+}
+
 /* TABLET */
 @media only screen and (min-width: 600px) {
   .generic_btn {
     font-family: inherit;
-  }
-  .user_homepage_footer > form > input {
-    font-size: 16px;
   }
   .business_card_item {
     height: 70%;

@@ -7,8 +7,8 @@ const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const session = require('express-session');
 const flash = require('connect-flash');
+const hbs = require('hbs');
 const appSession = require('./configs/session');
-
 
 const app = express();
 
@@ -37,8 +37,16 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // Express view engine setup
 app.set('views', path.join(__dirname, 'views'));
-// hbs.registerPartials(__dirname, '/views/partials');
 app.set('view engine', 'hbs');
+
+// Register helper
+hbs.registerPartials(path.join(__dirname, '/views/partials'));
+// hbs.registerHelper('orderDisplay', (status) => {
+//    if (status === 'pending') {
+//     return true;
+//   }
+// });
+
 
 app.use('/', indexRouter);
 app.use('/auth', authRouter);

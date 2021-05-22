@@ -24,6 +24,7 @@
 
 .orders_page_nav > a {
   color: white;
+  font-size: 1.3rem;
 }
 
 .bussines_orders_page_container_title {
@@ -35,13 +36,9 @@
   margin-bottom: 5vh;
   font-size: 1.5rem;
 }
-.order_success_message {
-  padding: 1rem;
-  background-color: rgba(0, 0, 0, 0.311);
-}
 
 .user_orders_page_item {
-  width: 60%;
+  width: 20rem;
   height: 150px;
   border: 1px solid rgba(128, 128, 128, 0.119);
   -webkit-box-shadow: 6px 7px 15px -2px #727272;
@@ -114,7 +111,7 @@
   }
 
   .user_orders_page_item {
-    width: 45%;
+    width: 20rem;
   }
 
   .user_content_card_image {
@@ -149,7 +146,7 @@
   }
 
   .user_orders_page_item {
-    width: 30%;
+    width: 20rem;
     margin-left: 15vh;
   }
 

@@ -11,6 +11,10 @@ const orderSchema = new Schema({
     },
     user: {
         type: Schema.Types.ObjectId, ref: 'User'
+    },
+    status: {
+        type: String,
+        enum: ['pending', 'delivered']
     }
 },
 {

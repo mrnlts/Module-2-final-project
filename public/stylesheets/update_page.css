@@ -23,6 +23,10 @@
   background-color: transparent;
 }
 
+.form-control-file {
+  padding: 0.5rem;
+}
+
 .update_page_container {
   background-color: rgb(249, 233, 221);
   height: 100vh;
@@ -46,6 +50,7 @@
 
 .update_page_form > input {
   margin: 15px;
+  padding: 0.5rem;
 }
 
 .update_page_form > label,
@@ -93,14 +98,6 @@
   box-shadow: 6px 7px 15px -2px #727272;
 }
 
-
-/* TABLET */
-@media only screen and (min-width: 600px) {
-  /* Styles */
-}
-
-/* DESKTOP */
-@media only screen and (min-width: 768px) {
   .update_page_nav > a ,
   .generic_btn,
   .update_page_save_btn,
@@ -111,9 +108,12 @@
   .form-control-file  {
     font-size: 1.3rem;
   }
+
+
+/* DESKTOP */
+@media only screen and (min-width: 768px) {
   .update_page_form > input,
   .form-control-file {
-    padding: 0.5rem;
     font-family: 'Roboto Slab';
   }
   .form-control-file {
