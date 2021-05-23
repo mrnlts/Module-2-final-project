@@ -112,7 +112,7 @@ router.get('/:id/detail', async (req, res, next) => {
       } else {
         res.render('error404');
       }
-    } catch  (e){
+    } catch (e){
       next(e);
     }
 })

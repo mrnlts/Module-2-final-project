@@ -3,10 +3,11 @@ const express = require('express');
 const router = express.Router();
 const bcryptjs = require('bcryptjs');
 const User = require('../models/User.model');
+const isUserLoggedOut = require('../middleware/logout');
 
 const saltRounds = 10;
 
-router.get('/login', (req, res) => {
+router.get('/login', isUserLoggedOut, (req, res) => {
   res.render('auth/login', { errorMessage: [ req.flash("wrongPassw"), req.flash("blank"),req.flash("unknown") ] });
 });
 
@@ -40,7 +41,7 @@ router.post('/login', (req, res, next) => {
 });
 
 /* GET signup  */
-router.get('/signup', (req, res) => res.render('signup/user'));
+router.get('/signup', isUserLoggedOut, (req, res) => res.render('signup/user'));
 
 /* POST signup  */
 router.post('/signup', (req, res, next) => {
