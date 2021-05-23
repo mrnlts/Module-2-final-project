@@ -48,6 +48,18 @@
   font-family: 'Roboto Slab';
 }
 
+.add_product_btn {
+  background-color: brown;
+  border: none;
+  font-weight: bolder;
+  color: white;
+  padding: 1rem;
+  border-radius: 5%;
+  font: 14px;
+  font-family: 'Roboto Slab';
+}
+
+
 @media only screen and (min-width: 600px) {
   .product_title {
     left: -15%;
