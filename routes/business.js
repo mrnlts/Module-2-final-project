@@ -5,137 +5,142 @@ const User = require('../models/User.model');
 const Business = require('../models/Business.model');
 const Product = require('../models/Product.model');
 const Order = require('../models/Order.model');
-const isBusiness = require('../middleware/business');
+const isBusiness = require('../middleware/business.js');
+const isCustomer = require('../middleware/customer');
 const fileUploader = require('../configs/cloudinary.config');
 
 
 // RENDER ADD BUSINESS FORM
-router.get('/add', (req, res) => res.render('business/add-business'));
+router.get('/add', isCustomer, (req, res) => res.render('business/add-business'));
 
 // POST NEW BUSINESS TO DATABASE
-router.post('/add', fileUploader.single('image'), (req, res, next) => {
+router.post('/add', fileUploader.single('image'), async (req, res, next) => {
   const userId = req.session.currentUser._id;
   const { businessName, businessType, city } = req.body;
-  Business.create({ businessName, businessType, city, owner: userId, imageUrlBusiness: req.file.path })
-    .then(() => {
-      User.findByIdAndUpdate(userId, { role: 'business' }).then(() => res.redirect('/business/profile'));
-    })
-    .catch(err => next(err));
+  try {
+    const dbBusiness = await Business.create({ businessName, businessType, city, owner: userId, imageUrlBusiness: req.file.path });
+    if (dbBusiness) {
+      await User.findByIdAndUpdate(userId, { role: 'business' });
+      res.redirect('/business/profile');
+    } else {
+      res.render('error500');
+    }
+  } catch (e) {
+    res.render('error500');
+    next(e);
+  }
 });
 
 // RENDER BUSINESS HOME PAGE //
-router.get('/profile', (req, res, next) => {
-  const owner = req.session.currentUser._id;
-  User.findById(owner)
-    .then(dbUser => {
-      Business.findOne({ owner: dbUser.id }).then(dbBusiness => {
-        Order.find({ businessName: dbBusiness.id }).then(dbOrders => {
-          res.render('business/mainPage', { dbBusiness, dbOrders });
-        });
-      });
-    })
-    .catch(err => next(err));
+router.get('/profile', isBusiness, async (req, res, next) => {
+  try {
+    const dbUser = await User.findById(req.session.currentUser._id);
+    const dbBusiness = await Business.findOne({ owner: dbUser.id });
+    const dbOrders = await Order.find({ businessName: dbBusiness.id });
+    res.render('business/mainPage', { dbBusiness, dbOrders });
+  } catch (e) {
+    res.render('error404');
+    next(e);
+  }
 });
 
 // RENDER BUSINESS PRODUCTS PAGE //
-router.get('/products', (req, res, next) => {
-  Business.findOne({ owner: req.session.currentUser._id })
-    .then(dbBusiness => {
-      Product.find({ businessName: dbBusiness }).then(dbProducts => res.render('business/products', { dbProducts }));
-    })
-    .catch(err => next(err));
+router.get('/products', isBusiness, async (req, res, next) => {
+  try {
+    const dbBusiness = await Business.findOne({ owner: req.session.currentUser._id });
+    const dbProducts = await Product.find({ businessName: dbBusiness })
+    res.render('business/products', { dbProducts });
+  } catch(e) {
+    res.render('error404');
+    next(e);
+  }
 });
 
 // RENDER BUSINESS ORDERS PAGE //
-router.get('/orders', (req, res) => {
-  Business.findOne({ owner: req.session.currentUser._id })
-  .then(dbBusiness => {
-    console.log(dbBusiness);
-    Order.find({ business: dbBusiness.id, status: "pending" })
-      .populate('user product')
-      .then(dbOrders => {
-        console.log("DBORDER = ", dbOrders)
-        res.render('business/orders', { dbOrders, deliverMessage: req.flash('deliver') });
-      });
-  });
+router.get('/orders', isBusiness, async (req, res, next) => {
+  try {
+    const dbBusiness = await Business.findOne({"owner": req.session.currentUser._id});
+    const dbOrders = await Order.find({ business: dbBusiness.id, status: "pending" }).populate('user product');
+    res.render('business/orders', { dbOrders, deliverMessage: req.flash('deliver') });
+  } catch (e){
+    res.render('error404');
+    next(e);
+  }
 });
 
 // RENDER BUSINESS EDIT PAGE //
-router.get('/profile/edit', (req, res, next) => {
-  Business.findOne({ owner: req.session.currentUser._id })
-    .then(dbBusiness => res.render('business/edit-form', { dbBusiness }))
-    .catch(error => next(error));
+router.get('/profile/edit', isBusiness, async (req, res, next) => {
+  try {
+    const dbBusiness = await Business.findOne({ owner: req.session.currentUser._id });
+    res.render('business/edit-form', { dbBusiness });
+  } catch(e){
+    res.render('error404');
+    next(e);
+  }
 });
 
 // UPDATE DB BUSINESS DATA //
-router.post('/profile/edit', fileUploader.single('image'), (req, res, next) => {
+router.post('/profile/edit', fileUploader.single('image'), async (req, res, next) => {
   const { businessName, businessType, city } = req.body;
-  if (businessName && businessType && city && req.file) {
-  Business.findOneAndUpdate({ owner: req.session.currentUser._id }, { businessName, businessType, city, imageUrlBusiness: req.file.path}, { new: true })
-    .then(dbBusiness => {
-      console.log('BUSINESS: ', dbBusiness);
+  try {
+    if (businessName && businessType && city && req.file) {
+      await Business.findOneAndUpdate({ owner: req.session.currentUser._id }, { businessName, businessType, city, imageUrlBusiness: req.file.path}, { new: true });
       res.redirect('/business/profile');
-    })
-    .catch(error => next(error));
-  } else {
-    res.render('business/edit-form', {  errormessage: true })
+    } else {
+      res.render('business/edit-form', {  errormessage: true })
+    }
+  } catch(e) {
+    res.render('error500');
+    next(e);
   }     
 });
 
-
 // RENDER ADD PRODUCT FORM //
-router.get('/add-product', (req, res) => res.render('business/add-product'));
+router.get('/add-product', isBusiness, (req, res) => res.render('business/add-product'));
 
 // ADD PRODUCT TO DB //
-router.post('/add-product', fileUploader.single('image'), (req, res, next) => {
-  const { price, description, image } = req.body;
-  console.log("req.body add prod", req.body)
-  Business.findOne({ owner: req.session.currentUser._id })
-    .then(dbBusiness => {
-      Product.create({ businessName: dbBusiness.id, price, description, imageUrlProduct: req.file.path })
-      .then(dbProduct => {
-        console.log("3", req.file.path)
-        res.redirect('/business/products');
-      });
-    })
-    .catch(err => next(err));
+router.post('/add-product', fileUploader.single('image'), async (req, res, next) => {
+  const { price, description } = req.body;
+  try {
+    const dbBusiness = await Business.findOne({ owner: req.session.currentUser._id });
+    await Product.create({ businessName: dbBusiness.id, price, description, imageUrlProduct: req.file.path });
+    res.redirect('/business/products');
+  } catch(e) {
+    res.render('error500');
+    next(e);
+  }
 });
 
 // RENDER BUSINESS DETAILS // 
 router.get('/:id/detail', async (req, res, next) => {
-    const { id } = req.params;
-    try {
-      const dbBusiness = await Business.findById(id);
-      if (dbBusiness) {
-        const dbProducts = await Product.find({ businessName: dbBusiness.id });
-        res.render('business/detail', {dbBusiness, dbProducts})
-      } else {
-        res.render('error404');
-      }
-    } catch (e) {
+  const { id } = req.params;
+  try {
+    const dbBusiness = await Business.findById(id);
+    if (dbBusiness) {
+      const dbProducts = await Product.find({ businessName: dbBusiness.id });
+      res.render('business/detail', {dbBusiness, dbProducts})
+    } else {
       res.render('error404');
     }
+  } catch (e) {
+    res.render('error404');
+    next(e);
+  }
 })
 
 // DELETE BUSINESS //
-router.post('/delete', (req, res, next) => {
-  User.findByIdAndUpdate(req.session.currentUser._id, { role: 'customer' })
-    .then(dbUser => {
-      Business.findOne({ owner: dbUser.id })
-        .then((dbBusiness) => {
-            Product.deleteMany({businessName: dbBusiness.id})
-                .then(() => {
-                    Order.deleteMany({business: dbBusiness.id})
-                        .then(() => {
-                            Business.findOneAndRemove({owner: dbUser.id})
-                                .then(() => {
-                                    res.redirect('/user/profile');
-                                })
-                        })
-                })
-        })
-        .catch(err => next(err));
-  });
+router.post('/delete', async (req, res, next) => {
+  try {
+    const dbUser = await User.findByIdAndUpdate(req.session.currentUser._id, { role: 'customer' });
+    const dbBusiness = await Business.findOne({ owner: dbUser.id });
+    await Product.deleteMany({businessName: dbBusiness.id});
+    await Order.deleteMany({business: dbBusiness.id});
+    await Business.findOneAndRemove({owner: dbUser.id});
+    res.redirect('/user/profile');
+  } catch(e) {
+    res.render('error500');
+    next(e);
+  }
 });
 
 module.exports = router;

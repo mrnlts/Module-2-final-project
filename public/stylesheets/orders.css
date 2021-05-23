@@ -52,11 +52,11 @@
 }
 
 .user_content_card_image {
-  width: 10vh;
+  width: 50%;
   height: 10vh;
   float: left;
   border-radius: 50%;
-  margin-top: 5vh;
+  margin-top: 2vh;
   margin-left: 2vh;
 }
 
@@ -95,6 +95,15 @@
   margin-bottom: 0.5rem;
 }
 
+.busines_orders_btn {
+  background: brown;
+  border: 1px solid brown;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  text-align: center;
+}
+
 /* TABLET */
 @media only screen and (min-width: 600px) {
   .orders_page_container_title {
@@ -115,9 +124,7 @@
   }
 
   .user_content_card_image {
-    width: 20vh;
     height: 100%;
-    float: left;
     border-radius: 3%;
     margin: auto;
   }
@@ -131,12 +138,6 @@
   .orders_page_item p {
     font-size: 1.3rem;
     padding: 1rem;
-  }
-  .user_content_card_image {
-    width: 15vh;
-    height: 15vh;
-    float: left;
-    border-radius: 5%;
   }
 
   .orders_page_scroll {
@@ -155,11 +156,4 @@
     margin-left: 15vh;
   }
 
-  .user_content_card_image {
-    width: 20vh;
-    height: 100%;
-    float: left;
-    border-radius: 3%;
-    margin: auto;
-  }
 }
