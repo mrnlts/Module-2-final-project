@@ -6,44 +6,55 @@ const Business = require('../models/Business.model');
 const Product = require('../models/Product.model');
 const isUserLoggedIn = require('../middleware/login');
 
-router.get('/profile', isUserLoggedIn, (req, res, next) => {
-  User.findById(req.session.currentUser._id)
-    .then(dbUser => {
-      Business.find().then(dbBusiness => {
-        Product.find().then(dbProducts => {
-          const isBusiness = () => {
-            if (dbUser.role === 'business') {
-              return true;
-            }
-          };
-          res.render('user/mainPage', { dbUser, dbBusiness, dbProducts, isBusiness });
-        });
-      });
-    })
-    .catch(err => next(err));
+router.get('/profile', isUserLoggedIn, async (req, res, next) => {
+  try {
+    const dbUser = await User.findById(req.session.currentUser._id);
+    const dbBusiness = await Business.find();
+    const dbProducts = await Product.find();
+    const isBusiness = () => {
+      if (dbUser.role === 'business') {
+        return true;
+      }
+    };
+    res.render('user/mainPage', { dbUser, dbBusiness, dbProducts, isBusiness });
+  } catch (e) {
+    res.render('error404');
+    next(e);
+  }
 });
 
 // FIND CUSTOMER BY ID AND RENDER UPDATE FORM //
-router.get('/profile/edit', isUserLoggedIn, (req, res, next) => {
-  User.findById(req.session.currentUser._id)
-    .then(dbUser => {
-      res.render('user/edit-form', { dbUser });
-    })
-    .catch(error => next(error));
+router.get('/profile/edit', isUserLoggedIn, async (req, res, next) => {
+  try {
+    const dbUser = await User.findById(req.session.currentUser._id);
+    res.render('user/edit-form', { dbUser });
+  } catch (e) {
+    res.render('error404');
+    next(e);
+  }
 });
 
 // UPDATE CUSTOMER DATA //
-router.post('/profile/edit', (req, res, next) => {
+router.post('/profile/edit', async (req, res, next) => {
   const { firstName, lastName, email, city, age } = req.body;
-  User.findByIdAndUpdate(req.session.currentUser._id, { firstName, lastName, email, city, age }, { new: true })
-    .then(() => res.redirect('/user/profile'))
-    .catch(error => next(error));
+  try {
+    await User.findByIdAndUpdate(req.session.currentUser._id, { firstName, lastName, email, city, age }, { new: true });
+    res.redirect('/user/profile');
+  } catch (e) {
+    res.render('error500');
+    next(e);
+  }
 });
 
 // DELETE CUSTOMER //
-router.post('/delete', (req, res) => {
-  User.findByIdAndRemove(req.session.currentUser._id)
-    .then(() => res.redirect('/'))
+router.post('/delete', async (req, res, next) => {
+  try {
+    await User.findByIdAndRemove(req.session.currentUser._id);
+    res.redirect('/');
+  } catch (e) {
+    res.render('error500');
+    next(e);
+  }
 });
 
 module.exports = router;

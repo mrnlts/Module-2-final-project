@@ -74,6 +74,7 @@ app.use((err, req, res) => {
     
     res.status(404);
     
+    
   } else if (err.status === 500) {
     res.status(500);
     res.render('error500');
