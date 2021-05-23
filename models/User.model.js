@@ -12,7 +12,9 @@ const userSchema = new Schema(
       unique: true,
       lowercase: true,
       trim: true,
+      match: [/^\S+@\S+\.\S+$/, 'Please use a valid email address.']
     },
+    googleID: String,
     passwordHash: {
       type: String,
       required: [true, 'Password is required.'],
