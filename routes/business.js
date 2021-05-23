@@ -112,8 +112,8 @@ router.get('/:id/detail', async (req, res, next) => {
       } else {
         res.render('error404');
       }
-    } catch (e){
-      next(e);
+    } catch (e) {
+      res.render('error404');
     }
 })
 
