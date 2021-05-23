@@ -1,6 +1,7 @@
 .product_page_container {
   background-color: rgb(249, 233, 221);
   display: flex;
+  margin-top: 16vh;
   flex-direction: column;
   justify-content: space-evenly;
 }
@@ -23,14 +24,17 @@
   color: white;
 }
 
-.product_page_container h2 {
-  margin-top: 16vh;
-  margin-bottom: 3vh;
-}
-
 .products_container {
   position: relative;
   width: 100%;
+}
+
+.product_titles {
+  height: 15vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 }
 
 .product_container_scroll {
