@@ -3,44 +3,46 @@ const express = require('express');
 const router = express.Router();
 const bcryptjs = require('bcryptjs');
 const User = require('../models/User.model');
+const isUserLoggedOut = require('../middleware/logout');
 
 const saltRounds = 10;
 
-router.get('/login', (req, res) => {
-  res.render('auth/login', { errorMessage: [ req.flash("wrongPassw"), req.flash("blank"),req.flash("unknown") ] });
+router.get('/login', isUserLoggedOut, (req, res) => {
+  res.render('auth/login', { errorMessage: [req.flash('wrongPassw'), req.flash('blank'), req.flash('unknown')] });
 });
 
 router.post('/logout', (req, res, next) => {
   req.session.destroy(() => res.redirect('/'));
 });
 
-router.post('/login', (req, res, next) => {
+router.post('/login', async (req, res, next) => {
   const { email, password } = req.body;
-   if (email === '' || password === '') {
+  if (email === '' || password === '') {
     req.flash('blank', 'You have to fill all the fields');
-    return res.redirect('/auth/login'); 
+    return res.redirect('/auth/login');
   }
-
-  User.findOne({ email })
-    .then(dbUser => {
-      if (dbUser) {
-        if (bcryptjs.compareSync(password, dbUser.passwordHash)) {
-          req.session.currentUser = dbUser;
-          res.redirect(`/user/profile`);
-        } else {
-          req.flash('wrongPassw', 'Incorrect password');
-          res.redirect('/auth/login');
-        }
+  try {
+    const dbUser = await User.findOne({ email });
+    if (dbUser) {
+      if (bcryptjs.compareSync(password, dbUser.passwordHash)) {
+        req.session.currentUser = dbUser;
+        res.redirect(`/user/profile`);
       } else {
-        req.flash('unknown', 'Wrong password or username');
+        req.flash('wrongPassw', 'Incorrect password');
+        res.redirect('/auth/login');
+      }
+    } else {
+      req.flash('unknown', 'Wrong password or username');
       res.redirect('/auth/login');
     }
-    })
-    .catch(error => next(error));
+  } catch (e) {
+    res.render('error500');
+    next(e);
+  }
 });
 
 /* GET signup  */
-router.get('/signup', (req, res) => res.render('signup/user'));
+router.get('/signup', isUserLoggedOut, (req, res) => res.render('signup/user'));
 
 /* POST signup  */
 router.post('/signup', (req, res, next) => {
