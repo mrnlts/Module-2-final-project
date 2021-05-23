@@ -29,10 +29,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(session(appSession));
 app.use(flash());
-// app.use((req, res, next) => {
-//     res.locals.sessionFlash = req.session.sessionFlash;
-//     next();
-//   });
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Express view engine setup
@@ -41,12 +37,6 @@ app.set('view engine', 'hbs');
 
 // Register helper
 hbs.registerPartials(path.join(__dirname, '/views/partials'));
-// hbs.registerHelper('orderDisplay', (status) => {
-//    if (status === 'pending') {
-//     return true;
-//   }
-// });
-
 
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
