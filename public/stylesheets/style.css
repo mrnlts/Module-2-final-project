@@ -91,14 +91,13 @@ form label {
   margin-top: 4rem;
 }
 
-
 /* DESKTOP */
 @media only screen and (min-width: 768px) {
-  #error404, 
+  #error404,
   #error500 {
     flex-direction: row;
   }
-  #error404 > img, 
+  #error404 > img,
   #error500 > img {
     width: 50%;
   }

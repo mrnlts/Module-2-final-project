@@ -32,13 +32,6 @@
 #myLinks {
   display: none;
   background-color: rgb(12, 58, 19);
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: flex-start;
-  width: 100%;
-  padding: 1rem 0 0 3rem;
-  position: absolute;
-  right: 0;
 }
 
 #myLinks > a {
@@ -58,7 +51,7 @@
   height: 10vh;
   width: 10vh;
   font-size: 3rem;
-  color: white;
+  color: rgb(12, 58, 19);
 }
 
 /* TABLET */
@@ -66,7 +59,7 @@
   .homepage_container_nav > h2 {
     padding-top: 2vh;
   }
-  .icon {
+  /* .icon {
     display: none;
   }
   #myLinks {
@@ -74,7 +67,7 @@
   }
   .homepage_container_nav {
     display: contents;
-  }
+  } */
   .homepage_footer {
     position: fixed;
     bottom: 0;
