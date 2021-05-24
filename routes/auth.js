@@ -47,7 +47,7 @@ router.post('/login', async (req, res, next) => {
 
 /* GET signup  */
 router.get('/signup', isUserLoggedOut, (req, res) => {
-  res.render('signup/user', { errorMessage: [req.flash('wrongPassw'), req.flash('blank'), req.flash('unknown'), req.flash('userExists')], auth:true });
+  res.render('signup/user', { errorMessage: [req.flash('wrongPassw'), req.flash('weakPassw'), req.flash('blank'), req.flash('unknown'), req.flash('userExists')], auth:true });
 });
 
 /* POST signup  */
@@ -60,6 +60,13 @@ router.post('/signup', async (req, res, next) => {
   try {
     let dbUser = await User.findOne({ email });
     if (!dbUser) {
+      const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
+      if (!regex.test(password)) {
+        res.status(500);
+        req.flash('weakPassw', 'Password needs to have at least 6 chars and must contain at least one number, one lowercase and one uppercase letter.' );
+        res.redirect('/auth/signup');
+        return;
+      }
       const salt = await bcryptjs.genSalt(saltRounds);
       const hashedPassword = await bcryptjs.hash(password, salt);
       dbUser = await User.create({ firstName, lastName, email, passwordHash: hashedPassword, city, age });

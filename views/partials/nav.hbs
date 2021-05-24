@@ -1,5 +1,8 @@
-{{#if userMainPage}}  
-  <div class="user_homepage_nav">  
+{{#if userMainPage}} 
+<a href="javascript:void(0);" class="icon" onclick="myFunction()">
+  <i class="fa fa-bars 5x"></i>
+</a> 
+  <div id ="myLinks" class="user_homepage_nav">  
       <a href="/orders">Orders</a> <span> | </span>
       <a href="/user/profile/edit"> Profile </a>  <span> | </span>
       <form action="/auth/logout" method="post">

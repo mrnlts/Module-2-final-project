@@ -31,14 +31,14 @@
 
 #myLinks {
   display: none;
-  background-color: rgb(12, 58, 19);
+  /* background-color: rgb(12, 58, 19);
   flex-direction: column;
   justify-content: space-around;
   align-items: flex-start;
   width: 100%;
   padding: 1rem 0 0 3rem;
   position: absolute;
-  right: 0;
+  right: 0; */
 }
 
 #myLinks > a {
@@ -50,14 +50,14 @@
 .icon {
   display: block;
   position: absolute;
-  right: 10vh;
+  right: 5vh;
   top: 5vh;
 }
 
 .icon > i {
   height: 10vh;
   width: 10vh;
-  font-size: 7rem;
+  font-size: 3rem;
   color: white;
 }
 

@@ -18,7 +18,8 @@ const userSchema = new Schema(
     passwordHash: {
       type: String,
       required: [true, 'Password is required.'],
-    },
+      trim: true,
+        },
     city: String,
     age: Number,
     role: {
