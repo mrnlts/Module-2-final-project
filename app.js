@@ -8,7 +8,9 @@ const logger = require('morgan');
 const session = require('express-session');
 const flash = require('connect-flash');
 const hbs = require('hbs');
+const passport = require('passport');
 const appSession = require('./configs/session');
+
 
 const app = express();
 
@@ -21,6 +23,7 @@ const orderRouter = require('./routes/order');
 
 // require database configuration
 require('./configs/db.config');
+require('./configs/passport.config.js')(passport)
 
 // Middleware setup
 app.use(logger('dev'));

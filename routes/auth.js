@@ -1,5 +1,8 @@
 const express = require('express');
 
+const passport = require('passport');
+const GoogleStrategy = require("passport-google-oauth20").Strategy;
+
 const router = express.Router();
 const bcryptjs = require('bcryptjs');
 const User = require('../models/User.model');
@@ -12,7 +15,7 @@ router.get('/login', isUserLoggedOut, notifications, (req, res) => {
   res.render('auth/login', { errorMessage: [req.flash('wrongPassw'), req.flash('blank'), req.flash('unknown')], auth:true });
 });
 
-router.post('/logout', (req, res, next) => {
+router.post('/logout', (req, res) => {
   req.session.destroy(() => res.redirect('/'));
 });
 
@@ -72,5 +75,23 @@ router.post('/signup', async (req, res, next) => {
     next(e);
   }  
 });
+
+
+router.get(
+  "/google",
+  passport.authenticate("google", {
+    scope: [
+      "https://www.googleapis.com/auth/userinfo.profile",
+      "https://www.googleapis.com/auth/userinfo.email"
+    ]
+  })
+);
+router.get(
+  "/auth/google/callback",
+  passport.authenticate("google", {
+    successRedirect: '/user/profile',
+    failureRedirect: "/login" 
+  })
+);
 
 module.exports = router;
