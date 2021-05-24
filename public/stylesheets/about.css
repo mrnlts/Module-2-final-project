@@ -1,0 +1,24 @@
+.about_page_container {
+  background-image: url(../images/background-images/about.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 100vh;
+}
+
+.about_page_content {
+  background-color: rgba(231, 231, 240, 0.681);
+  width: 100%;
+  height: 100vh;
+}
+
+.about_page_content > h1 {
+  padding-top: 20vh;
+  font-weight: bolder;
+}
+
+.about_page_content > article {
+  margin: 8vh;
+  font-size: 1.2rem;
+  font-weight: 400;
+}

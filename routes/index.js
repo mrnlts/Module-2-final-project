@@ -15,4 +15,8 @@ router.get('/business', (req, res, next) => {
     .catch(err => next(err));
 });
 
+router.get('/about', (req, res) => {
+  res.render('about');
+});
+
 module.exports = router;
