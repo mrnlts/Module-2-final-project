@@ -61,6 +61,48 @@ router.get('/products', isBusiness, async (req, res, next) => {
   }
 });
 
+// RENDER ADD PRODUCT FORM //
+router.get('/add-product', isBusiness, (req, res) => res.render('business/add-product', {addProduct:true}));
+
+// ADD PRODUCT TO DB //
+router.post('/add-product', fileUploader.single('image'), async (req, res, next) => {
+  const { price, description } = req.body;
+  try {
+    const dbBusiness = await Business.findOne({ owner: req.session.currentUser._id });
+    await Product.create({ businessName: dbBusiness.id, price, description, imageUrlProduct: req.file.path });
+    res.redirect('/business/products');
+  } catch (e) {
+    res.render('error500');
+    next(e);
+  }
+});
+
+// EDIT PRODUCT //
+router.get('/products/:id/edit', isBusiness, async (req, res, next) => {
+  const {id} = req.params;
+  try {
+    const dbProduct = await Product.findById(id);
+    res.render('business/edit-product-form', {dbProduct, editProduct: true})
+  } catch (e) {
+    res.render('error404');
+    next(e);
+  }
+  
+});
+
+router.post('/products/:id/edit', isBusiness, fileUploader.single('image'), async (req, res, next) => {
+  const {id} = req.params;
+  const { price, description } = req.body;
+  try {
+    await Product.findByIdAndUpdate(id, {price, description, imageUrlProduct: req.file.path });
+    res.redirect('/business/products');
+  } catch (e) {
+    res.render('error500');
+    next(e);
+  }
+});
+
+
 // DELETE PRODUCT //
 router.post('/products/:id/delete', async(req, res, next) => {
   const { id } = req.params;
@@ -111,22 +153,6 @@ router.post('/profile/edit', fileUploader.single('image'), async (req, res, next
     } else {
       res.render('business/edit-form', { errormessage: true });
     }
-  } catch (e) {
-    res.render('error500');
-    next(e);
-  }
-});
-
-// RENDER ADD PRODUCT FORM //
-router.get('/add-product', isBusiness, (req, res) => res.render('business/add-product', {addProduct:true}));
-
-// ADD PRODUCT TO DB //
-router.post('/add-product', fileUploader.single('image'), async (req, res, next) => {
-  const { price, description } = req.body;
-  try {
-    const dbBusiness = await Business.findOne({ owner: req.session.currentUser._id });
-    await Product.create({ businessName: dbBusiness.id, price, description, imageUrlProduct: req.file.path });
-    res.redirect('/business/products');
   } catch (e) {
     res.render('error500');
     next(e);

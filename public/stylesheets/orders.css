@@ -95,9 +95,23 @@
   margin-bottom: 0.5rem;
 }
 
+.business_orders_btns {
+  display: flex;
+  justify-content: center;
+}
+
 .busines_orders_btn {
   background: brown;
   border: 1px solid brown;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  text-align: center;
+}
+
+.busines_orders_edit {
+  background: rgb(12, 58, 19);
+  border: 1px solid rgb(12, 58, 19);
   border-radius: 4px;
   color: white;
   cursor: pointer;

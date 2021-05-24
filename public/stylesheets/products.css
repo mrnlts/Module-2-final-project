@@ -73,6 +73,13 @@
   border-top-right-radius: 5%;
 }
 
+.product_list_card > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 45%;
+}
+
 .product_page_btn {
   background-color: rgb(12, 58, 19);
   border: 1px solid rgb(12, 58, 19);

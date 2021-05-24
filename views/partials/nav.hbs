@@ -11,6 +11,14 @@
   </div>
 {{/if }}
 
+{{#if editProduct}}
+    <nav class="orders_page_nav">
+        <a href="/business/products">Back</a> <span> | </span>
+        <form action="/auth/logout" method="post">
+            <input type="submit" value="Log out" class="generic_btn"></input>
+        </form>
+    </nav>
+{{/if}}
 
 {{#if orderHistory}}
     <nav class="orders_page_nav">
