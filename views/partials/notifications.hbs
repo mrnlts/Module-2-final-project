@@ -8,6 +8,16 @@
         {{/if}} 
     {{/each}}  
 {{/if}} 
+
+{{#if successMessage}}
+    {{#each successMessage}} 
+        {{#if this}}
+            <div class= "flash_message">  
+                <h2>{{this}}</h2>
+            </div>  
+        {{/if}} 
+    {{/each}} 
+{{/if}}
     {{!-- {{#each infoMessages}} 
         <div class="alert alert-info">
             {{this}}

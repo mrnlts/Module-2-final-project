@@ -1,32 +1,30 @@
 <div class="product_page_container">
+
     <nav class="user_homepage_nav">
         <a href="/business/profile">Back</a> <span> | </span>
         <form action="/auth/logout" method="post">
             <input type="submit" value="Log out" class="generic_btn"></input>
         </form>
     </nav>
+
     <div class="product_titles">
         <form  action="/business/add-product">
             <input class="add_product_form_btn" type="submit" value="Add new product" class="product_page_btn">
         </form>
         <h2 class="product_title">Current products: </h2>
     </div>
+
     <div class= "product_container">
         <div class= "product_container_scroll">
-        {{#if dbProducts}}        
-            {{#each dbProducts}}
-                <div class= "product_list_card">
-                    <img src="{{this.imageUrlProduct}}" class="tbd" alt="{{title}}">
-                    <div>
-                        <h4>{{this.description}}</h4>
-                        <h4>Price: {{this.price}}</h4>
-                    </div>
-                </div>
-            {{/each}}
-        {{else}}
-        <p>There are no products at the moment!</p>
-        {{/if}}
-     </div>
+            {{#if dbProducts}}  
+                {{#each dbProducts}}
+                    {{> product}}
+                {{/each}}
+            {{else}}
+                <p>There are no products at the moment!</p>   
+            {{/if}}
+        </div>
     </div> 
+    {{> notifications }}
 
 </div>

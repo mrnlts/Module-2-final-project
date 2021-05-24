@@ -54,12 +54,25 @@ router.get('/products', isBusiness, async (req, res, next) => {
   try {
     const dbBusiness = await Business.findOne({ owner: req.session.currentUser._id });
     const dbProducts = await Product.find({ businessName: dbBusiness });
-    res.render('business/products', { dbProducts });
+    res.render('business/products', { dbProducts, successMessage: req.flash('productRemoved') });
   } catch (e) {
     res.render('error404');
     next(e);
   }
 });
+
+// DELETE PRODUCT //
+router.post('/products/:id/delete', async(req, res, next) => {
+  const { id } = req.params;
+  try {
+    await Product.findByIdAndRemove(id);
+    req.flash('productRemoved', 'The selected product was removed successfully!');
+    res.redirect('/business/products');
+  } catch(e) {
+    res.render('error500');
+    next(e);
+  }
+})
 
 // RENDER BUSINESS ORDERS PAGE //
 router.get('/orders', isBusiness, async (req, res, next) => {
