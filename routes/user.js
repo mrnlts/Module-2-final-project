@@ -16,7 +16,7 @@ router.get('/profile', isUserLoggedIn, async (req, res, next) => {
         return true;
       }
     };
-    res.render('user/mainPage', { dbUser, dbBusiness, dbProducts, isBusiness });
+    res.render('user/mainPage', { dbUser, dbBusiness, dbProducts, isBusiness, userMainPage: true });
   } catch (e) {
     res.render('error404');
     next(e);
@@ -27,7 +27,7 @@ router.get('/profile', isUserLoggedIn, async (req, res, next) => {
 router.get('/profile/edit', isUserLoggedIn, async (req, res, next) => {
   try {
     const dbUser = await User.findById(req.session.currentUser._id);
-    res.render('user/edit-form', { dbUser });
+    res.render('user/edit-form', { dbUser, userEdit: true });
   } catch (e) {
     res.render('error404');
     next(e);

@@ -1,13 +1,4 @@
 <div class= "business_homepage_container">
-{{#if dbBusiness}}
-    <div class="business_homepage_nav">
-        <a href="/user/profile">Back</a><span> | </span>
-        <a href="/business/profile/edit"> Update business data </a> <span> | </span>
-        <form action="/auth/logout" method="post">
-            <input type="submit" value="Log out" class="generic_btn"></input>
-        </form>
-    </div>
-  
     <img class= "busines_homepage_image" src="{{dbBusiness.imageUrlBusiness}}" alt="{{title}}">
   
 
@@ -28,7 +19,4 @@
     <div class="business_homepage_footer">
         <h4>Welcome, {{ dbBusiness.businessName }}!</h4>
     </div>
-    {{else}}
-     <p>Still no logged in user, sorry!</p>
-    {{/if}}
 </div>

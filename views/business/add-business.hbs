@@ -1,17 +1,12 @@
-<div class="add_business_page">
-     <div class="user_homepage_nav">        
-        <a href="/user/profile/edit"> Profile </a>  <span> | </span>
-        <a href="/business/products">Back</a>  
-     </div>
-    <h1>Add your business</h1>
-    
+<div class="add_business_page">   
+    <h1>Add your business</h1> 
     <div class="add_business_form_container">
     <form class="add_business_form" action="/business/add" method="post" enctype="multipart/form-data">
         <label for="businessName">Business name </label>
         <input type="text"   id="businessName" name="businessName" placeholder="Your business' name">
         <br>
+
         <label for="businessType">Business type </label>
-            {{!-- <input type="text" id="businessType" name="businessType" placeholder="Your business type"> --}}
             <select   name="businessType" id="businessType">
                 <option value="Pizza">Pizza</option>
                 <option value="Chinese">Chinese</option>
@@ -32,14 +27,15 @@
                 <option value="Vegetarian">Vegetarian</option>
             </select>
             <br>
+
         <label for="city">City</label>
         <input type="text"   id="city" name="city" placeholder="Your city">
-        
-          <br>
-            <label for="image-input">Image:</label>
-            <input type="file"   name="image" id="image-input" class="form-control-file" />
-      
         <br>
+
+        <label for="image-input">Image:</label>
+        <input type="file"   name="image" id="image-input" class="form-control-file" />
+        <br>
+        
         <button class="add_business_form_btn" type="submit">Sign up</button>
     </form>
    </div> 

@@ -9,7 +9,7 @@ const notifications = require('../middleware/notifications');
 const saltRounds = 10;
 
 router.get('/login', isUserLoggedOut, notifications, (req, res) => {
-  res.render('auth/login', { errorMessage: [req.flash('wrongPassw'), req.flash('blank'), req.flash('unknown')] });
+  res.render('auth/login', { errorMessage: [req.flash('wrongPassw'), req.flash('blank'), req.flash('unknown')], auth:true });
 });
 
 router.post('/logout', (req, res, next) => {
@@ -44,7 +44,7 @@ router.post('/login', async (req, res, next) => {
 
 /* GET signup  */
 router.get('/signup', isUserLoggedOut, (req, res) => {
-  res.render('signup/user', { errorMessage: [req.flash('wrongPassw'), req.flash('blank'), req.flash('unknown'), req.flash('userExists')] });
+  res.render('signup/user', { errorMessage: [req.flash('wrongPassw'), req.flash('blank'), req.flash('unknown'), req.flash('userExists')], auth:true });
 });
 
 /* POST signup  */

@@ -11,7 +11,7 @@ router.get('/', (req, res) => {
 /* GET business-list */
 router.get('/business', (req, res, next) => {
   Business.find()
-    .then(dbBusiness => res.render('business/list', { dbBusiness }))
+    .then(dbBusiness => res.render('business/list', { dbBusiness, auth:true }))
     .catch(err => next(err));
 });
 

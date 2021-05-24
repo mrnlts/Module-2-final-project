@@ -10,7 +10,7 @@ router.get('/', isUserLoggedIn, async (req, res, next) => {
     const dbOrders = await Order.find({ user: req.session.currentUser._id })
       .populate('product')
       .populate({ path: 'product', populate: [{ path: 'businessName' }] });
-    res.render('user/order-history', { dbOrders, successMessage: req.flash('success') });
+    res.render('user/order-history', { dbOrders, successMessage: req.flash('success'), orderHistory: true });
   } catch (e) {
     res.render('error404');
     next(e);
