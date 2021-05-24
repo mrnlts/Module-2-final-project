@@ -117,7 +117,7 @@
 
 /* DESKTOP */
 @media only screen and (min-width: 768px) {
-  .user_homepage_nav > a,
+  .app_nav > a,
   .add_product_form_btn,
   .product_list_card h4 {
     font-size: 1.3rem;
