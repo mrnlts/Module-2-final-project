@@ -8,7 +8,9 @@ const logger = require('morgan');
 const session = require('express-session');
 const flash = require('connect-flash');
 const hbs = require('hbs');
+const passport = require('passport');
 const appSession = require('./configs/session');
+
 
 const app = express();
 
@@ -21,6 +23,7 @@ const orderRouter = require('./routes/order');
 
 // require database configuration
 require('./configs/db.config');
+require('./configs/passport.config.js')(passport)
 
 // Middleware setup
 app.use(logger('dev'));
@@ -29,10 +32,6 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(session(appSession));
 app.use(flash());
-// app.use((req, res, next) => {
-//     res.locals.sessionFlash = req.session.sessionFlash;
-//     next();
-//   });
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Express view engine setup
@@ -41,12 +40,6 @@ app.set('view engine', 'hbs');
 
 // Register helper
 hbs.registerPartials(path.join(__dirname, '/views/partials'));
-// hbs.registerHelper('orderDisplay', (status) => {
-//    if (status === 'pending') {
-//     return true;
-//   }
-// });
-
 
 app.use('/', indexRouter);
 app.use('/auth', authRouter);

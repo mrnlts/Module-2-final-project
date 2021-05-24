@@ -1,28 +1,26 @@
 <div class="add_product_container">
-    <div class="user_homepage_nav">  
-      <a href="/orders">Orders</a> <span> | </span>
-      <a href="/user/profile/edit"> Profile </a>  <span> | </span>
-       <a href="/business/products">Back</a>  
-  </div>
-      
-    <h1>Add a new product</h1>
-            
-<div class="add_product_form_container">  
-    <form class="add_product_form" action="/business/add-product" method="post" enctype="multipart/form-data">
-        <label for="description">Description</label>
-        <br>
-        <i class="fab fa-product-hunt fa-1x"></i> <input type="text" name="description" id="description" placeholder="Your product's description"> 
-        <br>
-        <label for="price">Price</label>
-        <br>
-        <i class="fas fa-dollar-sign fa-1x"></i> <input type="number" name="price" id="price" placeholder="Your product's price"> 
-        <br>
-        <div class="add_product_form">
-           <i class="far fa-file-image fa-1x"></i>  <label for="image-input">Add image:</label>
-         <input type="file" name="image" id="image-input" class="form-control-file" /> 
-        </div>
-        <br>
-<button class="add_product_btn" type="submit">Add product</button>
-    </form>
-</div> 
+    <h1>Add a new product</h1>       
+    <div class="add_product_form_container">  
+        <form class="add_product_form" action="/business/add-product" method="post" enctype="multipart/form-data">
+            <label for="description">Description</label>
+            <br>
+            <i class="fab fa-product-hunt fa-1x"></i> 
+            <input type="text"   name="description" id="description" placeholder="Your product's description"> 
+            <br>
+
+            <label for="price">Price</label>
+            <br>
+            <i class="fas fa-dollar-sign fa-1x"></i> 
+            <input type="number"   step="any" name="price" id="price" placeholder="Your product's price"> 
+            <br>
+
+            <div class="add_product_form">
+            <i class="far fa-file-image fa-1x"></i>  <label for="image-input">Add image:</label>
+            <input type="file"   name="image" id="image-input" class="form-control-file" /> 
+            </div>
+            <br>
+
+            <button class="add_product_btn" type="submit">Add product</button>
+        </form>
+    </div> 
 </div>

@@ -1,14 +1,12 @@
 const passport = require('passport');
-const LocalStrategy = require('passport-local').Strategy;
-const bcrypt = require('bcrypt');
 const session = require('express-session');
-const flash = require('connect-flash');
+const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const appSession = require('./session');
 const User = require('../models/User.model');
 
 
 module.exports = (app) => {
-
+  
   passport.serializeUser((user, done) => done(null, user.id));
  
   passport.deserializeUser((id, done) => {
@@ -16,35 +14,38 @@ module.exports = (app) => {
       .then(user => done(null, user))
       .catch(err => done(err));
   });
+  
+  passport.use(
+    new GoogleStrategy(
+      {
+        clientID: process.env.GOOGLE_CLIENT_ID,
+        clientSecret:process.env.GOOGLE_CLIENT_SECRET,
+        callbackURL: process.env.GOOGLE_CALLBACK,
+      },
+      
+      (accessToken, refreshToken, profile, done) => {
+        // to see the structure of the data in received response:
+        console.log("Google account details:", profile);
    
-app.use(flash());
-
-passport.use(
-  new LocalStrategy(
-    { passReqToCallback: true },
-    {
-      usernameField: 'email',
-      passwordField: 'password',
-    },
-
-    ( username, password, done) => {
-      User.findOne({  email: username })
-        .then(user => {
-          if (!user) {
-            done(null, false, { message: 'Incorrect user or password' });
-          } 
-          if (bcrypt.compareSync(password, user.password)) {
-            return done(null, user);
-          } 
+        User.findOne({ googleID: profile.id })
+          .then(user => {
+            if (user) {
+              done(null, user);
+              return;
+            }
    
-          return done(null, false, { errorMessage:  'Incorrect user or password' })
-          
-        })
-        .catch(err => done(err));
-    },
-  ),
-);
-
+            User.create({ googleID: profile.id })
+              .then(newUser => {
+                done(null, newUser);
+              })
+              .catch(err => done(err)); // closes User.create()
+          })
+          .catch(err => done(err)); // closes User.findOne()
+      }
+    )
+  );
+  
+ 
 app.use(session(appSession));
 app.use(passport.initialize());
 app.use(passport.session());

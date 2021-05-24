@@ -28,23 +28,14 @@
   font-weight: bolder;
 }
 
-.product_title {
-  position: relative;
-  width: 20%;
-  left: 10%;
-}
-
 .add_product_form_btn {
-  background-color: brown;
-  position: absolute;
-  top: 7rem;
-  left: 70%;
+  background-color: rgb(12, 58, 19);
   border: none;
   font-weight: bolder;
   color: white;
   padding: 1rem;
   border-radius: 5%;
-  font: 14px;
+  font-size: 1.3rem;
   font-family: 'Roboto Slab';
 }
 
@@ -59,9 +50,3 @@
   font-family: 'Roboto Slab';
 }
 
-
-@media only screen and (min-width: 600px) {
-  .product_title {
-    left: -15%;
-  }
-}
