@@ -4,7 +4,6 @@
   background-color: rgb(249, 233, 221);
 }
 
-
 .homepage__container_image {
   background-image: url('../images/background-images/Thai-food-Tom-Yam-Kung.jpeg');
   background-repeat: no-repeat;
@@ -16,7 +15,7 @@
 
 .homepage__container_title {
   color: white;
-  padding: 1rem;
+  padding: 5rem 1rem;
   background-color: rgba(18, 18, 19, 0.503);
   display: flex;
   flex-direction: column;
@@ -36,7 +35,6 @@
   flex-direction: column;
   justify-content: space-around;
   align-items: flex-start;
-  height: 20vh;
   width: 100%;
   padding: 1rem 0 0 3rem;
   position: absolute;
@@ -52,8 +50,8 @@
 .icon {
   display: block;
   position: absolute;
-  right: 2rem;
-  top: 2rem;
+  right: 10vh;
+  top: 5vh;
 }
 
 .icon > i {
