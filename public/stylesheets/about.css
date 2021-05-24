@@ -22,3 +22,20 @@
   font-size: 1.2rem;
   font-weight: 400;
 }
+
+@media only screen and (min-width: 600px) {
+  .about_page_content > article {
+    margin: 10vh 15vh;
+    font-size: 1.2rem;
+    font-weight: 400;
+  }
+}
+
+/* DESKTOP */
+@media only screen and (min-width: 768px) {
+  .about_page_content > article {
+    margin: 10vh 50vh;
+    font-size: 1.5rem;
+    font-weight: 400;
+  }
+}
