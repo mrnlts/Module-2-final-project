@@ -1,30 +1,8 @@
 .user_homepage_container {
-  background-color: rgb(249, 233, 221);
   height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-}
-
-.user_homepage_nav {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  position: fixed;
-  overflow: hidden;
-  padding-top: 0.7rem;
-  top: 0;
-  width: 100%;
-  height: 7vh;
-  background-color: rgb(12, 58, 19);
-  -webkit-box-shadow: 6px 7px 15px -2px #727272;
-  box-shadow: 6px 7px 15px -2px #727272;
-}
-
-.user_homepage_nav > a,
-.user_homepage_nav > span {
-  color: white;
-  font-size: 1.3rem;
 }
 
 .generic_btn {
@@ -43,7 +21,7 @@
 }
 
 .user_homepage_isBusiness {
-  color: rgb(12, 58, 19);
+  color: rgb(2, 8, 59);
   font-size: 0.4rem;
 }
 
@@ -58,23 +36,16 @@
 
 .user_homepage_title_offers {
   margin-top: 14vh;
-  
+  font-weight: bolder;
 }
 
 .offers_card_container {
+  height: 25%;
+  margin: 0 5%;
   position: relative;
-  width: 100%;
-}
-
-.offers_card_container_scroll {
-  margin: 0 2vh;
   overflow-x: scroll;
   overflow-y: hidden;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  white-space: wrap;
-  height: 400px;
+  white-space: nowrap;
 }
 
 .offers_card_item {
@@ -87,8 +58,10 @@
 
 .offers_card_item_btn {
   width: 35%;
-  background: rgb(12, 58, 19);
-  border: 1px solid rgb(12, 58, 19);
+  background: rgb(2, 8, 59);
+  border: 1px solid rgba(128, 128, 128, 0.119);
+  -webkit-box-shadow: 6px 7px 15px -2px #727272;
+  box-shadow: 6px 7px 15px -2px #727272;
   border-radius: 4px;
   color: #fff;
   cursor: pointer;
@@ -96,18 +69,20 @@
   padding: 8px 16px;
   text-decoration: none;
   text-align: center;
-  font-size: 1.3rem;
+  font-size: 1rem;
 }
 
 .offers_card_item_img {
-  width: 150px;
-  height: 150px;
+  width: 100px;
+  height: 100px;
   float: left;
   border-radius: 50%;
+  margin-top: 1rem;
 }
 
 .user_homepage_title {
   margin-bottom: 2vh;
+  font-weight: bolder;
 }
 
 .business_card_container {
@@ -121,7 +96,7 @@
 .business_card_item {
   background-color: transparent;
   width: 280px;
-  height: 60%;
+  height: 200px;
   border: 1px solid rgba(128, 128, 128, 0.119);
   -webkit-box-shadow: 6px 7px 15px -2px #727272;
   box-shadow: 6px 7px 15px -2px #727272;
@@ -148,16 +123,12 @@
   bottom: 0;
   width: 100%;
   height: 7vh;
-  background-color: rgb(12, 58, 19);
+  background-color: rgb(2, 8, 59);
   display: flex;
   justify-content: space-around;
   align-items: center;
   color: white;
   font-weight: bolder;
-}
-
-.user_homepage_footer > form > input {
-  font-size: 1.3rem;
 }
 
 .offers_card_item > h3 {
@@ -180,6 +151,18 @@
   .generic_btn {
     font-family: inherit;
   }
+
+  .offers_card_item {
+    width: 50%;
+  }
+
+  .user_homepage_title_offers {
+    font-size: 2.5rem;
+  }
+
+  .user_homepage_title {
+    font-size: 2.5rem;
+  }
 }
 
 /* DESKTOP */
@@ -196,7 +179,7 @@
     height: 35vh;
   }
   .offers_card_item {
-    width: 50%;
+    width: 30%;
   }
   .offers_card_item_img {
     width: 13vh;
@@ -207,11 +190,17 @@
   .offers_card_item_btn {
     font-size: 1.3rem;
   }
-  .offers_card_container_scroll {
-    height: 90%;
-    margin-top: 5vh;
-  }
+
   .business_card_container {
     margin-top: 5vh;
+  }
+
+  .user_homepage_title_offers {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+  }
+
+  .user_homepage_title {
+    font-size: 3rem;
   }
 }

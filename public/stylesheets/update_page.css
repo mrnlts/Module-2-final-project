@@ -7,7 +7,7 @@
   top: 0;
   width: 100%;
   height: 7vh;
-  background-color: rgb(12, 58, 19);
+  background-color: rgb(2, 8, 59);
   -webkit-box-shadow: 6px 7px 15px -2px #727272;
   box-shadow: 6px 7px 15px -2px #727272;
 }
@@ -28,7 +28,6 @@
 }
 
 .update_page_container {
-  background-color: rgb(249, 233, 221);
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -98,17 +97,15 @@
   box-shadow: 6px 7px 15px -2px #727272;
 }
 
-  .update_page_nav > a ,
-  .generic_btn,
-  .update_page_save_btn,
-  .update_page_delete_btn,
-  .update_page_form > label,
-  .update_page_form > input,
-  .image_upload_form > label,
-  .form-control-file  {
-    font-size: 1.3rem;
-  }
-
+.update_page_nav > a,
+.update_page_save_btn,
+.update_page_delete_btn,
+.update_page_form > label,
+.update_page_form > input,
+.image_upload_form > label,
+.form-control-file {
+  font-size: 1.3rem;
+}
 
 /* DESKTOP */
 @media only screen and (min-width: 768px) {

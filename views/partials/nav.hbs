@@ -2,7 +2,7 @@
 <a href="javascript:void(0);" class="icon" onclick="myFunction()">
   <i class="fa fa-bars 5x"></i>
 </a> 
-  <div id ="myLinks" class="user_homepage_nav">  
+  <div id ="myLinks" class="app_nav">  
       <a href="/orders">Orders</a> <span> | </span>
       <a href="/user/profile/edit"> Profile </a>  <span> | </span>
       <form action="/auth/logout" method="post">
@@ -11,18 +11,35 @@
   </div>
 {{/if }}
 
+{{#if editProduct}}
+<a href="javascript:void(0);" class="icon" onclick="myFunction()">
+  <i class="fa fa-bars 5x"></i>
+</a> 
+  <div id ="myLinks" class="app_nav"> 
+        <a href="/business/products">Back</a> <span> | </span>
+        <form action="/auth/logout" method="post">
+            <input type="submit" value="Log out" class="generic_btn"></input>
+        </form>
+    </div>
+{{/if}}
 
 {{#if orderHistory}}
-    <nav class="orders_page_nav">
+<a href="javascript:void(0);" class="icon" onclick="myFunction()">
+  <i class="fa fa-bars 5x"></i>
+</a> 
+  <div id ="myLinks" class="app_nav">
         <a href="/user/profile">Back</a> <span> | </span>
         <form action="/auth/logout" method="post">
             <input type="submit" value="Log out" class="generic_btn"></input>
         </form>
-    </nav>
+    </div>
 {{/if}}
 
 {{#if userEdit}}
-  <div class="update_page_nav">
+<a href="javascript:void(0);" class="icon" onclick="myFunction()">
+  <i class="fa fa-bars 5x"></i>
+</a> 
+  <div id ="myLinks" class="app_nav">
     <a href="/user/profile">Back</a> <span> | </span>
     <form action="/auth/logout" method="post">
       <input type="submit" value="Log out" class="generic_btn"></input>
@@ -32,45 +49,60 @@
 
 
 {{#if businessDetail}}
-    <div class="user_homepage_nav">  
+<a href="javascript:void(0);" class="icon" onclick="myFunction()">
+  <i class="fa fa-bars 5x"></i>
+</a> 
+  <div id ="myLinks" class="app_nav">        
         <a href="/user/profile"> Back </a>  <span> | </span>
         <form action="/auth/logout" method="post">
             <input class= "generic_btn" type="submit" value="Log out" ></input>
-        </form>
-    </div>
+        </form>    
+  </div>
 {{/if}}
 
 {{#if auth}}
-  <nav class="login_signup_nav">
+<a href="javascript:void(0);" class="icon" onclick="myFunction()">
+  <i class="fa fa-bars 5x"></i>
+</a> 
+  <div id ="myLinks" class="app_nav">
     <a href="/">Back</a> 
-  </nav>
+  </div>
 {{/if}}
 
 {{#if addBusiness}}
-    <div class="user_homepage_nav">        
+<a href="javascript:void(0);" class="icon" onclick="myFunction()">
+  <i class="fa fa-bars 5x"></i>
+</a> 
+  <div id ="myLinks" class="app_nav">      
         <a href="/user/profile/edit"> Profile </a>  <span> | </span>
         <a href="/business/products">Back</a>  
     </div>
 {{/if}}
 
 {{#if addProduct}}
-    <div class="user_homepage_nav">  
+    <div class="app_nav">  
       <a href="/business/products">Back</a>  <span> | </span>
       <a href="/orders">Orders</a> 
     </div>
 {{/if}}
 
 {{#if editBusiness}}
-   <nav class="update_page_nav">
+ <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+  <i class="fa fa-bars 5x"></i>
+</a> 
+  <div id ="myLinks" class="app_nav">
     <a href="/business/profile">Back</a>   <span> | </span>
         <form action="/auth/logout" method="post">
         <input type="submit" value="Log out" class="generic_btn"></input>
     </form>
-  </nav>
+  </div>
 {{/if}}
 
 {{#if businessMainPage}}
-    <div class="business_homepage_nav">
+   <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+  <i class="fa fa-bars 5x"></i>
+    </a> 
+  <div id ="myLinks" class="app_nav">
         <a href="/user/profile">Back</a><span> | </span>
         <a href="/business/profile/edit"> Update business data </a> <span> | </span>
         <form action="/auth/logout" method="post">
@@ -80,19 +112,25 @@
 {{/if}}
 
 {{#if products}}
-    <nav class="user_homepage_nav">
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+  <i class="fa fa-bars 5x"></i>
+</a> 
+  <div id ="myLinks" class="app_nav">
         <a href="/business/profile">Back</a> <span> | </span>
         <form action="/auth/logout" method="post">
             <input type="submit" value="Log out" class="generic_btn"></input>
         </form>
-    </nav>
+    </div>
 {{/if}}
 
 {{#if orders}}
-    <nav class="orders_page_nav">
+<a href="javascript:void(0);" class="icon" onclick="myFunction()">
+  <i class="fa fa-bars 5x"></i>
+</a> 
+  <div id ="myLinks" class="app_nav">
         <a href="/business/profile">Back</a> <span> | </span>
         <form action="/auth/logout" method="post">
             <input type="submit" value="Log out" class="generic_btn"></input>
         </form>
-    </nav>
+    </div>
 {{/if}}
