@@ -1,19 +1,24 @@
-    {{#if successMessage}}
-        <div class= "order_success_message">
-            {{successMessage}}
-        </div>
-    {{/if}}
+{{#if successMessage}}
+    <div class= "order_success_message">
+        {{successMessage}}
+    </div>
+{{/if}}
+
 <h1>{{this.dbOrder.business.businessName}}</h1>
 <h3>Order started at: {{this.dbOrder.createdAt}}</h3>
 <p class="content_card_user">Order status: {{this.dbOrder.status}}</p>
-{{#each this.dbOrder.products}}
-    <div class="collaborators_page_item">
-            <p>Item: {{this.item.description}}</p>
-            <p>Price: {{this.item.price}}$</p>
-    </div>
-{{/each}}
+<ul>
+    {{#each this.dbOrder.products}}
+        <li>
+                <p>Item: {{this.item.description}}</p>
+                <p>Price: {{this.item.price}}$</p>
+        </li>
+    {{/each}}
+</ul>
+<h2>Total price: {{total}}$</h2>
+
 {{#if openOrder}}
-<form action="/orders/{{this.dbOrder.id}}/confirm" method="post">
-    <input type="submit" value="Confirm order">
-</form>
+    <form action="/orders/{{this.dbOrder.id}}/confirm" method="post">
+        <input type="submit" value="Confirm order">
+    </form>
 {{/if}}

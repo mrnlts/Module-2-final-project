@@ -35,7 +35,11 @@ router.get('/:id/details', isUserLoggedIn, async (req, res, next) => {
     if (dbOrder.status !== 'open') {
       openOrder = false;
     }
-    res.render('user/order-detail', { dbOrder, successMessage: req.flash('closed'), openOrder });
+    let prices = [];
+    await dbOrder.products.forEach(prod => prices.push(prod.item.price));
+    const total = await prices.reduce((acc, curr) => acc + curr);
+    console.log(total);
+    res.render('user/order-detail', { dbOrder, successMessage: req.flash('closed'), openOrder, total });
   } catch (e) {
     res.render('error404');
     next(e);
@@ -59,22 +63,16 @@ router.post('/', async (req, res, next) => {
   try {
     let dbOrder = await Order.findOne({ business, status: 'open' });
     if (!dbOrder) {
-      console.log("there are no open orders");
       dbOrder = Order.create({
         business,
         products: [{ item: product, amount: 1 }],
         user: req.session.currentUser._id,
         status: 'open',
       });
-    } else {
-      console.log("there is an OPEN order:", dbOrder);
-      let products = await [...dbOrder.products];
-      console.log("Products before pushing current product: ", products);
-      await products.push({ amount: 1, item: product });
-      console.log("Products after pushin current product: ", products);
-      await Order.findOneAndUpdate(business, { products });
-      console.log("dbOrder updated: ", dbOrder);
     }
+    let products = await [...dbOrder.products];
+    await products.push({ amount: 1, item: product });
+    await Order.findOneAndUpdate(business, { products });
     req.flash('success', 'Product added to shopping cart');
     res.redirect('/orders');
   } catch (e) {
