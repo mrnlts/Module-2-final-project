@@ -21,10 +21,6 @@ const businessRouter = require('./routes/business');
 const authRouter = require('./routes/auth');
 const orderRouter = require('./routes/order');
 
-// require database configuration
-require('./configs/db.config');
-require('./configs/passport.config.js')(passport)
-
 // Middleware setup
 app.use(logger('dev'));
 app.use(express.json());
@@ -34,6 +30,12 @@ app.use(session(appSession));
 app.use(flash());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+// require database configuration
+require('./configs/db.config');
+require('./configs/passport.config.js')(passport)
+
+
 // Express view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
@@ -41,6 +43,7 @@ app.set('view engine', 'hbs');
 // Register helper
 hbs.registerPartials(path.join(__dirname, '/views/partials'));
 
+// Register routes
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
 app.use('/user', user);

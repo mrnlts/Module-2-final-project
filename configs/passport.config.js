@@ -17,20 +17,19 @@ module.exports = (app) => {
   
   passport.use(
     new GoogleStrategy(
-      {
+      { 
         clientID: process.env.GOOGLE_CLIENT_ID,
         clientSecret:process.env.GOOGLE_CLIENT_SECRET,
-        callbackURL: process.env.GOOGLE_CALLBACK,
+        callbackURL: process.env.GOOGLE_CALLBACK, 
       },
       
-      (accessToken, refreshToken, profile, done) => {
-        // to see the structure of the data in received response:
-        console.log("Google account details:", profile);
-   
+      (req, accessToken, refreshToken, profile, done) => {
+       console.log("Google account details:", profile);
+               
         User.findOne({ googleID: profile.id })
           .then(user => {
             if (user) {
-              done(null, user);
+              done( null, user);
               return;
             }
    
@@ -38,17 +37,17 @@ module.exports = (app) => {
               .then(newUser => {
                 done(null, newUser);
               })
-              .catch(err => done(err)); // closes User.create()
+              .catch(err => done(err)); 
           })
-          .catch(err => done(err)); // closes User.findOne()
+          .catch(err => done(err));
       }
     )
   );
-  
- 
-app.use(session(appSession));
+
+app.use(session(appSession)); 
 app.use(passport.initialize());
-app.use(passport.session());
+app.use(passport.session()); 
 
 }
+
 

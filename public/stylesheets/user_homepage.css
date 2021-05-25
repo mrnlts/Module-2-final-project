@@ -1,5 +1,4 @@
 .user_homepage_container {
-  background-color: rgb(249, 233, 221);
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -22,7 +21,7 @@
 }
 
 .user_homepage_isBusiness {
-  color: rgb(12, 58, 19);
+  color: rgb(2, 8, 59);
   font-size: 0.4rem;
 }
 
@@ -59,7 +58,7 @@
 
 .offers_card_item_btn {
   width: 35%;
-  background: rgb(12, 58, 19);
+  background: rgb(2, 8, 59);
   border: 1px solid rgba(128, 128, 128, 0.119);
   -webkit-box-shadow: 6px 7px 15px -2px #727272;
   box-shadow: 6px 7px 15px -2px #727272;
@@ -124,7 +123,7 @@
   bottom: 0;
   width: 100%;
   height: 7vh;
-  background-color: rgb(12, 58, 19);
+  background-color: rgb(2, 8, 59);
   display: flex;
   justify-content: space-around;
   align-items: center;

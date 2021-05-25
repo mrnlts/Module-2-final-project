@@ -5,7 +5,7 @@
 }
 
 body {
-  background-color: rgb(249, 233, 221);
+  background-color: rgb(254, 248, 245);
   box-sizing: border-box;
   text-align: center;
   width: 100%;
@@ -16,7 +16,7 @@ body {
 
 a,
 .generic_btn {
-  color: rgb(12, 58, 19);
+  color: rgb(2, 8, 59);
   background-color: transparent;
   text-decoration: none;
   border: none;

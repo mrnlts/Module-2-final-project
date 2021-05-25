@@ -73,7 +73,7 @@
   bottom: 0;
   width: 100%;
   height: 7vh;
-  background-color: rgb(12, 58, 19);
+  background-color: rgb(2, 8, 59);
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -96,12 +96,12 @@
 }
 
 .business_homepage_nav > a,
-  .business_homepage_btn_Myproducts,
-  .business_homepage_btn,
-  .business_homepage_footer > h4,
-  .business_offers_item > h3 {
-    font-size: 1.3rem;
-  }
+.business_homepage_btn_Myproducts,
+.business_homepage_btn,
+.business_homepage_footer > h4,
+.business_offers_item > h3 {
+  font-size: 1.3rem;
+}
 
 /* TABLET */
 @media only screen and (min-width: 600px) {
@@ -110,7 +110,6 @@
 
 /* DESKTOP */
 @media only screen and (min-width: 768px) {
-  
   .business_offers_item > h3 {
     padding-top: 2rem;
   }

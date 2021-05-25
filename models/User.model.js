@@ -8,7 +8,7 @@ const userSchema = new Schema(
     lastName: String,
     email: {
       type: String,
-      required: [true, 'Email is required.'],
+     // required: [true, 'Email is required.'],
       unique: true,
       lowercase: true,
       trim: true,
@@ -17,7 +17,7 @@ const userSchema = new Schema(
     googleID: String,
     passwordHash: {
       type: String,
-      required: [true, 'Password is required.'],
+    //  required: [true, 'Password is required.'],
       trim: true,
         },
     city: String,
@@ -29,7 +29,7 @@ const userSchema = new Schema(
     }
   },
   {
-    timestamps: true,
+    timestamps: { createdAt: "created_at", updatedAt: "updated_at" }
   },
 );
 
