@@ -1,6 +1,6 @@
 {{#if userMainPage}} 
-<a href="javascript:void(0);" class="icon" onclick="myFunction()">
-  <i class="fa fa-bars 5x"></i>
+<a href="javascript:void(0);" class="icon" onclick="myFunction()" id="burger">
+  <i class="fa fa-bars 5x" ></i>
 </a> 
   <div id ="myLinks" class="app_nav">  
       <a href="/orders">Orders</a> <span> | </span>
@@ -13,7 +13,7 @@
 
 {{#if editProduct}}
 <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-  <i class="fa fa-bars 5x"></i>
+  <i class="fa fa-bars 5x" id="burger"></i>
 </a> 
   <div id ="myLinks" class="app_nav"> 
         <a href="/business/products">Back</a> <span> | </span>
@@ -25,7 +25,7 @@
 
 {{#if orderHistory}}
 <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-  <i class="fa fa-bars 5x"></i>
+  <i class="fa fa-bars 5x" id="burger"></i>
 </a> 
   <div id ="myLinks" class="app_nav">
         <a href="/user/profile">Back</a> <span> | </span>
@@ -37,7 +37,7 @@
 
 {{#if orderDetail}}
 <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-  <i class="fa fa-bars 5x"></i>
+  <i class="fa fa-bars 5x" id="burger"></i>
 </a> 
   <div id ="myLinks" class="app_nav">
         <a href="/orders">Back</a> <span> | </span>
@@ -49,7 +49,7 @@
 
 {{#if userEdit}}
 <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-  <i class="fa fa-bars 5x"></i>
+  <i class="fa fa-bars 5x" id="burger"></i>
 </a> 
   <div id ="myLinks" class="app_nav">
     <a href="/user/profile">Back</a> <span> | </span>
@@ -62,7 +62,7 @@
 
 {{#if businessDetail}}
 <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-  <i class="fa fa-bars 5x"></i>
+  <i class="fa fa-bars 5x" id="burger"></i>
 </a> 
   <div id ="myLinks" class="app_nav">        
         <a href="/user/profile"> Back </a>  <span> | </span>
@@ -74,7 +74,7 @@
 
 {{#if auth}}
 <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-  <i class="fa fa-bars 5x"></i>
+  <i class="fa fa-bars 5x" id="burger"></i>
 </a> 
   <div id ="myLinks" class="app_nav">
     <a href="/">Back</a> 
@@ -83,7 +83,7 @@
 
 {{#if addBusiness}}
 <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-  <i class="fa fa-bars 5x"></i>
+  <i class="fa fa-bars 5x" id="burger"></i>
 </a> 
   <div id ="myLinks" class="app_nav">      
         <a href="/user/profile/edit"> Profile </a>  <span> | </span>
@@ -92,6 +92,9 @@
 {{/if}}
 
 {{#if addProduct}}
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+  <i class="fa fa-bars 5x" id="burger"></i>
+</a> 
     <div class="app_nav">  
       <a href="/business/products">Back</a>  <span> | </span>
       <a href="/orders">Orders</a> 
@@ -100,7 +103,7 @@
 
 {{#if editBusiness}}
  <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-  <i class="fa fa-bars 5x"></i>
+  <i class="fa fa-bars 5x" id="burger"></i>
 </a> 
   <div id ="myLinks" class="app_nav">
     <a href="/business/profile">Back</a>   <span> | </span>
@@ -112,7 +115,7 @@
 
 {{#if businessMainPage}}
    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-  <i class="fa fa-bars 5x"></i>
+  <i class="fa fa-bars 5x" id="burger"></i>
     </a> 
   <div id ="myLinks" class="app_nav">
         <a href="/user/profile">Back</a><span> | </span>
@@ -125,7 +128,7 @@
 
 {{#if products}}
     <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-  <i class="fa fa-bars 5x"></i>
+  <i class="fa fa-bars 5x" id="burger"></i>
 </a> 
   <div id ="myLinks" class="app_nav">
         <a href="/business/profile">Back</a> <span> | </span>
@@ -137,7 +140,7 @@
 
 {{#if orders}}
 <a href="javascript:void(0);" class="icon" onclick="myFunction()">
-  <i class="fa fa-bars 5x"></i>
+  <i class="fa fa-bars 5x" id="burger"></i>
 </a> 
   <div id ="myLinks" class="app_nav">
         <a href="/business/profile">Back</a> <span> | </span>
