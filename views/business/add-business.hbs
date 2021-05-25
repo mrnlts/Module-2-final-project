@@ -1,0 +1,42 @@
+<div class="add_business_page">   
+    <h1>Add your business</h1> 
+    <div class="add_business_form_container">
+    <form class="add_business_form" action="/business/add" method="post" enctype="multipart/form-data">
+        <label for="businessName">Business name </label>
+        <input type="text"   id="businessName" name="businessName" placeholder="Your business' name">
+        <br>
+
+        <label for="businessType">Business type </label>
+            <select   name="businessType" id="businessType">
+                <option value="Pizza">Pizza</option>
+                <option value="Chinese">Chinese</option>
+                <option value="Sushi">Sushi</option>
+                <option value="Italian">Italian</option>
+                <option value="Japanese">Japanese</option>
+                <option value="Thai">Thai</option>
+                <option value="Vietnamese">Vietnamese</option>
+                <option value="Tapas">Tapas</option>
+                <option value="Mexican">Mexican</option>
+                <option value="Mediterranean">Mediterranean</option>
+                <option value="Gourmet">Gourmet</option>
+                <option value="French">French</option>
+                <option value="Hamburger">Hamburger</option>
+                <option value="Kebab">Kebab</option>
+                <option value="FastFood">FastFood</option>
+                <option value="Vegan">Vegan</option>
+                <option value="Vegetarian">Vegetarian</option>
+            </select>
+            <br>
+
+        <label for="city">City</label>
+        <input type="text"   id="city" name="city" placeholder="Your city">
+        <br>
+
+        <label for="image-input">Image:</label>
+        <input type="file"   name="image" id="image-input" class="form-control-file" />
+        <br>
+        
+        <button class="add_business_form_btn" type="submit">Sign up</button>
+    </form>
+   </div> 
+</div>

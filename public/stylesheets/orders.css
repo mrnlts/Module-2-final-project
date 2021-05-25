@@ -1,0 +1,170 @@
+.orders_page_container {
+  background-color: rgb(249, 233, 221);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.orders_page_nav > a {
+  color: white;
+  font-size: 1.3rem;
+}
+
+.bussines_orders_page_container_title {
+  margin-top: 10vh;
+  margin-bottom: 2vh;
+  font-weight: bolder;
+  font-size: 1.5rem;
+}
+.orders_page_container_title {
+  margin-top: 13vh;
+  margin-bottom: 5vh;
+  font-size: 1.5rem;
+  font-weight: bolder;
+  font-size: 2rem;
+}
+
+.user_orders_page_item {
+  width: 20rem;
+  height: 150px;
+  border: 1px solid rgba(128, 128, 128, 0.119);
+  -webkit-box-shadow: 6px 7px 15px -2px #727272;
+  box-shadow: 6px 7px 15px -2px #727272;
+  color: black;
+  border-radius: 5%;
+  cursor: pointer;
+  margin: auto;
+  margin-bottom: 20px;
+  background-color: white;
+}
+
+.user_content_card_image {
+  width: 50%;
+  float: left;
+  height: 100%;
+  border-radius: 3%;
+  margin: auto;
+}
+
+.business_orders_page_item {
+  width: 60%;
+  height: 150px;
+  border: 1px solid rgba(128, 128, 128, 0.119);
+  -webkit-box-shadow: 6px 7px 15px -2px #727272;
+  box-shadow: 6px 7px 15px -2px #727272;
+  color: black;
+  border-radius: 5%;
+  cursor: pointer;
+  margin: auto;
+  margin-bottom: 20px;
+  background-color: white;
+}
+
+.content_card_title {
+  font-weight: bold;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.content_card_id {
+  font-size: 10px;
+  margin-bottom: 1rem;
+}
+
+.content_card_user {
+  font-style: oblique;
+  margin-bottom: 0.5rem;
+}
+
+.content_card_product {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.business_orders_btns {
+  display: flex;
+  justify-content: center;
+}
+
+.busines_orders_btn {
+  background: brown;
+  border: 1px solid brown;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  text-align: center;
+}
+
+.busines_orders_edit {
+  background: rgb(12, 58, 19);
+  border: 1px solid rgb(12, 58, 19);
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  text-align: center;
+}
+
+/* TABLET */
+@media only screen and (min-width: 600px) {
+  .orders_page_container_title {
+    font-size: 3rem;
+  }
+  .bussines_orders_page_container_title {
+    margin-bottom: 2vh;
+  }
+
+  .orders_page_scroll {
+    margin-top: 10vh;
+    display: flex;
+    flex-flow: column wrap;
+  }
+
+  .user_orders_page_item {
+    width: 20rem;
+  }
+
+  .user_content_card_image {
+    height: 100%;
+    border-radius: 3%;
+    margin: auto;
+  }
+  .bussines_orders_page_container_title {
+    font-size: 2.5rem;
+  }
+  .orders_page_container_title {
+    font-size: 2.5rem;
+  }
+}
+
+/* DESKTOP */
+@media only screen and (min-width: 768px) {
+  .orders_page_nav a,
+  .orders_page_nav span,
+  .orders_page_item h4,
+  .orders_page_item p {
+    font-size: 1.3rem;
+    padding: 1rem;
+  }
+
+  .orders_page_scroll {
+    margin: 10vh;
+    display: flex;
+    flex-direction: row;
+  }
+
+  .user_orders_page_item {
+    width: 20rem;
+    margin-left: 15vh;
+  }
+
+  .business_orders_page_item {
+    width: 30%;
+    margin-left: 15vh;
+  }
+  .bussines_orders_page_container_title {
+    font-size: 3rem;
+  }
+  .orders_page_container_title {
+    font-size: 3rem;
+  }
+}

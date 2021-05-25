@@ -1,16 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Tillana&display=swap');
 
-body {
-  box-sizing: border-box;
-  width: 100%;
-  height: 100vh;
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+* {
+  font-family: 'Roboto Slab';
 }
 
-a {
-  color: #00B7FF;
+body {
+  background-color: rgb(249, 233, 221);
+  box-sizing: border-box;
+  text-align: center;
+  width: 100%;
+  height: 100vh;
+  font: 14px;
+  font-family: 'Roboto Slab';
+}
+
+a,
+.generic_btn {
+  color: rgb(12, 58, 19);
+  background-color: transparent;
   text-decoration: none;
+  border: none;
+  font-size: 14px;
+  font-weight: bolder;
+  font-family: 'Roboto Slab';
 }
 
 h1 {
@@ -22,42 +34,36 @@ h2 {
 }
 
 form label {
-  display: inline-block;
   margin-bottom: 10px;
   text-align: center;
   width: 100%;
 }
 
-form input,
-form button {
-  box-sizing: border-box;
-  padding: 4px;
+.logOut {
   width: 100%;
-  margin-bottom: 20px;
+  align-self: flex-end;
+  background-color: grey;
+  border: 1px solid grey;
 }
 
-form button {
-  background: #43a3e6;
-  border: 1px solid #43a3e6;
-  border-radius: 4px;
-  color: #fff;
-  cursor: pointer;
-  display: inline-block;
-  padding: 8px 16px;
-  text-decoration: none;
-  width: 100%;
+.hide {
+  display: none;
 }
 
 #home,
 #signup,
 #signup-business,
-#signup-customer,
+#signup-user,
 #business,
-#customer,
-#login {
+#user,
+#login,
+#add-product,
+#edit {
+  margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
   justify-content: space-evenly;
   height: 100vh;
 }
@@ -65,72 +71,34 @@ form button {
 #error404,
 #error500 {
   display: flex;
+  flex-direction: column;
   text-align: center;
   align-items: center;
-  justify-content: space-evenly;
+  justify-content: space-around;
+  height: 100%;
 }
 
 #error404 > img,
 #error500 > img {
   height: auto;
-  width: 50%;
+  width: 80%;
 }
 
 #errortitle {
   font-family: 'Tillana', cursive;
   font-size: 5rem;
-  color:#38c6ff;
+  color: #38c6ff;
   margin-top: 4rem;
 }
 
-
-@media screen and (max-width: 800px) {
-    #error404 {
-    display: block;
+/* DESKTOP */
+@media only screen and (min-width: 768px) {
+  #error404,
+  #error500 {
+    flex-direction: row;
   }
-}
-
-
-/* Smartphones (portrait and landscape) ----------- */
-@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
-/* Styles */
-}
-
-/* Smartphones (landscape) ----------- */
-@media only screen and (min-width : 321px) {
-/* Styles */
-}
-
-/* Smartphones (portrait) ----------- */
-@media only screen and (max-width : 320px) {
-/* Styles */
-}
-
-/* iPads (portrait and landscape) ----------- */
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
-/* Styles */
-}
-
-/* iPads (landscape) ----------- */
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
-/* Styles */
-}
-
-/* iPads (portrait) ----------- */
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) {
-/* Styles */
-}
-/**********
-iPad 3
-**********/
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) and (-webkit-min-device-pixel-ratio : 2) {
-/* Styles */
-}
-
-@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : portrait) and (-webkit-min-device-pixel-ratio : 2) {
-/* Styles */
-}
-/* Desktops and laptops ----------- */
-@media only screen  and (min-width : 1224px) {
-/* Styles */
+  #error404 > img,
+  #error500 > img {
+    width: 50%;
+  }
 }

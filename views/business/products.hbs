@@ -1,0 +1,23 @@
+<div class="product_page_container">
+
+    <div class="product_titles">
+        <form  action="/business/add-product">
+            <input class="add_product_form_btn" type="submit" value="Add new product" class="product_page_btn">
+        </form>
+        <h2 class="product_title">Current products: </h2>
+    </div>
+
+    <div class= "product_container">
+        <div class= "product_container_scroll">
+            {{#if dbProducts}}  
+                {{#each dbProducts}}
+                    {{> product}}
+                {{/each}}
+            {{else}}
+                <p>There are no products at the moment!</p>   
+            {{/if}}
+        </div>
+    </div> 
+    {{> notifications }}
+
+</div>

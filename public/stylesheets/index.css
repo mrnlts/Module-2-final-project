@@ -1,0 +1,95 @@
+.homepage__container {
+  display: flex;
+  flex-direction: column;
+  background-color: rgb(249, 233, 221);
+}
+
+.homepage__container_image {
+  background-image: url('../images/background-images/Thai-food-Tom-Yam-Kung.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 20%;
+  width: 100%;
+  margin: 0;
+}
+
+.homepage__container_title {
+  color: white;
+  padding: 5rem 1rem;
+  background-color: rgba(18, 18, 19, 0.503);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+}
+
+.homepage_container_nav {
+  display: none;
+}
+
+#myLinks {
+  display: none;
+  background-color: rgb(12, 58, 19);
+}
+
+#myLinks > a {
+  color: white;
+  font-size: 1.3rem;
+  padding: 1rem;
+}
+
+.icon {
+  display: block;
+  position: absolute;
+  right: 5vh;
+  top: 5vh;
+}
+
+.icon > i {
+  height: 10vh;
+  width: 10vh;
+  font-size: 3rem;
+  color: rgb(12, 58, 19);
+}
+
+/* TABLET */
+@media only screen and (min-width: 600px) {
+  .homepage_container_nav > h2 {
+    padding-top: 2vh;
+  }
+  /* .icon {
+    display: none;
+  }
+  #myLinks {
+    display: none;
+  }
+  .homepage_container_nav {
+    display: contents;
+  } */
+  .homepage_footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 7vh;
+    background-color: rgb(12, 58, 19);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+  
+  .homepage_footer a,
+  .homepage_footer span {
+    color: white;
+    font-size: 1.3rem;
+  }
+  }
+}
+
+/* DESKTOP */
+@media only screen and (min-width: 768px) {
+  .homepage_footer a {
+    font-size: 1.3rem;
+  }
+}

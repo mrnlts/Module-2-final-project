@@ -1,0 +1,15 @@
+<div class= "product_list_card">
+    <img src="{{this.imageUrlProduct}}" class="tbd" alt="{{title}}">
+    <div>
+        <h4>{{this.description}}</h4>
+        <h4>Price: {{this.price}}</h4>
+        <div class="business_orders_btns">
+            <form action="/business/products/{{this.id}}/edit" method="GET">
+                <input type="submit" class="busines_orders_edit" value="Edit">
+            </form>
+            <form action="/business/products/{{this.id}}/delete" method="POST">
+                <input type="submit" class="busines_orders_btn" value="Remove">
+            </form>
+        </div>
+    </div>
+</div>

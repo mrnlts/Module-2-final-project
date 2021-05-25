@@ -6,85 +6,71 @@ const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
 const session = require('express-session');
-const MongoStore = require('connect-mongo');
-const router = express.Router();
+const flash = require('connect-flash');
 const hbs = require('hbs');
+const passport = require('passport');
+const appSession = require('./configs/session');
+
+
 const app = express();
-
-
-// const app_name = require('./package.json').name;
-// const debug = require('debug')(`${app_name}:${path.basename(__filename).split('.')[0]}`);
-
-
 
 // Routes Setup //
 const indexRouter = require('./routes/index');
-const customerRouter = require('./routes/customer');
+const user = require('./routes/user');
 const businessRouter = require('./routes/business');
-const authRouter = require('./routes/auth'); 
-const signupRouter = require('./routes/signup'); 
+const authRouter = require('./routes/auth');
+const orderRouter = require('./routes/order');
 
 // require database configuration
 require('./configs/db.config');
-
+require('./configs/passport.config.js')(passport)
 
 // Middleware setup
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
-
+app.use(session(appSession));
+app.use(flash());
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Express view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'hbs');
 
-// Session
-app.use(express.static(path.join(__dirname, 'public')));
-  app.use(
-    session({
-      store: MongoStore.create({
-        mongoUrl: `mongodb://localhost/${process.env.DB_NAME}`, 
-        ttl: 24 * 60 * 60,
-      }),
-      secret: process.env.SESS_SECRET,
-      resave: true,
-      saveUninitialized: false,
-      cookie: {
-        sameSite: 'none',
-        httpOnly: true,
-        maxAge: 60000,
-      },
-    }),
-  );
-
-
+// Register helper
+hbs.registerPartials(path.join(__dirname, '/views/partials'));
 
 app.use('/', indexRouter);
 app.use('/auth', authRouter);
-app.use('/signup', signupRouter);
-app.use('/customer', customerRouter);
+app.use('/user', user);
 app.use('/business', businessRouter);
-
+app.use('/orders', orderRouter);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
   next(createError(404));
 });
 
+
+
 // error handler
-app.use((err, req, res, next) => {
+app.use((err, req, res) => {
   // set locals, only providing error in development
+  
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
+  
 
- // render the error page
+  // render the error page
   if (err.status === 404) {
-      res.status(404);
-      res.render('error404');
+    
+    res.status(404);
+    
+    
   } else if (err.status === 500) {
-      res.status(500);
-      res.render('error500');
+    res.status(500);
+    res.render('error500');
   }
 });
 

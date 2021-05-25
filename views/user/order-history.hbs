@@ -1,0 +1,17 @@
+<div class="orders_page_container">
+    <h1 class="orders_page_container_title">Order history</h1> 
+    {{#if successMessage}}
+        <div class= "order_success_message">
+            {{successMessage}}
+        </div>
+    {{/if}}
+
+    {{#if dbOrders}}
+        <div class="orders_page_scroll">
+            {{> orderHistory}}
+        </div>    
+        {{else}}
+            <h2>There's no orders in your history!</h2>
+    {{/if}}
+    
+</div>

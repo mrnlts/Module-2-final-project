@@ -1,0 +1,136 @@
+{{#if userMainPage}} 
+<a href="javascript:void(0);" class="icon" onclick="myFunction()">
+  <i class="fa fa-bars 5x"></i>
+</a> 
+  <div id ="myLinks" class="app_nav">  
+      <a href="/orders">Orders</a> <span> | </span>
+      <a href="/user/profile/edit"> Profile </a>  <span> | </span>
+      <form action="/auth/logout" method="post">
+          <input class= "generic_btn" type="submit" value="Log out" ></input>
+      </form>
+  </div>
+{{/if }}
+
+{{#if editProduct}}
+<a href="javascript:void(0);" class="icon" onclick="myFunction()">
+  <i class="fa fa-bars 5x"></i>
+</a> 
+  <div id ="myLinks" class="app_nav"> 
+        <a href="/business/products">Back</a> <span> | </span>
+        <form action="/auth/logout" method="post">
+            <input type="submit" value="Log out" class="generic_btn"></input>
+        </form>
+    </div>
+{{/if}}
+
+{{#if orderHistory}}
+<a href="javascript:void(0);" class="icon" onclick="myFunction()">
+  <i class="fa fa-bars 5x"></i>
+</a> 
+  <div id ="myLinks" class="app_nav">
+        <a href="/user/profile">Back</a> <span> | </span>
+        <form action="/auth/logout" method="post">
+            <input type="submit" value="Log out" class="generic_btn"></input>
+        </form>
+    </div>
+{{/if}}
+
+{{#if userEdit}}
+<a href="javascript:void(0);" class="icon" onclick="myFunction()">
+  <i class="fa fa-bars 5x"></i>
+</a> 
+  <div id ="myLinks" class="app_nav">
+    <a href="/user/profile">Back</a> <span> | </span>
+    <form action="/auth/logout" method="post">
+      <input type="submit" value="Log out" class="generic_btn"></input>
+    </form>
+  </div>
+{{/if }}
+
+
+{{#if businessDetail}}
+<a href="javascript:void(0);" class="icon" onclick="myFunction()">
+  <i class="fa fa-bars 5x"></i>
+</a> 
+  <div id ="myLinks" class="app_nav">        
+        <a href="/user/profile"> Back </a>  <span> | </span>
+        <form action="/auth/logout" method="post">
+            <input class= "generic_btn" type="submit" value="Log out" ></input>
+        </form>    
+  </div>
+{{/if}}
+
+{{#if auth}}
+<a href="javascript:void(0);" class="icon" onclick="myFunction()">
+  <i class="fa fa-bars 5x"></i>
+</a> 
+  <div id ="myLinks" class="app_nav">
+    <a href="/">Back</a> 
+  </div>
+{{/if}}
+
+{{#if addBusiness}}
+<a href="javascript:void(0);" class="icon" onclick="myFunction()">
+  <i class="fa fa-bars 5x"></i>
+</a> 
+  <div id ="myLinks" class="app_nav">      
+        <a href="/user/profile/edit"> Profile </a>  <span> | </span>
+        <a href="/business/products">Back</a>  
+    </div>
+{{/if}}
+
+{{#if addProduct}}
+    <div class="app_nav">  
+      <a href="/business/products">Back</a>  <span> | </span>
+      <a href="/orders">Orders</a> 
+    </div>
+{{/if}}
+
+{{#if editBusiness}}
+ <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+  <i class="fa fa-bars 5x"></i>
+</a> 
+  <div id ="myLinks" class="app_nav">
+    <a href="/business/profile">Back</a>   <span> | </span>
+        <form action="/auth/logout" method="post">
+        <input type="submit" value="Log out" class="generic_btn"></input>
+    </form>
+  </div>
+{{/if}}
+
+{{#if businessMainPage}}
+   <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+  <i class="fa fa-bars 5x"></i>
+    </a> 
+  <div id ="myLinks" class="app_nav">
+        <a href="/user/profile">Back</a><span> | </span>
+        <a href="/business/profile/edit"> Update business data </a> <span> | </span>
+        <form action="/auth/logout" method="post">
+            <input type="submit" value="Log out" class="generic_btn"></input>
+        </form>
+    </div>
+{{/if}}
+
+{{#if products}}
+    <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+  <i class="fa fa-bars 5x"></i>
+</a> 
+  <div id ="myLinks" class="app_nav">
+        <a href="/business/profile">Back</a> <span> | </span>
+        <form action="/auth/logout" method="post">
+            <input type="submit" value="Log out" class="generic_btn"></input>
+        </form>
+    </div>
+{{/if}}
+
+{{#if orders}}
+<a href="javascript:void(0);" class="icon" onclick="myFunction()">
+  <i class="fa fa-bars 5x"></i>
+</a> 
+  <div id ="myLinks" class="app_nav">
+        <a href="/business/profile">Back</a> <span> | </span>
+        <form action="/auth/logout" method="post">
+            <input type="submit" value="Log out" class="generic_btn"></input>
+        </form>
+    </div>
+{{/if}}

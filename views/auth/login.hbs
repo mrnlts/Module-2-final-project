@@ -1,15 +1,24 @@
+<div class="login_signup_container">
+  <div class= "login_signup_container__form">
+    <h2>Log into your account</h2>
 
-<h1>Login</h1>
-<form action="/auth/login" method="POST">
-  <label for="email">Email</label>
-  <input type="email" id="email" name="email">
-  <label for="password">Password</label>
-  <input type="password" id="password" name="password">
-  <button type="submit">Login</button>
+    {{#unless user}}
+      <div>
+        <a href="/auth/google">Login With Google</a>
+      </div>
+    {{/unless}}
 
-  {{#if errorMessage}}
-  <p class="error">{{errorMessage}}</p>
-  {{/if}}
+    <form class="login_signup_form" action="/auth/login" method="POST">
+      <label for="email">Email</label>
+      <input type="email"   id="email" name="email" placeholder="Your email">
+      <br>
 
-</form>
+      <label for="password">Password</label>
+      <input type="password"   id="password" name="password" placeholder="Your password">
+      <br>
 
+      <button class="login_signup_btn" type="submit">Login</button>
+    </form>
+    {{> notifications }}
+  </div>
+</div>
