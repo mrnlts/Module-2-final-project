@@ -6,15 +6,21 @@ const orderSchema = new Schema({
     business: {
         type: Schema.Types.ObjectId, ref: 'Business'
     },
-    product: {
-        type: Schema.Types.ObjectId, ref: 'Product'
-    },
+    products: 
+        [{
+            item: {type: Schema.Types.ObjectId, ref: 'Product'},
+            amount: {
+                type: Number,
+                default: 1,
+            },
+        }],
     user: {
         type: Schema.Types.ObjectId, ref: 'User'
     },
     status: {
         type: String,
-        enum: ['pending', 'delivered']
+        enum: ['open', 'confirmed', 'delivered'],
+        default: 'open'
     }
 },
 {

@@ -120,7 +120,7 @@ router.post('/products/:id/delete', async(req, res, next) => {
 router.get('/orders', isBusiness, async (req, res, next) => {
   try {
     const dbBusiness = await Business.findOne({ owner: req.session.currentUser._id });
-    const dbOrders = await Order.find({ business: dbBusiness.id, status: 'pending' }).populate('user product');
+    const dbOrders = await Order.find({ business: dbBusiness.id, status: 'pending' }).populate('user').populate({ path: 'products', populate: [{ path: 'item' }]});
     res.render('business/orders', { dbOrders, deliverMessage: req.flash('deliver'), orders: true });
   } catch (e) {
     res.render('error404');

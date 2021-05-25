@@ -1,0 +1,35 @@
+{{#if successMessage}}
+    <div class= "order_success_message">
+        {{successMessage}}
+    </div>
+{{/if}}
+
+<div class="user_homepage_container">
+        <img src="{{this.dbOrder.business.imageUrlBusiness}}" class="business_card_item_img" alt="{{title}}">
+        <h2>{{this.dbOrder.business.businessName}}</h2>
+    
+    <p class="order_detail_page_p">Order status: {{this.dbOrder.status}}</p>
+    <table class="order_detail_page_table">
+        <tr class="order_detail_page_table-headers">
+            <th>Item</th>
+            <th>Amount</th>
+            <th>Price</th>
+        </tr>
+        {{#each this.dbOrder.products}}
+            <tr class="order_detail_page_table-row">
+                <td>{{this.item.description}}</td>
+                <td>{{this.amount}}</td>
+                <td>{{this.item.price}}$</td>
+            </tr>
+        {{/each}}
+    </table>
+
+    <h2>Total price: {{total}}$</h2>
+
+    {{#if openOrder}}
+        <form action="/orders/{{this.dbOrder.id}}/confirm" method="post">
+            <input type="submit" class="offers_card_item_btn" value="Confirm order">
+        </form>
+    {{/if}}
+
+</div>
