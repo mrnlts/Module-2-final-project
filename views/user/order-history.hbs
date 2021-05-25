@@ -1,15 +1,12 @@
 <div class="orders_page_container">
-    <h1 class="orders_page_container_title">Order history</h1> 
     {{#if successMessage}}
         <div class= "order_success_message">
             {{successMessage}}
         </div>
     {{/if}}
-
+<h1 class="orders_page_container_title">Shopping cart</h1> 
     {{#if dbOrders}}
-        <div class="orders_page_scroll">
-            {{> orderHistory}}
-        </div>    
+        {{> orderHistory}}  
         {{else}}
             <h2>There's no orders in your history!</h2>
     {{/if}}
