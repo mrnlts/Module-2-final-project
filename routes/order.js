@@ -8,9 +8,17 @@ const router = express.Router();
 
 router.get('/', isUserLoggedIn, async (req, res, next) => {
   try {
-    const dbOpenOrders = await Order.find({ user: req.session.currentUser._id, status: 'open' }).populate('business').populate({ path: 'product', populate: [{ path: 'businessName' }] });
-    const dbClosedOrders = await Order.find({ user: req.session.currentUser._id, status: {$ne: 'open'} }).populate('business').populate({ path: 'product', populate: [{ path: 'businessName' }] });
-    res.render('user/order-history', { dbOrders: {dbOpenOrders, dbClosedOrders}, successMessage: req.flash('success'), orderHistory: true});
+    const dbOpenOrders = await Order.find({ user: req.session.currentUser._id, status: 'open' })
+      .populate('business')
+      .populate({ path: 'product', populate: [{ path: 'businessName' }] });
+    const dbClosedOrders = await Order.find({ user: req.session.currentUser._id, status: { $ne: 'open' } })
+      .populate('business')
+      .populate({ path: 'product', populate: [{ path: 'businessName' }] });
+    res.render('user/order-history', {
+      dbOrders: { dbOpenOrders, dbClosedOrders },
+      successMessage: req.flash('success'),
+      orderHistory: true,
+    });
   } catch (e) {
     res.render('error404');
     next(e);
@@ -20,12 +28,14 @@ router.get('/', isUserLoggedIn, async (req, res, next) => {
 router.get('/:id/details', isUserLoggedIn, async (req, res, next) => {
   const { id } = req.params;
   try {
-    const dbOrder = await Order.findById(id).populate('business').populate({ path: 'products', populate: [{ path: 'item' }]});
+    const dbOrder = await Order.findById(id)
+      .populate('business')
+      .populate({ path: 'products', populate: [{ path: 'item' }] });
     let openOrder = true;
     if (dbOrder.status !== 'open') {
       openOrder = false;
     }
-    res.render('user/order-detail', {dbOrder, successMessage: req.flash('closed'), openOrder});
+    res.render('user/order-detail', { dbOrder, successMessage: req.flash('closed'), openOrder });
   } catch (e) {
     res.render('error404');
     next(e);
@@ -35,7 +45,7 @@ router.get('/:id/details', isUserLoggedIn, async (req, res, next) => {
 router.post('/:id/confirm', isUserLoggedIn, async (req, res, next) => {
   const { id } = req.params;
   try {
-    const dbOrder = await Order.findByIdAndUpdate(id, {status: 'pending'});
+    const dbOrder = await Order.findByIdAndUpdate(id, { status: 'pending' });
     req.flash('closed', 'Your order has been sent to the restaurant!');
     res.redirect(`/orders/${id}/details`);
   } catch (e) {
@@ -44,22 +54,26 @@ router.post('/:id/confirm', isUserLoggedIn, async (req, res, next) => {
   }
 });
 
-
 router.post('/', async (req, res, next) => {
   const { product, business } = req.body;
   try {
-    let dbOrder = await Order.findOne({business});
+    let dbOrder = await Order.findOne({ business, status: 'open' });
     if (!dbOrder) {
-        dbOrder = Order.create({
-        "business": business,
-        "products": [{"item": product, amount: 1}],
-        "user": req.session.currentUser._id,
-        "status": 'open',
+      console.log("there are no open orders");
+      dbOrder = Order.create({
+        business,
+        products: [{ item: product, amount: 1 }],
+        user: req.session.currentUser._id,
+        status: 'open',
       });
     } else {
+      console.log("there is an OPEN order:", dbOrder);
       let products = await [...dbOrder.products];
-      await products.push({"amount": 1, "item": product});
-      await Order.findOneAndUpdate(business, {"products": products});
+      console.log("Products before pushing current product: ", products);
+      await products.push({ amount: 1, item: product });
+      console.log("Products after pushin current product: ", products);
+      await Order.findOneAndUpdate(business, { products });
+      console.log("dbOrder updated: ", dbOrder);
     }
     req.flash('success', 'Product added to shopping cart');
     res.redirect('/orders');
