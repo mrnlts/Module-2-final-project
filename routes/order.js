@@ -59,20 +59,23 @@ router.post('/:id/confirm', isUserLoggedIn, async (req, res, next) => {
 router.post('/', async (req, res, next) => {
   const { product, business } = req.body;
   try {
-    let dbOrder = await Order.findOne({ business, status: 'open' });
-    if (!dbOrder) {
-      dbOrder = Order.create({
+    let dbOrders = await Order.find({ business, status: 'open', user: req.session.currentUser._id});
+    if (dbOrders.length === 0) {
+      dbOrders = Order.create({
         business,
         products: [{ item: product, amount: 1 }],
         user: req.session.currentUser._id,
         status: 'open',
       });
+      req.flash('success', 'Product added to shopping cart');
+      res.redirect('/orders');
+    } else {
+      let products = [...dbOrders[0].products];
+      await products.push({ amount: 1, item: product });
+      await Order.findByIdAndUpdate(dbOrders[0].id, { products });
+      req.flash('success', 'Product added to shopping cart');
+      res.redirect('/orders');
     }
-    let products = await [...dbOrder.products];
-    await products.push({ amount: 1, item: product });
-    await Order.findOneAndUpdate(business, { products });
-    req.flash('success', 'Product added to shopping cart');
-    res.redirect('/orders');
   } catch (e) {
     res.render('error500');
     next(e);
