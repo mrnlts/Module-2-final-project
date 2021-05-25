@@ -1,5 +1,4 @@
 const express = require('express');
-const { NotAcceptable } = require('http-errors');
 
 const isUserLoggedIn = require('../middleware/login');
 const Order = require('../models/Order.model');
@@ -38,8 +37,7 @@ router.get('/:id/details', isUserLoggedIn, async (req, res, next) => {
     let prices = [];
     await dbOrder.products.forEach(prod => prices.push(prod.item.price));
     const total = await prices.reduce((acc, curr) => acc + curr);
-    console.log(total);
-    res.render('user/order-detail', { dbOrder, successMessage: req.flash('closed'), openOrder, total });
+    res.render('user/order-detail', { dbOrder, successMessage: req.flash('closed'), openOrder, total, orderDetail:true });
   } catch (e) {
     res.render('error404');
     next(e);
@@ -49,7 +47,7 @@ router.get('/:id/details', isUserLoggedIn, async (req, res, next) => {
 router.post('/:id/confirm', isUserLoggedIn, async (req, res, next) => {
   const { id } = req.params;
   try {
-    const dbOrder = await Order.findByIdAndUpdate(id, { status: 'pending' });
+    await Order.findByIdAndUpdate(id, { status: 'pending' });
     req.flash('closed', 'Your order has been sent to the restaurant!');
     res.redirect(`/orders/${id}/details`);
   } catch (e) {

@@ -1,0 +1,33 @@
+.order_detail_page {
+    padding-top: 15vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 60%;
+}
+
+.order_detail_page_p {
+    padding: 1rem 0 0;
+}
+
+.order_detail_page_table {
+    margin: 0 auto;
+    width: 80%;
+}
+
+.order_detail_page_table-headers {
+    font-size: 1.3rem;
+    font-weight: bold;
+    border: 1px solid black;
+    height: 2.3rem;
+    margin: auto;
+}
+
+.order_detail_page_table-row {
+    border: 1px dotted black;
+    height: 1.5rem;
+}
+
+.order_detail_page > p {
+
+}
