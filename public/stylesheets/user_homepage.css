@@ -69,7 +69,7 @@
   margin-top: 0.5rem;
   padding: 8px 16px;
   text-decoration: none;
-  text-align: center;
+  text-align: left;
   font-size: 1rem;
 }
 
@@ -133,7 +133,7 @@
 }
 
 .offers_card_item > h3 {
-  padding: 1.5rem 0 0.5rem;
+  padding: 3rem 0 0.5rem;
 }
 
 .business_card_item > div {
@@ -143,8 +143,20 @@
   justify-content: space-around;
 }
 
+.offers_card_item_btn > a {
+  color:white;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
 .business_card_item {
   height: 70%;
+}
+.fa-shopping-cart {
+  color: white;
+  position: relative;
+  left: -2rem;
 }
 
 /* TABLET */
@@ -180,7 +192,7 @@
     height: 35vh;
   }
   .offers_card_item {
-    width: 30%;
+    width: 40%;
   }
   .offers_card_item_img {
     width: 13vh;
