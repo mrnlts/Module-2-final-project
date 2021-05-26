@@ -1,22 +1,3 @@
-/* .update_page_nav {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  position: fixed;
-  overflow: hidden;
-  top: 0;
-  width: 100%;
-  height: 7vh;
-  background-color: rgb(2, 8, 59);
-  -webkit-box-shadow: 6px 7px 15px -2px #727272;
-  box-shadow: 6px 7px 15px -2px #727272;
-} */
-
-/* .update_page_nav > a,
-.update_page_nav > span {
-  color: white;
-} */
-
 .form-control-file {
   padding: 0.5rem;
 }
@@ -78,6 +59,10 @@
   .update_page_form > select {
     font-size: 1.3rem;
   }
+
+  .update_page_save_btn {
+    width: 30%;
+  }
 }
 
 /* DESKTOP */
@@ -95,5 +80,9 @@
   .login_signup_form {
     width: 60%;
     margin: 0 auto;
+  }
+
+  .update_page_save_btn {
+    width: 20%;
   }
 }
