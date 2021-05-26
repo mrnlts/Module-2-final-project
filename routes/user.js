@@ -6,7 +6,7 @@ const Business = require('../models/Business.model');
 const Product = require('../models/Product.model');
 const isUserLoggedIn = require('../middleware/login');
 
-router.get('/profile', async (req, res, next) => {
+router.get('/profile', isUserLoggedIn, async (req, res, next) => {
   try {
     const dbUser = await User.findById(req.session.currentUser._id);
     const dbBusiness = await Business.find();
