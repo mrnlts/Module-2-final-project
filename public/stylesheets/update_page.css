@@ -28,7 +28,8 @@
 }
 
 .update_page_container {
-  height: 100vh;
+  height: 88vh;
+  padding-top: 12vh;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -42,9 +43,9 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
-  height: 60%;
   background-color: rgba(53, 51, 51, 0.496);
-  margin: 3vh;
+  margin: 0 3vh;
+  padding: 2vh;
 }
 
 .update_page_form > input {
@@ -60,12 +61,14 @@
 .update_page_form > select {
   margin: 15px;
   padding: 0.7rem;
-  font-size: 1.3rem;
   font-family: 'Roboto Slab';
 }
 
 .update_page_btns_container {
-  margin-bottom: 6vh;
+  display: flex;
+  width: 100vw;
+  margin: 1vh auto;
+  justify-content: space-around;
 }
 
 .update_page_save_btn {
@@ -89,7 +92,6 @@
   font-family: 'Roboto Slab';
   color: white;
   font-weight: bolder;
-  width: 50%;
   border-radius: 3%;
   cursor: pointer;
   padding: 1rem;
@@ -97,17 +99,22 @@
   box-shadow: 6px 7px 15px -2px #727272;
 }
 
-.update_page_nav > a,
-.update_page_save_btn,
-.update_page_delete_btn,
-.update_page_form > label,
-.update_page_form > input,
-.image_upload_form > label,
-.form-control-file {
-  font-size: 1.3rem;
+/* TABLET */
+@media only screen and (min-width: 600px) {
+  /* Styles */
+  .update_page_nav > a,
+  .update_page_save_btn,
+  .update_page_delete_btn,
+  .update_page_form > label,
+  .update_page_form > input,
+  .image_upload_form > label,
+  .form-control-file,
+  .update_page_form > select   {
+    font-size: 1.3rem;
+  }
 }
-
-/* DESKTOP */
+  
+  /* DESKTOP */
 @media only screen and (min-width: 768px) {
   .update_page_form > input,
   .form-control-file {

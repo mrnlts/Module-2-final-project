@@ -43,7 +43,7 @@
   background-color: white;
   font-family: 'Roboto Slab';
   font-weight: bolder;
-  color: rgb(2, 8, 59);
+  color: rgb(11, 20, 107);
   border: none;
   width: 50%;
   border-radius: 3%;
@@ -54,7 +54,7 @@
 }
 
 .business_homepage_btn_Myproducts {
-  background-color: rgb(2, 8, 59);
+  background-color: rgb(11, 20, 107);
   font-family: 'Roboto Slab';
   color: white;
   font-weight: bolder;
@@ -100,11 +100,6 @@
 .business_homepage_footer > h4,
 .business_offers_item > h3 {
   font-size: 1.3rem;
-}
-
-/* TABLET */
-@media only screen and (min-width: 600px) {
-  /* Styles */
 }
 
 /* DESKTOP */
