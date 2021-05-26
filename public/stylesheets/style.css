@@ -14,17 +14,6 @@ body {
   font-family: 'Roboto Slab';
 }
 
-a,
-.generic_btn {
-  color: rgb(2, 8, 59);
-  background-color: transparent;
-  text-decoration: none;
-  border: none;
-  font-size: 14px;
-  font-weight: bolder;
-  font-family: 'Roboto Slab';
-}
-
 h1 {
   font-size: 3rem;
 }

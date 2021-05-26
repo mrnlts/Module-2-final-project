@@ -29,18 +29,6 @@
   font-weight: bolder;
 }
 
-.add_business_form_btn {
-  margin-top: 3vh;
-  background-color: brown;
-  border: none;
-  font-weight: bolder;
-  color: white;
-  padding: 1rem;
-  border-radius: 5%;
-  font: 14px;
-  font-family: 'Roboto Slab';
-}
-
 @media only screen and (min-width: 600px) {
   .add_business_page > h1 {
     font-size: 3rem;

@@ -30,25 +30,3 @@
 .add_product_form > label {
   font-weight: bolder;
 }
-
-.add_product_form_btn {
-  background-color: rgb(11, 20, 107);
-  border: none;
-  font-weight: bolder;
-  color: white;
-  padding: 1rem;
-  border-radius: 5%;
-  font-size: 1.3rem;
-  font-family: 'Roboto Slab';
-}
-
-.add_product_btn {
-  background-color: brown;
-  border: none;
-  font-weight: bolder;
-  color: white;
-  padding: 1rem;
-  border-radius: 5%;
-  font: 14px;
-  font-family: 'Roboto Slab';
-}
