@@ -27,7 +27,7 @@ router.get('/profile', isUserLoggedIn, async (req, res, next) => {
 router.get('/profile/edit', isUserLoggedIn, async (req, res, next) => {
   try {
     const dbUser = await User.findById(req.session.currentUser._id);
-    res.render('user/edit-form', { dbUser, userEdit: true });
+    res.render('user/edit-form', { dbUser, userEdit: true , errorMessage: req.flash('blank')});
   } catch (e) {
     res.render('error404');
     next(e);
@@ -37,6 +37,10 @@ router.get('/profile/edit', isUserLoggedIn, async (req, res, next) => {
 // UPDATE CUSTOMER DATA //
 router.post('/profile/edit', async (req, res, next) => {
   const { firstName, lastName, email, city, age } = req.body;
+  if ( firstName === '' || lastName === '' || email === '' || city === '' || age === '' ) {
+    req.flash('blank', 'Please fill all fields');
+    res.redirect('/user/profile/edit');
+  }
   try {
     await User.findByIdAndUpdate(req.session.currentUser._id, { firstName, lastName, email, city, age }, { new: true });
     res.redirect('/user/profile');

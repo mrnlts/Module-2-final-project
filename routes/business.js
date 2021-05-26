@@ -10,12 +10,16 @@ const isCustomer = require('../middleware/customer');
 const fileUploader = require('../configs/cloudinary.config');
 
 // RENDER ADD BUSINESS FORM
-router.get('/add', isCustomer, (req, res) => res.render('business/add-business', {addBusiness:true}));
+router.get('/add', isCustomer, (req, res) => res.render('business/add-business', {addBusiness:true, errorMessage: req.flash('blank')}));
 
 // POST NEW BUSINESS TO DATABASE
 router.post('/add', fileUploader.single('image'), async (req, res, next) => {
   const userId = req.session.currentUser._id;
   const { businessName, businessType, city } = req.body;
+  if (businessName === '' || businessType === '' || city === '' || req.file === '') {
+    req.flash('blank', 'Please fill all fields');
+    res.redirect('/business/add');
+  }
   try {
     const dbBusiness = await Business.create({
       businessName,
@@ -62,11 +66,15 @@ router.get('/products', isBusiness, async (req, res, next) => {
 });
 
 // RENDER ADD PRODUCT FORM //
-router.get('/add-product', isBusiness, (req, res) => res.render('business/add-product', {addProduct:true}));
+router.get('/add-product', isBusiness, (req, res) => res.render('business/add-product', {errorMessage: req.flash('blank'), addProduct:true}));
 
 // ADD PRODUCT TO DB //
 router.post('/add-product', fileUploader.single('image'), async (req, res, next) => {
   const { price, description } = req.body;
+  if (price === '' || description === '' || req.file === '') {
+    req.flash('blank', 'Please fill all fields');
+    res.redirect('/business/add-product');
+  }
   try {
     const dbBusiness = await Business.findOne({ owner: req.session.currentUser._id });
     await Product.create({ businessName: dbBusiness.id, price, description, imageUrlProduct: req.file.path });
@@ -82,17 +90,20 @@ router.get('/products/:id/edit', isBusiness, async (req, res, next) => {
   const {id} = req.params;
   try {
     const dbProduct = await Product.findById(id);
-    res.render('business/edit-product-form', {dbProduct, editProduct: true})
+    res.render('business/edit-product-form', {dbProduct, editProduct: true, errorMessage: req.flash('blank')})
   } catch (e) {
     res.render('error404');
     next(e);
   }
-  
 });
 
 router.post('/products/:id/edit', isBusiness, fileUploader.single('image'), async (req, res, next) => {
   const {id} = req.params;
   const { price, description } = req.body;
+  if (price === '' || description === '' || req.file === '') {
+    req.flash('blank', 'Please fill all fields');
+    res.redirect(`/business/products/${id}/edit`);
+  }
   try {
     if (!req.file) {
       await Product.findByIdAndUpdate(id, {price, description});
@@ -137,7 +148,7 @@ router.get('/orders', isBusiness, async (req, res, next) => {
 router.get('/profile/edit', isBusiness, async (req, res, next) => {
   try {
     const dbBusiness = await Business.findOne({ owner: req.session.currentUser._id });
-    res.render('business/edit-form', { dbBusiness, editBusiness:true });
+    res.render('business/edit-form', { dbBusiness, editBusiness: true, errorMessage: req.flash('blank') });
   } catch (e) {
     res.render('error404');
     next(e);
@@ -156,7 +167,8 @@ router.post('/profile/edit', fileUploader.single('image'), async (req, res, next
       );
       res.redirect('/business/profile');
     } else {
-      res.render('business/edit-form', { errormessage: true });
+      req.flash('blank', 'Please fill all fields');
+      res.redirect('/business/edit-form');
     }
   } catch (e) {
     res.render('error500');
