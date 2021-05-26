@@ -106,7 +106,6 @@ a,
   font-weight: bolder;
   color: rgb(2, 8, 59);
   border: none;
-  width: 50%;
   border-radius: 3%;
   cursor: pointer;
   padding: 1rem;
@@ -176,4 +175,25 @@ a,
   color: white;
   padding: 1vh;
   margin-top: 3vh;
+}
+
+@media only screen and (min-width: 600px) {
+  .business_homepage_btn {
+    width: 40%;
+  }
+
+  .business_homepage_btn_Myproducts {
+    width: 40%;
+  }
+}
+
+/* DESKTOP */
+@media only screen and (min-width: 768px) {
+  .business_homepage_btn {
+    width: 30%;
+  }
+
+  .business_homepage_btn_Myproducts {
+    width: 30%;
+  }
 }
