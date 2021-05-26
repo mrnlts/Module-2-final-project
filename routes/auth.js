@@ -1,6 +1,7 @@
-const passport = require('passport');
-
 const express = require('express');
+
+const passport = require('passport');
+const GoogleStrategy = require("passport-google-oauth20").Strategy;
 
 const router = express.Router();
 const bcryptjs = require('bcryptjs');
@@ -95,8 +96,8 @@ router.get(
 router.get(
   "/google/callback",
   passport.authenticate("google", {
-    successRedirect: '/user/profile',
-    failureRedirect: "/login" 
+    successRedirect: 'auth/user/profile',
+    failureRedirect: "/auth/login" 
   })
 );
 

@@ -154,3 +154,10 @@ a,
   text-align: left;
   font-size: 1rem;
 }
+
+.finish_order_btn {
+  background-color: rgb(2, 8, 59);
+  color: white;
+  padding: 1vh;
+  margin-top: 3vh;
+}
