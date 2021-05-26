@@ -155,6 +155,22 @@ a,
   font-size: 1rem;
 }
 
+.offers_card_details_btn {
+  background: rgb(2, 8, 59);
+  border: 1px solid rgba(128, 128, 128, 0.119);
+  -webkit-box-shadow: 6px 7px 15px -2px #727272;
+  box-shadow: 6px 7px 15px -2px #727272;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  padding: 8px 10px;
+  text-decoration: none;
+  text-align: left;
+  font-size: 1rem;
+  font-weight: bolder;
+}
+
 .finish_order_btn {
   background-color: rgb(2, 8, 59);
   color: white;
