@@ -1,0 +1,169 @@
+.add_business_form_btn {
+  margin-top: 3vh;
+  background-color: brown;
+  border: none;
+  font-weight: bolder;
+  color: white;
+  padding: 1rem;
+  border-radius: 5%;
+  font: 14px;
+  font-family: 'Roboto Slab';
+}
+
+.add_product_form_btn {
+  background-color: rgb(11, 20, 107);
+  border: none;
+  font-weight: bolder;
+  color: white;
+  padding: 1rem;
+  border-radius: 5%;
+  font-size: 1.3rem;
+  font-family: 'Roboto Slab';
+}
+
+.add_product_btn {
+  background-color: brown;
+  border: none;
+  font-weight: bolder;
+  color: white;
+  padding: 1rem;
+  border-radius: 5%;
+  font: 14px;
+  font-family: 'Roboto Slab';
+}
+
+.business_homepage_btn {
+  background-color: white;
+  font-family: 'Roboto Slab';
+  font-weight: bolder;
+  color: rgb(11, 20, 107);
+  border: none;
+  width: 50%;
+  border-radius: 3%;
+  cursor: pointer;
+  padding: 1rem;
+  -webkit-box-shadow: 6px 7px 15px -2px #727272;
+  box-shadow: 6px 7px 15px -2px #727272;
+}
+
+.business_homepage_btn_Myproducts {
+  background-color: rgb(11, 20, 107);
+  font-family: 'Roboto Slab';
+  color: white;
+  font-weight: bolder;
+  width: 50%;
+  border-radius: 3%;
+  cursor: pointer;
+  padding: 1rem;
+  -webkit-box-shadow: 6px 7px 15px -2px #727272;
+  box-shadow: 6px 7px 15px -2px #727272;
+}
+
+.login_signup_form > button {
+  font-weight: bolder;
+  color: white;
+  padding: 10px;
+  background-color: rgb(2, 8, 59);
+  margin-top: 20px;
+  border-radius: 3%;
+  border: none;
+  font-size: 1.3rem;
+}
+
+.busines_orders_btn {
+  background: brown;
+  border: 1px solid brown;
+  border-radius: 4px;
+  color: white;
+  cursor: pointer;
+  text-align: center;
+}
+
+.product_page_btn {
+  background-color: rgb(2, 8, 59);
+  border: 1px solid rgb(2, 8, 59);
+  color: white;
+  font-weight: bolder;
+  padding: 1rem;
+  border-radius: 5%;
+  cursor: pointer;
+}
+
+a,
+.generic_btn {
+  color: rgb(2, 8, 59);
+  background-color: transparent;
+  text-decoration: none;
+  border: none;
+  font-size: 14px;
+  font-weight: bolder;
+  font-family: 'Roboto Slab';
+}
+
+.update_page_save_btn {
+  background-color: white;
+  font-family: 'Roboto Slab';
+  font-weight: bolder;
+  color: rgb(2, 8, 59);
+  border: none;
+  width: 50%;
+  border-radius: 3%;
+  cursor: pointer;
+  padding: 1rem;
+  -webkit-box-shadow: 6px 7px 15px -2px #727272;
+  box-shadow: 6px 7px 15px -2px #727272;
+  margin-bottom: 2vh;
+}
+
+.update_page_delete_btn {
+  background-color: brown;
+  border: none;
+  font-family: 'Roboto Slab';
+  color: white;
+  font-weight: bolder;
+  border-radius: 3%;
+  cursor: pointer;
+  padding: 1rem;
+  -webkit-box-shadow: 6px 7px 15px -2px #727272;
+  box-shadow: 6px 7px 15px -2px #727272;
+}
+
+.generic_btn {
+  color: white;
+  border: none;
+  background-color: transparent;
+}
+
+.user_homepage_isBusiness_button {
+  background-color: transparent;
+  border: none;
+}
+
+.offers_card_item_btn {
+  width: 35%;
+  background: rgb(2, 8, 59);
+  border: 1px solid rgba(128, 128, 128, 0.119);
+  -webkit-box-shadow: 6px 7px 15px -2px #727272;
+  box-shadow: 6px 7px 15px -2px #727272;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  padding: 8px 10px;
+  text-decoration: none;
+  text-align: left;
+  font-size: 1rem;
+}
+
+@media only screen and (min-width: 600px) {
+  .update_page_save_btn {
+    width: 30%;
+  }
+}
+
+/* DESKTOP */
+@media only screen and (min-width: 768px) {
+  .update_page_save_btn {
+    width: 20%;
+  }
+}

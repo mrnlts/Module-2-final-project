@@ -14,6 +14,12 @@
 }
 
 .order_success_message {
+  position: absolute;
+  top: 10%;
+  left: 20%;
   padding: 1rem;
-  background-color: rgba(0, 0, 0, 0.311);
+  background-color: rgb(136, 248, 183);
+  width: 60%;
+  margin: auto;
+  animation: cssAnimation 0s 3s forwards;
 }

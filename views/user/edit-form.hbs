@@ -1,5 +1,6 @@
 <div class="update_page_container">
-  <h1>Edit user</h1>
+  {{> notifications}}
+  <h2>Edit user</h2>
   <div class="update_page_form_container">
     <form class="update_page_form" action="/user/profile/edit" method="POST">
       <label for="firstName">First Name: </label>
@@ -26,8 +27,7 @@
       <br>
       <input type="email"   id="input-email" name="email" value="{{dbUser.email}}" />
       </div>
-      <br>
-      <br>
+
         <div class="update_page_btns_container">
           <button type="submit" class="update_page_save_btn">Save changes</button>
     </form>

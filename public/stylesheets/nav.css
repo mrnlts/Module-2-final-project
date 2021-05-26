@@ -6,7 +6,7 @@
   overflow: hidden;
   padding-top: 0.7rem;
   top: 0;
-  width: 100%;
+  width: 100vw;
   height: 7vh;
   background-color: rgb(11, 20, 107);
   -webkit-box-shadow: 6px 7px 15px -2px #727272;
