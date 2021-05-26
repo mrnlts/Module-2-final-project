@@ -4,8 +4,8 @@
     </div>
 {{/if}}
 
-<div class="user_homepage_container">
-        <img src="{{this.dbOrder.business.imageUrlBusiness}}" class="business_card_item_img" alt="{{title}}">
+<div class="order_detail_container">
+        <img src="{{this.dbOrder.business.imageUrlBusiness}}" class="business_order_details_img" alt="{{title}}">
         <h2>{{this.dbOrder.business.businessName}}</h2>
     {{#if openOrder}}
     <p class="order_detail_page_status_open">Order status: {{this.dbOrder.status}}</p>
