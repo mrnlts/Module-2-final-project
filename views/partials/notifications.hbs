@@ -1,0 +1,49 @@
+{{!-- <div class="notifications"> --}}
+{{#if errorMessage}}
+    {{#each errorMessage}} 
+        {{#if this}}
+            <div class= "flash_message">  
+                <h2>{{this}}</h2>
+            </div>  
+        {{/if}} 
+    {{/each}}  
+{{/if}} 
+
+{{#if successMessage}}
+    {{#each successMessage}} 
+        {{#if this}}
+            <div class= "flash_message">  
+                <h2>{{this}}</h2>
+            </div>  
+        {{/if}} 
+    {{/each}} 
+{{/if}}
+    {{!-- {{#each infoMessages}} 
+        <div class="alert alert-info">
+            {{this}}
+        </div>
+    {{/each}}
+
+    {{#each dangerMessages}}
+        <div class="alert alert-danger">
+        {{this}}
+        </div>
+    {{/each}}
+
+    {{#each errorMessages}}
+        <div class="alert alert-danger">
+            {{this}}
+        </div>
+    {{/each}}
+
+    {{#each successMessages}}
+        <div class="alert alert-success">
+            {{this}}
+        </div>
+    {{/each}}
+
+    {{#each warningMessages}}
+        <div class="alert alert-warning">
+            {{this}}
+        </div>
+    {{/each}} --}}

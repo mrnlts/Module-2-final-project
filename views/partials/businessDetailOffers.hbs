@@ -1,0 +1,12 @@
+{{#each dbProducts}}   
+    <div class="offers_card_item">
+        <img src="{{this.imageUrlProduct}}" class="offers_card_item_img" alt="{{title}}">
+        <h3> {{this.description}}</h3>
+        <h4>Price: {{this.price}}</h4>
+        <form action="/orders" method= "POST" > 
+             <input style="display: none" value="{{this.id}}" id="product" name="product">
+            <input style="display: none" value="{{this.businessName}}" id="business" name="business">
+            <input type= "submit" class="offers_card_item_btn" value="Add"><i class="fas fa-shopping-cart"></i></form>
+        </form>
+    </div>    
+{{/each}}

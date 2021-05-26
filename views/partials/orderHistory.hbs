@@ -1,0 +1,25 @@
+{{#if dbOrders.dbOpenOrders}}
+    <div class="orders_page_scroll">
+        {{#each dbOrders.dbOpenOrders}}
+            <div class="user_orders_page_item">
+                <img class="user_content_card_image" src="{{this.business.imageUrlBusiness}}" class="offers_card_item_img" alt="{{title}}">
+                <p class="content_card_user">{{this.business.businessName}}</p>
+                <p class="content_card_id">Date: {{this.createdAt}}</p>
+                <a href="/orders/{{this.id}}/details">Details</a>
+            </div>
+        {{/each}}
+    </div>
+    {{else}}
+     <h2>Your shopping cart is empty!</h2>
+{{/if}}
+<h1 class="orders_page_container_title">Order history</h1> 
+<div class="orders_page_scroll">
+    {{#each dbOrders.dbClosedOrders}}
+        <div class="user_orders_page_item">
+            <img class="user_content_card_image" src="{{this.business.imageUrlBusiness}}" class="offers_card_item_img" alt="{{title}}">
+            <p class="content_card_user">{{this.business.businessName}}</p>
+            <p class="content_card_id">Date: {{this.createdAt}}</p>
+            <a href="/orders/{{this.id}}/details">Details</a>
+        </div>
+    {{/each}}
+</div>

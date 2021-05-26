@@ -1,3 +1,22 @@
-<div id="business">
-    <h1>Business home page </h1>
+<div class= "business_homepage_container">
+    <img class= "busines_homepage_image" src="{{dbBusiness.imageUrlBusiness}}" alt="{{title}}">
+  
+
+    <div class="business_homepage_buttons_container">
+        <div class="business_homepage_buttons">
+        <form action="/business/products" method="get">
+            <input class="business_homepage_btn_Myproducts" type="submit" value="My products"></input>
+        </form>
+        </div>
+        <div class="business_homepage_buttons">
+        <form action="/business/orders" method="get">
+            <input class="business_homepage_btn" type="submit" value="My orders"></input>
+        </form>
+        </div>
+    
+    </div>
+
+    <div class="business_homepage_footer">
+        <h4>Welcome, {{ dbBusiness.businessName }}!</h4>
+    </div>
 </div>

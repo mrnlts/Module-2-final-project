@@ -1,0 +1,21 @@
+<div class="orders_page_container">
+
+    <h1 class="bussines_orders_page_container_title">Current orders: </h1>
+      {{#if deliverMessage}}
+        <div>
+          <class class= "order_success_message">
+         {{deliverMessage}}
+        </div>
+        {{/if}}
+ 
+    {{#if dbOrders}}
+        <div class="orders_page_scroll">
+            {{#each dbOrders}}          
+                 {{> orders}}
+            {{/each}}
+        </div>
+        {{else}}
+        <p>There are no orders at the moment!</p>
+    {{/if}}
+</div>
+

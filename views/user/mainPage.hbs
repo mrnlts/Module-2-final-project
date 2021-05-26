@@ -1,0 +1,24 @@
+<div class="user_homepage_container">
+  <h2 class= "user_homepage_title_offers">Offers</h2>
+  <div class="offers_card_container">       
+        {{> offer}}   
+  </div>
+  
+  <h2 class= "user_homepage_title">Near business</h2>
+  <div class="business_card_container">   
+        {{> business}}
+  </div>
+
+  <div class="user_homepage_footer">
+      <h4 class="generic_btn">Welcome, {{ dbUser.firstName }}!</h4> <span> | </span>
+      {{#if isBusiness }}
+        <form action="/business/profile" method="get">     
+        <input type="submit" value="Manage my business" class="generic_btn"></input>
+        </form>
+      {{else}}
+        <form action="/business/add" method="get">    
+          <input type="submit" value="Are you an owner? Add your business!!" class="generic_btn"></input>
+        </form>
+      {{/if}} 
+  </div>
+</div>
