@@ -1,15 +1,17 @@
 require('dotenv').config();
+const express = require('express');
+const session = require('express-session');
+const passport = require('passport');
+const appSession = require('./configs/session');
+require('./configs/passport.config.js')
 
 const createError = require('http-errors');
-const express = require('express');
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
-const session = require('express-session');
 const flash = require('connect-flash');
 const hbs = require('hbs');
-const passport = require('passport');
-const appSession = require('./configs/session');
+
 
 
 const app = express();
@@ -27,13 +29,16 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(session(appSession));
+app.use(passport.initialize());
+app.use(passport.session());
+
 app.use(flash());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
 // require database configuration
 require('./configs/db.config');
-require('./configs/passport.config.js')(passport)
+
 
 
 // Express view engine setup
