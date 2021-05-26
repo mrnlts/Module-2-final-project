@@ -8,28 +8,7 @@
   box-shadow: 6px 7px 15px -2px #727272;
 }
 
-.business_homepage_nav {
-  position: fixed;
-  overflow: hidden;
-  top: 0;
-  width: 100%;
-  height: 7vh;
-  background-color: rgb(12, 58, 19);
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  color: white;
-  -webkit-box-shadow: 6px 7px 15px -2px #727272;
-  box-shadow: 6px 7px 15px -2px #727272;
-}
-
-.business_homepage_nav > a {
-  color: white;
-  font-size: 1.3rem;
-}
-
 .business_homepage_buttons_container {
-  background-color: rgb(249, 233, 221);
   margin-top: 2rem;
   height: 40vh;
   display: flex;
@@ -38,33 +17,6 @@
 }
 .business_homepage_buttons {
   margin-top: 1rem;
-}
-
-.business_homepage_btn {
-  background-color: white;
-  font-family: 'Roboto Slab';
-  font-weight: bolder;
-  color: rgb(11, 20, 107);
-  border: none;
-  width: 50%;
-  border-radius: 3%;
-  cursor: pointer;
-  padding: 1rem;
-  -webkit-box-shadow: 6px 7px 15px -2px #727272;
-  box-shadow: 6px 7px 15px -2px #727272;
-}
-
-.business_homepage_btn_Myproducts {
-  background-color: rgb(11, 20, 107);
-  font-family: 'Roboto Slab';
-  color: white;
-  font-weight: bolder;
-  width: 50%;
-  border-radius: 3%;
-  cursor: pointer;
-  padding: 1rem;
-  -webkit-box-shadow: 6px 7px 15px -2px #727272;
-  box-shadow: 6px 7px 15px -2px #727272;
 }
 
 .business_homepage_footer {
@@ -102,7 +54,6 @@
 .business_offers_item > h3 {
   font-size: 1.3rem;
 }
-
 
 /* DESKTOP */
 @media only screen and (min-width: 768px) {

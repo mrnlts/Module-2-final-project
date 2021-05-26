@@ -1,3 +1,5 @@
+const passport = require('passport');
+
 require('dotenv').config();
 
 const createError = require('http-errors');
@@ -8,7 +10,6 @@ const logger = require('morgan');
 const session = require('express-session');
 const flash = require('connect-flash');
 const hbs = require('hbs');
-const passport = require('passport');
 const appSession = require('./configs/session');
 
 

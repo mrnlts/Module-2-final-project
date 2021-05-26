@@ -20,7 +20,7 @@ module.exports = (app) => {
       { 
         clientID: process.env.GOOGLE_CLIENT_ID,
         clientSecret:process.env.GOOGLE_CLIENT_SECRET,
-        callbackURL: process.env.GOOGLE_CALLBACK, 
+        callbackURL: "http://localhost:3000/auth/google/callback", 
       },
       
       (req, accessToken, refreshToken, profile, done) => {
