@@ -94,8 +94,13 @@ router.post('/products/:id/edit', isBusiness, fileUploader.single('image'), asyn
   const {id} = req.params;
   const { price, description } = req.body;
   try {
-    await Product.findByIdAndUpdate(id, {price, description, imageUrlProduct: req.file.path });
-    res.redirect('/business/products');
+    if (!req.file) {
+      await Product.findByIdAndUpdate(id, {price, description});
+      res.redirect('/business/products');
+    } else {
+      await Product.findByIdAndUpdate(id, {price, description, imageUrlProduct: req.file.path });
+      res.redirect('/business/products');
+    }
   } catch (e) {
     res.render('error500');
     next(e);
