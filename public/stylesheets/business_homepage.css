@@ -8,7 +8,7 @@
   box-shadow: 6px 7px 15px -2px #727272;
 }
 
-.business_homepage_nav {
+/* .business_homepage_nav {
   position: fixed;
   overflow: hidden;
   top: 0;
@@ -26,10 +26,9 @@
 .business_homepage_nav > a {
   color: white;
   font-size: 1.3rem;
-}
+} */
 
 .business_homepage_buttons_container {
-  background-color: rgb(249, 233, 221);
   margin-top: 2rem;
   height: 40vh;
   display: flex;
@@ -44,7 +43,7 @@
   background-color: white;
   font-family: 'Roboto Slab';
   font-weight: bolder;
-  color: rgb(12, 58, 19);
+  color: rgb(2, 8, 59);
   border: none;
   width: 50%;
   border-radius: 3%;
@@ -55,7 +54,7 @@
 }
 
 .business_homepage_btn_Myproducts {
-  background-color: rgb(12, 58, 19);
+  background-color: rgb(2, 8, 59);
   font-family: 'Roboto Slab';
   color: white;
   font-weight: bolder;
