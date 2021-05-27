@@ -1,9 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const session = require('express-session');
-const passport = require('passport');
 const appSession = require('./configs/session');
-require('./configs/passport.config.js')
 
 const createError = require('http-errors');
 const path = require('path');
@@ -28,8 +26,6 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(session(appSession));
-app.use(passport.initialize());
-app.use(passport.session());
 
 app.use(flash());
 app.use(express.static(path.join(__dirname, 'public')));
@@ -37,8 +33,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 // require database configuration
 require('./configs/db.config');
-
-
 
 // Express view engine setup
 app.set('views', path.join(__dirname, 'views'));

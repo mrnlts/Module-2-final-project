@@ -8,16 +8,13 @@ const userSchema = new Schema(
     lastName: String,
     email: {
       type: String,
-     // required: [true, 'Email is required.'],
       unique: true,
       lowercase: true,
       trim: true,
       match: [/^\S+@\S+\.\S+$/, 'Please use a valid email address.']
     },
-    googleID: String,
     passwordHash: {
       type: String,
-    //  required: [true, 'Password is required.'],
       trim: true,
         },
     city: String,
