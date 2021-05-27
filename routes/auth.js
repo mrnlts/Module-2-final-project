@@ -1,7 +1,7 @@
 const express = require('express');
 
 const passport = require('passport');
-const GoogleStrategy = require("passport-google-oauth20").Strategy;
+const GoogleStrategy = require('passport-google-oauth20').Strategy;
 
 const router = express.Router();
 const bcryptjs = require('bcryptjs');
@@ -12,7 +12,10 @@ const notifications = require('../middleware/notifications');
 const saltRounds = 10;
 
 router.get('/login', isUserLoggedOut, notifications, (req, res) => {
-  res.render('auth/login', { errorMessage: [req.flash('wrongPassw'), req.flash('blank'), req.flash('unknown')], auth:true });
+  res.render('auth/login', {
+    errorMessage: [req.flash('wrongPassw'), req.flash('blank'), req.flash('unknown')],
+    auth: true,
+  });
 });
 
 router.post('/logout', (req, res) => {
@@ -47,7 +50,16 @@ router.post('/login', async (req, res, next) => {
 
 /* GET signup  */
 router.get('/signup', isUserLoggedOut, (req, res) => {
-  res.render('signup/user', { errorMessage: [req.flash('wrongPassw'), req.flash('weakPassw'), req.flash('blank'), req.flash('unknown'), req.flash('userExists')], auth:true });
+  res.render('signup/user', {
+    errorMessage: [
+      req.flash('wrongPassw'),
+      req.flash('weakPassw'),
+      req.flash('blank'),
+      req.flash('unknown'),
+      req.flash('userExists'),
+    ],
+    auth: true,
+  });
 });
 
 /* POST signup  */
@@ -55,7 +67,24 @@ router.post('/signup', async (req, res, next) => {
   const { firstName, lastName, email, password, city, age } = req.body;
   if (firstName === '' || lastName === '' || email === '' || password === '' || city === '' || age === '') {
     req.flash('blank', 'You have to fill all the fields');
-    return res.redirect('/auth/signup');
+    // const browser = window;
+    // browser.onbeforeunload = () => {
+    //   sessionStorage.setItem('firstName', firstName);
+    //   sessionStorage.setItem('lastName', lastName);
+    //   sessionStorage.setItem('email', email);
+    //   sessionStorage.setItem('city', city);
+    //   sessionStorage.setItem('age', age);
+    // };
+    return res.render('signup/user', {
+      errorMessage: req.flash('blank'),
+      // userData: { 
+      //   firstName: sessionStorage.getItem('firstName'),
+      //   lastName: sessionStorage.getItem('lastName'),
+      //   email: sessionStorage.getItem('email'),
+      //   city: sessionStorage.getItem('city'),
+      //   age: sessionStorage.getItem('age'),
+      // },
+    });
   }
   try {
     let dbUser = await User.findOne({ email });
@@ -63,7 +92,10 @@ router.post('/signup', async (req, res, next) => {
       const regex = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
       if (!regex.test(password)) {
         res.status(500);
-        req.flash('weakPassw', 'Password needs to have at least 6 chars and must contain at least one number, one lowercase and one uppercase letter.' );
+        req.flash(
+          'weakPassw',
+          'Password needs to have at least 6 chars and must contain at least one number, one lowercase and one uppercase letter.',
+        );
         res.redirect('/auth/signup');
         return;
       }
@@ -80,25 +112,21 @@ router.post('/signup', async (req, res, next) => {
   } catch (e) {
     res.render('error500');
     next(e);
-  }  
+  }
 });
 
-
 router.get(
-  "/google",
-  passport.authenticate("google", {
-    scope: [
-      "https://www.googleapis.com/auth/userinfo.profile",
-      "https://www.googleapis.com/auth/userinfo.email"
-    ]
-  })
+  '/google',
+  passport.authenticate('google', {
+    scope: ['https://www.googleapis.com/auth/userinfo.profile', 'https://www.googleapis.com/auth/userinfo.email'],
+  }),
 );
 router.get(
-  "/google/callback",
-  passport.authenticate("google", {
+  '/google/callback',
+  passport.authenticate('google', {
     successRedirect: '/user/profile',
-    failureRedirect: '/auth/login' 
-  })
+    failureRedirect: '/auth/login',
+  }),
 );
 
 module.exports = router;
