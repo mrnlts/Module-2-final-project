@@ -11,7 +11,7 @@
 }
 
 .add_product_form_btn {
-  background-color: rgb(11, 20, 107);
+  background-color: rgb(2, 8, 59);
   border: none;
   font-weight: bolder;
   color: white;
@@ -36,7 +36,7 @@
   background-color: white;
   font-family: 'Roboto Slab';
   font-weight: bolder;
-  color: rgb(11, 20, 107);
+  color: rgb(2, 8, 59);
   border: none;
   width: 50%;
   border-radius: 3%;
@@ -47,7 +47,7 @@
 }
 
 .business_homepage_btn_Myproducts {
-  background-color: rgb(11, 20, 107);
+  background-color: rgb(2, 8, 59);
   font-family: 'Roboto Slab';
   color: white;
   font-weight: bolder;
@@ -106,7 +106,6 @@ a,
   font-weight: bolder;
   color: rgb(2, 8, 59);
   border: none;
-  width: 50%;
   border-radius: 3%;
   cursor: pointer;
   padding: 1rem;
@@ -155,15 +154,46 @@ a,
   font-size: 1rem;
 }
 
+.offers_card_details_btn {
+  background: rgb(2, 8, 59);
+  border: 1px solid rgba(128, 128, 128, 0.119);
+  -webkit-box-shadow: 6px 7px 15px -2px #727272;
+  box-shadow: 6px 7px 15px -2px #727272;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  padding: 8px 10px;
+  text-decoration: none;
+  text-align: left;
+  font-size: 1rem;
+  font-weight: bolder;
+}
+
+.finish_order_btn {
+  background-color: rgb(2, 8, 59);
+  color: white;
+  padding: 1vh;
+  margin-top: 3vh;
+}
+
 @media only screen and (min-width: 600px) {
-  .update_page_save_btn {
-    width: 30%;
+  .business_homepage_btn {
+    width: 40%;
+  }
+
+  .business_homepage_btn_Myproducts {
+    width: 40%;
   }
 }
 
 /* DESKTOP */
 @media only screen and (min-width: 768px) {
-  .update_page_save_btn {
-    width: 20%;
+  .business_homepage_btn {
+    width: 30%;
+  }
+
+  .business_homepage_btn_Myproducts {
+    width: 30%;
   }
 }
