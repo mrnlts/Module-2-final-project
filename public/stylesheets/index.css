@@ -67,7 +67,8 @@
 
 .burger_white > i {
   background-color: rgb(255, 255, 255);
-  padding: 1vh;
+  padding: 2vh;
+  border-radius: 50%;
   font-size: 2.5rem;
   color: rgb(2, 8, 59);
 }
