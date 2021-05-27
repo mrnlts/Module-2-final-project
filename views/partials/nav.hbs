@@ -35,17 +35,6 @@
     </div>
 {{/if}}
 
-{{#if orderDetail}}
-<a href="javascript:void(0);" class="icon" onclick="myFunction()">
-  <i class="fa fa-bars 5x" id="burger"></i>
-</a> 
-  <div id ="myLinks" class="app_nav">
-        <a href="/orders">Back</a> <span> | </span>
-        <form action="/auth/logout" method="post">
-            <input type="submit" value="Log out" class="generic_btn"></input>
-        </form>
-    </div>
-{{/if}}
 
 {{#if userEdit}}
 <a href="javascript:void(0);" class="icon" onclick="myFunction()">
@@ -60,9 +49,21 @@
 {{/if }}
 
 
+{{#if orderDetail}}
+<a href="javascript:void(0);" class="burger_white" onclick="myFunction()">
+  <i class="fa fa-bars 5x" id="burger_white"></i>
+</a> 
+  <div id ="myLinks" class="app_nav">
+        <a href="/orders">Back</a> <span> | </span>
+        <form action="/auth/logout" method="post">
+            <input type="submit" value="Log out" class="generic_btn"></input>
+        </form>
+    </div>
+{{/if}}
+
 {{#if businessDetail}}
-<a href="javascript:void(0);" class="icon" onclick="myFunction()">
-  <i class="fa fa-bars 5x" id="burger"></i>
+<a href="javascript:void(0);" class="burger_white" onclick="myFunction()">
+  <i class="fa fa-bars 5x" id="burger_white"></i>
 </a> 
   <div id ="myLinks" class="app_nav">        
         <a href="/user/profile"> Back </a>  <span> | </span>
@@ -114,7 +115,7 @@
 {{/if}}
 
 {{#if businessMainPage}}
-   <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+   <a href="javascript:void(0);" class="burger_white" onclick="myFunction()">
   <i class="fa fa-bars 5x" id="burger"></i>
     </a> 
   <div id ="myLinks" class="app_nav">

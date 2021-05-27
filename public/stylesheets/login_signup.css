@@ -58,17 +58,6 @@
   border: none;
 }
 
-.login_signup_form > button {
-  font-weight: bolder;
-  color: white;
-  padding: 10px;
-  background-color: rgb(2, 8, 59);
-  margin-top: 20px;
-  border-radius: 3%;
-  border: none;
-  font-size: 1.3rem;
-}
-
 /* TABLET */
 @media only screen and (min-width: 600px) {
   .login_signup_container__form > h2 {

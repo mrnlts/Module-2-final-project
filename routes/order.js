@@ -35,6 +35,7 @@ router.get('/:id/details', isUserLoggedIn, async (req, res, next) => {
       openOrder = false;
     }
     let prices = [];
+
     await dbOrder.products.forEach(prod => prices.push(prod.item.price));
     const total = await prices.reduce((acc, curr) => acc + curr);
     res.render('user/order-detail', { dbOrder, successMessage: req.flash('closed'), openOrder, total, orderDetail:true });

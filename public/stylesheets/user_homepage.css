@@ -5,12 +5,6 @@
   justify-content: space-around;
 }
 
-.generic_btn {
-  color: white;
-  border: none;
-  background-color: transparent;
-}
-
 .user_homepage_greetings {
   display: flex;
   justify-content: space-between;
@@ -23,11 +17,6 @@
 .user_homepage_isBusiness {
   color: rgb(2, 8, 59);
   font-size: 0.4rem;
-}
-
-.user_homepage_isBusiness_button {
-  background-color: transparent;
-  border: none;
 }
 
 .user_homepage_isBusiness_button > a {
@@ -54,22 +43,6 @@
   padding: 0;
   display: inline-block;
   vertical-align: top;
-}
-
-.offers_card_item_btn {
-  width: 35%;
-  background: rgb(2, 8, 59);
-  border: 1px solid rgba(128, 128, 128, 0.119);
-  -webkit-box-shadow: 6px 7px 15px -2px #727272;
-  box-shadow: 6px 7px 15px -2px #727272;
-  border-radius: 4px;
-  color: #fff;
-  cursor: pointer;
-  margin-top: 0.5rem;
-  padding: 8px 10px;
-  text-decoration: none;
-  text-align: left;
-  font-size: 1rem;
 }
 
 .offers_card_item_img {
@@ -100,7 +73,7 @@
   border: 1px solid rgba(128, 128, 128, 0.119);
   -webkit-box-shadow: 6px 7px 15px -2px #727272;
   box-shadow: 6px 7px 15px -2px #727272;
-  color: rgb(11, 20, 107);
+  color: rgb(2, 8, 59);
   border-radius: 5%;
   cursor: pointer;
   margin: auto;
@@ -143,7 +116,7 @@
 }
 
 .offers_card_item_btn > a {
-  color:white;
+  color: white;
   display: flex;
   justify-content: space-around;
   align-items: center;

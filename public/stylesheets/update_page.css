@@ -1,4 +1,4 @@
-.update_page_nav {
+/* .update_page_nav {
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -10,18 +10,12 @@
   background-color: rgb(2, 8, 59);
   -webkit-box-shadow: 6px 7px 15px -2px #727272;
   box-shadow: 6px 7px 15px -2px #727272;
-}
+} */
 
-.update_page_nav > a,
+/* .update_page_nav > a,
 .update_page_nav > span {
   color: white;
-}
-
-.generic_btn {
-  color: white;
-  border: none;
-  background-color: transparent;
-}
+} */
 
 .form-control-file {
   padding: 0.5rem;
@@ -71,34 +65,6 @@
   justify-content: space-around;
 }
 
-.update_page_save_btn {
-  background-color: white;
-  font-family: 'Roboto Slab';
-  font-weight: bolder;
-  color: rgb(12, 58, 19);
-  border: none;
-  width: 50%;
-  border-radius: 3%;
-  cursor: pointer;
-  padding: 1rem;
-  -webkit-box-shadow: 6px 7px 15px -2px #727272;
-  box-shadow: 6px 7px 15px -2px #727272;
-  margin-bottom: 2vh;
-}
-
-.update_page_delete_btn {
-  background-color: brown;
-  border: none;
-  font-family: 'Roboto Slab';
-  color: white;
-  font-weight: bolder;
-  border-radius: 3%;
-  cursor: pointer;
-  padding: 1rem;
-  -webkit-box-shadow: 6px 7px 15px -2px #727272;
-  box-shadow: 6px 7px 15px -2px #727272;
-}
-
 /* TABLET */
 @media only screen and (min-width: 600px) {
   /* Styles */
@@ -109,12 +75,12 @@
   .update_page_form > input,
   .image_upload_form > label,
   .form-control-file,
-  .update_page_form > select   {
+  .update_page_form > select {
     font-size: 1.3rem;
   }
 }
-  
-  /* DESKTOP */
+
+/* DESKTOP */
 @media only screen and (min-width: 768px) {
   .update_page_form > input,
   .form-control-file {

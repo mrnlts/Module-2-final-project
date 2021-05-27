@@ -1,16 +1,21 @@
 .flash_message {
+  position: absolute;
   margin: 5vh;
   color: white;
   background-color: rgba(165, 42, 42, 0.729);
   font-size: 1.2rem;
-  padding: 2rem;
+  top: 10%;
+  right: 5%;
+  padding: 1rem;
   font-weight: 800;
   animation: cssAnimation 0s 3s forwards;
   visibility: visible;
 }
 
 @keyframes cssAnimation {
-  to {visibility: hidden;}
+  to {
+    visibility: hidden;
+  }
 }
 
 .order_success_message {

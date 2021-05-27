@@ -4,11 +4,14 @@
     </div>
 {{/if}}
 
-<div class="user_homepage_container">
-        <img src="{{this.dbOrder.business.imageUrlBusiness}}" class="business_card_item_img" alt="{{title}}">
+<div class="order_detail_container">
+        <img src="{{this.dbOrder.business.imageUrlBusiness}}" class="business_order_details_img" alt="{{title}}">
         <h2>{{this.dbOrder.business.businessName}}</h2>
-    
-    <p class="order_detail_page_p">Order status: {{this.dbOrder.status}}</p>
+    {{#if openOrder}}
+    <p class="order_detail_page_status_open">Order status: {{this.dbOrder.status}}</p>
+    {{else}}
+    <p class="order_detail_page_status_pending">Order status: {{this.dbOrder.status}}</p>
+    {{/if}}
     <table class="order_detail_page_table">
         <tr class="order_detail_page_table-headers">
             <th>Item</th>
@@ -26,10 +29,12 @@
 
     <h2>Total price: {{total}}$</h2>
 
+<div class= "order_details_buttons">
     {{#if openOrder}}
         <form action="/orders/{{this.dbOrder.id}}/confirm" method="post">
-            <input type="submit" class="offers_card_item_btn" value="Confirm order">
+            <input type="submit" class="offers_card_details_btn" value="Confirm order">
         </form>
     {{/if}}
-
+    <a class="offers_card_details_btn" href="/user/profile"> Keep Shopping </a>
+</div>
 </div>
