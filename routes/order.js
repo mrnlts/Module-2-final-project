@@ -29,14 +29,13 @@ router.get('/:id/details', isUserLoggedIn, async (req, res, next) => {
   try {
     const dbOrder = await Order.findById(id)
       .populate('business')
-      .populate({ path: 'products', populate: [{ path: 'item' }] });
+      .populate('products.product');
     let openOrder = true;
     if (dbOrder.status !== 'open') {
       openOrder = false;
     }
     let prices = [];
-
-    await dbOrder.products.forEach(prod => prices.push(prod.item.price));
+    await dbOrder.products.forEach(prod => prices.push(prod.product.price*prod.amount));
     const total = await prices.reduce((acc, curr) => acc + curr);
     res.render('user/order-detail', { dbOrder, successMessage: req.flash('closed'), openOrder, total, orderDetail:true });
   } catch (e) {
@@ -64,19 +63,27 @@ router.post('/', async (req, res, next) => {
     if (dbOrders.length === 0) {
       dbOrders = Order.create({
         business,
-        products: [{ item: product, amount: 1 }],
+        products: [{ product, amount: 1 }],
         user: req.session.currentUser._id,
         status: 'open',
       });
-      req.flash('success', 'Product added to shopping cart');
-      res.redirect('/orders');
     } else {
       let products = [...dbOrders[0].products];
-      await products.push({ amount: 1, item: product });
+      let match = 0;
+      products.forEach((prod, i) => {
+        if (String(prod.product) === String (product)) {
+          match = 1;
+          products.splice(i, 1, {amount: 2, product});
+        } 
+      });
+      if (match === 0) {
+        await products.push({ amount: 1, product });
+        return;
+      }
       await Order.findByIdAndUpdate(dbOrders[0].id, { products });
+    }
       req.flash('success', 'Product added to shopping cart');
       res.redirect('/orders');
-    }
   } catch (e) {
     res.render('error500');
     next(e);

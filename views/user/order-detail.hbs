@@ -16,13 +16,13 @@
         <tr class="order_detail_page_table-headers">
             <th>Item</th>
             <th>Amount</th>
-            <th>Price</th>
+            <th>Price (x1)</th>
         </tr>
         {{#each this.dbOrder.products}}
             <tr class="order_detail_page_table-row">
-                <td>{{this.item.description}}</td>
+                <td>{{this.product.description}}</td>
                 <td>{{this.amount}}</td>
-                <td>{{this.item.price}}$</td>
+                <td>{{this.product.price}}$</td>
             </tr>
         {{/each}}
     </table>
