@@ -60,6 +60,7 @@ router.post('/', async (req, res, next) => {
   const { product, business } = req.body;
   try {
     let dbOrders = await Order.find({ business, status: 'open', user: req.session.currentUser._id});
+    console.log(dbOrders.products);
     if (dbOrders.length === 0) {
       dbOrders = Order.create({
         business,
@@ -73,12 +74,14 @@ router.post('/', async (req, res, next) => {
       products.forEach((prod, i) => {
         if (String(prod.product) === String (product)) {
           match = 1;
-          products.splice(i, 1, {amount: 2, product});
-        } 
+          products.splice(i, 1, {amount: prod.amount+1, product});
+        } else {
+          console.log(match)
+        }
       });
       if (match === 0) {
+        console.log("No match", products);
         await products.push({ amount: 1, product });
-        return;
       }
       await Order.findByIdAndUpdate(dbOrders[0].id, { products });
     }
