@@ -64,23 +64,8 @@ router.post('/signup', async (req, res, next) => {
   const { firstName, lastName, email, password, city, age } = req.body;
   if (firstName === '' || lastName === '' || email === '' || password === '' || city === '' || age === '') {
     req.flash('blank', 'You have to fill all the fields');
-    // const browser = window;
-    // browser.onbeforeunload = () => {
-    //   sessionStorage.setItem('firstName', firstName);
-    //   sessionStorage.setItem('lastName', lastName);
-    //   sessionStorage.setItem('email', email);
-    //   sessionStorage.setItem('city', city);
-    //   sessionStorage.setItem('age', age);
-    // };
     return res.render('signup/user', {
       errorMessage: req.flash('blank'),
-      // userData: { 
-      //   firstName: sessionStorage.getItem('firstName'),
-      //   lastName: sessionStorage.getItem('lastName'),
-      //   email: sessionStorage.getItem('email'),
-      //   city: sessionStorage.getItem('city'),
-      //   age: sessionStorage.getItem('age'),
-      // },
     });
   }
   try {
@@ -101,7 +86,7 @@ router.post('/signup', async (req, res, next) => {
       dbUser = await User.create({ firstName, lastName, email, passwordHash: hashedPassword, city, age });
       req.session.currentUser = dbUser;
       req.flash('success', 'Registration successfully');
-      res.redirect('/business/profile');
+      res.redirect('/user/profile');
     } else {
       req.flash('userExists', 'Email in use. Try a different one!');
       res.redirect('/auth/signup');
