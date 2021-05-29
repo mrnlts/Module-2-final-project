@@ -101,7 +101,7 @@ router.post('/signup', async (req, res, next) => {
       dbUser = await User.create({ firstName, lastName, email, passwordHash: hashedPassword, city, age });
       req.session.currentUser = dbUser;
       req.flash('success', 'Registration successfully');
-      res.redirect('/user/profile');
+      res.redirect('/business/profile');
     } else {
       req.flash('userExists', 'Email in use. Try a different one!');
       res.redirect('/auth/signup');

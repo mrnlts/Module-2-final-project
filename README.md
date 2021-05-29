@@ -1,10 +1,9 @@
-# Zero food-waste app
-
+# Zero food waste
 
 ## Description
 
 ​
-To connect restaurants and costumers for purchasing left-over food.
+An app designed to connect businesses that have high-quality left overs with hungry costumers interested in purchasing.
 
 ## User stories (MVP)
 
@@ -35,21 +34,18 @@ To connect restaurants and costumers for purchasing left-over food.
 ​
 **Order array** - Add product amount in order
 
-**Order status** - See order status 
-
-**Social login** - Log in from social networks
-
-**Languages** - Multiple languages
+**Order status** - See order status
 ​
 
 ## Backlog / Nice to have
 
 ​**Print order** - As a business I want to be able to print the order easily in paper for the chef.
-
 ​
 **Riders** - As a rider I want to be able to see current orders of the busines where I work.
 
-**UX/UI** - Posar un scroll a la home page.
+**Lateral scroll** - Add to home page for optimising space.
+
+**Social login** - Login from google.
 
 **Mailing** - As a business I want to be able to send mails with current products to the users of the app.
 
@@ -58,7 +54,6 @@ To connect restaurants and costumers for purchasing left-over food.
 **Search for type of food** - As a costumer I want a search bar to look for specific types of food.
 
 **Fake payment** - As a costumer I want to pay & as a business I want to receive money.
-
 ​​
 **Theme** - As a user I want to be able to choose from a dark or light theme for my app.
 
@@ -68,26 +63,36 @@ To connect restaurants and costumers for purchasing left-over food.
 | Name | Method | Endpoint | Description | Body | Redirects |
 | --------------- | ------ | ----------------------------- | ------------------------------------------------ | ------------------------------------- | --------------- |
 | Home | GET | / | See the main page | | |
-| Log in | GET | /auth/login | See the form to log in | | |
-| Log in | POST | /auth/login | Log in the user | {email, password} | /user/profile |
-| Business list | GET | /business | See the businesses without an account
+| About | GET | /about | "About us" page | | |
+| Business list | GET | /business | See the collaborators
 | Sign Up user | GET | /auth/signup | See the form to sign up
 | Sign Up user | POST | /auth/signup | Sign up user | {firstName, lastName, email, password, city, age} | /user/profile
+| Log in | GET | /auth/login | See the form to log in | | |
+| Log in | POST | /auth/login | Log in as user | {email, password} | /user/profile |
+| - | - | - | - | - | -
 | User main page | GET | /user/profile | User main page
-| Edit user | GET | /user/profile/edit | Edit user |  |  
-| Edit user | POST | /user/profile/edit | Edit user | {firstName, lastName, city, age} | /user/profile 
-| Business detail | GET | /business/:id/detail  | See details of business 
-| Order product | POST | /order | Make order | {businessName, product, user} | /orders
-| Order history | GET | /orders |
-| Add new business | GET | /business/add | {businessName, businessType, city, image } | /business/profile
-| Business main page | GET | /business/profile | Business main page 
+| Edit user | GET | /user/profile/edit | Edit user | |  
+| Edit user | POST | /user/profile/edit | Edit user | {firstName, lastName, city, age} | /user/profile
+| See details of a specific business | GET | /business/:id/detail | See business details | |
+| My orders | GET | /orders | See current and past orders
+| Order product | POST | /orders | Add product to cart | {businessName, product, user} | /orders
+| Order detail | GET | /orders/:id/details | See details of order, confirm order
+| Confirm order | POST | /orders/:id/confirm | Change order status from open to pending | | /orders/:id/details
+| Delete user account | POST | /user/delete | Delete user | | /
+| - | - | - | - | - | -
+| Add business | GET | /business/add | See add business form | |
+| Add business | GET | /business/add | Send business data to database | {businessName, businessType, city, image } |/business/profile
+| Business main page | GET | /business/profile | Business main page
 | Edit business | GET | /business/profile/edit | Edit business | |  
 | Edit business | POST | /business/profile/edit | Edit business | {businessName, businessType, city} | /business/profile
 | My products | GET | /business/products | See business products
-| My orders | GET | /business/orders | See current orders
-| Add product | GET | /business/add-product | Add product | {description, price, image} | /business/products 
-| Add product | POST | /business/add-product | Add product | | /business 
-| Delete user account | POST | /user/delete | Delete user | | / 
+| My business orders | GET | /business/orders | See current orders of business, mark as deliverd
+| Deliver order | POST | /orders/:id/delivered | Change order status from pending to delivered
+| Add product | GET | /business/add-product | Add product | |
+| Add product | POST | /business/add-product | Add product | {description, price, image} | /business/products
+| Edit product | GET | /business/:id/edit | Edit product | |
+| Edit product | POST | /business/:id/edit | Edit product | {description, price, image} | /business/products  
+| Delete product | POST | /business/:id/delete | Delete product | | /business/products  
 | Delete business account | POST | /business/delete | Delete business | | /user/profile
 | Log out | POST | /auth/logout | Log out of the app | | / |.
 
@@ -101,15 +106,28 @@ User model
 {
     firstName: String,
     lastName: String,
-    email: String,
-    hashedPassword: String,
+    email: {
+      type: String,
+      unique: true,
+      lowercase: true,
+      trim: true,
+      match: [/^\S+@\S+\.\S+$/, 'Please use a valid email address.']
+    },
+    passwordHash: {
+      type: String,
+      trim: true,
+        },
     city: String,
     age: Number,
-    role: enum [String]
-},
-{
-    timestamps
-}
+    role: {
+      type: String,
+      enum: ['business', 'customer'],
+      default: 'customer'
+    }
+  },
+  {
+    timestamps: { createdAt: "created_at", updatedAt: "updated_at" }
+  },
 ```
 
 Business model
@@ -118,14 +136,36 @@ Business model
 ```js
 {
     businessName: String,
-    businessType: enum [String],
+    businessType: {
+      type: String,
+      enum: [
+        'shop',
+        'Pizza',
+        'Chinese',
+        'Sushi',
+        'Italian',
+        'Japanese',
+        'Thai',
+        'Vietnamese',
+        'Tapas',
+        'Mexican',
+        'Mediterranean',
+        'Gourmet',
+        'French',
+        'Hamburguer',
+        'Kebab',
+        'FastFood',
+        'Vegan',
+        'Vegetarian',
+      ],
+    },
     imageUrlBusiness: String,
     city: String,
-    owner: ObjectId(User)
-},
-{
-    timestamps
-}
+    owner: { type: Schema.Types.ObjectId, ref: 'User' },
+  },
+  {
+    timestamps: true,
+  }
 ```
 
 Product model
@@ -133,7 +173,9 @@ Product model
 
 ```js
 {
-    businessName: ObjectId(Business),
+    businessName: {
+        type: Schema.Types.ObjectId, ref: 'Business'
+    },
     imageUrlProduct: String,
     price: Number,
     description: String
@@ -145,25 +187,34 @@ Order model
 
 ```js
 {
-    business: ObjectId(Business),
-    product: ObjectId(Product)
-    user: ObjectId(User)
+    business: {
+        type: Schema.Types.ObjectId, ref: 'Business'
+    },
+    products:
+        [{
+            item: {type: Schema.Types.ObjectId, ref: 'Product'},
+            amount: {
+                type: Number,
+                default: 1,
+            },
+        }],
+    user: {
+        type: Schema.Types.ObjectId, ref: 'User'
+    },
+    status: {
+        type: String,
+        enum: ['open', 'confirmed', 'delivered'],
+        default: 'open'
+    }
 },
 {
-    timestamps
+    timestamps: true
 }
 ```
 
-## Data models (MVP)
 
-​**Order - user:** Reference
 
-**Order - business:** Reference
 
-**Product - business:** Reference
- 
-  
-   
 ## Links
 
 ​
@@ -183,17 +234,16 @@ Order model
 ### Project deploy
 
 ​
-[]()
+[https://zerofoodwaste.herokuapp.com/]()
 ​
 
 ### Wireframes
 
 ​
-[InVision with Wireframes]()
+[https://github.com/mrnlts/Zero-food-waste-app/tree/main/project-images]()
 ​
 
 ### Slides
 
 ​
-URls for the project presentation
-[Link Slides.com]()
+[https://slides.com/celialopez/deck-79ad9e/]()
