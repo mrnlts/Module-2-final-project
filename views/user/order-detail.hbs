@@ -21,7 +21,17 @@
         {{#each this.dbOrder.products}}
             <tr class="order_detail_page_table-row">
                 <td>{{this.product.description}}</td>
-                <td>{{this.amount}}</td>
+                <td>
+                    <form action="orders/{{this.dbOrder.id}}/reduceProduct" method="POST">
+                        <input style="display: none" name="product" type="submit" value="{{this.product.product}}">
+                        <input type="submit" value="-">
+                    </form>
+                    {{this.amount}} 
+                    <form action="orders/{{this.dbOrder.id}}/increaseProduct" method="POST">
+                        <input style="display: none" name="product" type="submit" value="{{this.product.product}}">
+                        <input type="submit" value="+">
+                    </form>
+                </td>
                 <td>{{this.product.price}}$</td>
             </tr>
         {{/each}}
